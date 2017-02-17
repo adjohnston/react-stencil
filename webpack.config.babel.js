@@ -6,8 +6,8 @@ export default {
 
   output: {
     filename: 'Doc.min.js',
-    path: resolve(__dirname, 'dist'),
-    library: 'react-doc'
+    library: 'Doc',
+    path: resolve(__dirname, 'dist')
   },
 
   devtool: 'inline-source-map',
