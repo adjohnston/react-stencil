@@ -1,0 +1,24 @@
+name: Button
+
+notes:
+  Andy:
+    Hello world how are you doing?
+
+    What's up?
+
+  Marco:
+    Where's the pattern that I am talking about?
+
+props:
+  onClick: [func, isRequired]
+  type: [string, isRequired]
+  stuff: [shape,
+    name: [string],
+    isRequired]
+
+presets:
+  warning:
+    type: warning
+
+  primary:
+    type: primary
