@@ -1,11 +1,12 @@
 {
-  "name": "docreact",
+  "name": "@adjohnston/react-doc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "prepublish": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -13,10 +14,6 @@
   },
   "author": "Adam Johnston",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/adjohnston/docreact/issues"
-  },
-  "homepage": "https://github.com/adjohnston/docreact#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
