@@ -6,7 +6,8 @@ export default {
 
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'dist')
+    path: resolve(__dirname, 'dist'),
+    library: 'react-doc'
   },
 
   devtool: 'inline-source-map',
