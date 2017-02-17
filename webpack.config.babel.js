@@ -5,18 +5,12 @@ export default {
   entry: resolve(__dirname, 'src/Doc.js'),
 
   output: {
-    filename: 'bundle.js',
+    filename: 'Doc.min.js',
     path: resolve(__dirname, 'dist'),
     library: 'react-doc'
   },
 
   devtool: 'inline-source-map',
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: resolve(__dirname, 'src/index.html')
-    })
-  ],
 
   module: {
     rules: [{

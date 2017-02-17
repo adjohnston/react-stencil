@@ -1,8 +1,8 @@
 {
   "name": "@adjohnston/react-doc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
-  "main": "dist/bundle.js",
+  "main": "dist/Doc.min.js",
   "scripts": {
     "build": "webpack",
     "serve": "webpack-dev-server",
