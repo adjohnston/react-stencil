@@ -22,6 +22,9 @@ export default {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    }, {
+      test: /\.ya?ml$/,
+      loader: 'yml-loader'
     }]
   },
 
