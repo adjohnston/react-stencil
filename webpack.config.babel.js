@@ -9,7 +9,7 @@ export default {
     path: resolve(__dirname, 'dist')
   },
 
-  devtool: 'eval',
+  devtool: 'inline-source-map',
 
   plugins: [
     new HtmlWebpackPlugin({
