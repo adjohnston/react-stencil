@@ -1,36 +1,20 @@
 import React from 'react'
+import Title from 'components/Title'
+import Notes from 'components/Notes'
+import Presets from 'components/Presets'
 
-const addBreaks = str => {
-  return str.replace(/\n/g, '<br>')
-}
+export default ({name, notes, presets, setPreset, children}) => (
+  <section>
+    <Title
+      text={name}/>
 
-const renderNotes = str => {
-  return {
-    __html: addBreaks(str)
-  }
-}
+    {children}
 
-export default (props) => (
-  <div>
-    <h1>{props.name || 'Bob'}</h1>
+    <Notes
+      notes={notes}/>
 
-    {props.children}
-
-    {Object.keys(props.notes).map(user => (
-      <article
-        key={user}>
-        <h3>{user} says</h3>
-        <p
-          dangerouslySetInnerHTML={renderNotes(props.notes[user])}></p>
-      </article>
-    ))}
-
-    {Object.keys(props.presets).map(preset => (
-      <button
-        key={preset}
-        onClick={() => props.setPreset(props.presets[preset])}>
-        {preset}
-      </button>
-    ))}
-  </div>
+    <Presets
+      setPreset={setPreset}
+      presets={presets}/>
+  </section>
 )
