@@ -6,8 +6,8 @@ export default {
 
   output: {
     filename: 'Doc.min.js',
-    library: 'Doc',
-    path: resolve(__dirname, 'dist')
+    path: resolve(__dirname, 'dist'),
+    libraryTarget: 'umd'
   },
 
   devtool: 'inline-source-map',
