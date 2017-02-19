@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const Presets = ({presets, setPreset}) => (
+const Presets = ({presets = {}, setPreset}) => (
   <div>
     {Object.keys(presets).map(preset => (
       <button
