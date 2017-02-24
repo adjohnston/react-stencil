@@ -10,7 +10,7 @@ const renderNotes = str => {
   }
 }
 
-const Notes = ({notes}) => (
+const Notes = ({notes = {}}) => (
   <div>
     {Object.keys(notes).map(user => (
       <article

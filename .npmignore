@@ -1,4 +1,4 @@
-src/index.*
+src
 dist/index.html
 node_modules
 .babelrc

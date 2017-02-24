@@ -6,8 +6,8 @@ export default {
 
   output: {
     filename: 'Doc.min.js',
-    library: 'Doc',
-    path: resolve(__dirname, 'dist')
+    path: resolve(__dirname, 'dist'),
+    libraryTarget: 'umd'
   },
 
   devtool: 'inline-source-map',
@@ -17,9 +17,6 @@ export default {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
-    }, {
-      test: /\.ya?ml$/,
-      loader: 'yml-loader'
     }]
   },
 
