@@ -16,11 +16,7 @@ const Doc = specs => {
       }
 
       render() {
-        const extendedProps = Object.assign(
-          {},
-          this.props,
-          this.state
-        )
+        const extendedProps = Object.assign({}, this.props, this.state)
 
         return (
           <Documenter
