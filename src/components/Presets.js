@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const Presets = ({presets = {}, setPreset}) => (
+const Presets = ({presets, setPreset}) => presets && (
   <div>
     {Object.keys(presets).map(preset => (
       <button
@@ -10,7 +10,7 @@ const Presets = ({presets = {}, setPreset}) => (
       </button>
     ))}
   </div>
-)
+) || null
 
 Presets.propTypes = {
   presets: PropTypes.object

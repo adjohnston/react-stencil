@@ -10,7 +10,7 @@ const renderNotes = str => {
   }
 }
 
-const Notes = ({notes = {}}) => (
+const Notes = ({notes}) => notes && (
   <div>
     {Object.keys(notes).map(user => (
       <article
@@ -21,7 +21,7 @@ const Notes = ({notes = {}}) => (
       </article>
     ))}
   </div>
-)
+) || null
 
 Notes.propTypes = {
   notes: PropTypes.object
