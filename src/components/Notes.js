@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import SubHeader from 'components/styled/SubHeader'
 
 const addBreaks = str => {
   return str.replace(/\n/g, '<br>')
@@ -12,6 +13,10 @@ const renderNotes = str => {
 
 const Notes = ({notes}) => notes && (
   <div>
+    <SubHeader>
+      Notes
+    </SubHeader>
+    
     {Object.keys(notes).map(user => (
       <article
         key={user}>
