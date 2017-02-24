@@ -17,11 +17,13 @@ const Doc = specs => {
 
       render() {
         const extendedProps = Object.assign({}, this.props, this.state)
+        const extendedPresets = specs.presets.default = {...this.props}
+        const extendedSpecs = Object.assign({}, specs, extendedSpecs)
 
         return (
           <Documenter
             setPreset={this.setPreset}
-            {...specs}>
+            {...extendedSpecs}>
             <C {...extendedProps} />
           </Documenter>
         )
