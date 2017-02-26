@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Button = styled.button`
   height: 2rem;
   padding: 0 1.5rem;
-  background: ${({current}) => current ? '#bbbab2' : 'transparent'};
+  background: ${({current}) => current ? '#dadeec' : 'transparent'};
   border: 1px solid #333;
   border-right-width: 0;
   font: 1rem/1 arial;
