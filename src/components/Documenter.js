@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
-import Title from 'components/Title'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
+import Layout from 'components/styled/Layout'
+import Title from 'components/styled/Title'
+import Preview from 'components/styled/Preview'
 
 const Documenter = ({
   name,
@@ -10,11 +12,16 @@ const Documenter = ({
   setPreset,
   children: Component
 }) => (
-  <section>
-    <Title
-      text={name} />
+  <Layout>
+    <Title>
+      {name}
+    </Title>
 
-    {Component}
+    <Preview>
+      <div>
+        {Component}
+      </div>
+    </Preview>
 
     <Notes
       notes={notes} />
@@ -22,7 +29,7 @@ const Documenter = ({
     <Presets
       setPreset={setPreset}
       presets={presets} />
-  </section>
+  </Layout>
 )
 
 Documenter.propTypes = {
