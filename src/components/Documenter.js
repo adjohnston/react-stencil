@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import Title from 'components/Title'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
 
-export default ({name, notes, presets, setPreset, children}) => (
+const Documenter = ({
+  name,
+  notes,
+  presets,
+  setPreset,
+  children: Component
+}) => (
   <section>
     <Title
       text={name} />
 
-    {children}
+    {Component}
 
     <Notes
       notes={notes} />
@@ -18,3 +24,13 @@ export default ({name, notes, presets, setPreset, children}) => (
       presets={presets} />
   </section>
 )
+
+Documenter.propTypes = {
+  name: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
+  setPreset: PropTypes.func.isRequired,
+  notes: PropTypes.object,
+  presets: PropTypes.object
+}
+
+export default Documenter
