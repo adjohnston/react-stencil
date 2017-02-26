@@ -6,15 +6,15 @@ import Presets from 'components/Presets'
 export default ({name, notes, presets, setPreset, children}) => (
   <section>
     <Title
-      text={name}/>
+      text={name} />
 
     {children}
 
     <Notes
-      notes={notes}/>
+      notes={notes} />
 
     <Presets
       setPreset={setPreset}
-      presets={presets}/>
+      presets={presets} />
   </section>
 )
