@@ -42,6 +42,7 @@ class Presets extends Component {
 }
 
 Presets.propTypes = {
+  setPreset: PropTypes.func.isRequired,
   presets: PropTypes.object
 }
 
