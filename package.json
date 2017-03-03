@@ -2,7 +2,7 @@
   "name": "@adjohnston/react-doc",
   "version": "1.0.5",
   "description": "",
-  "main": "dist/Doc.min.js",
+  "main": "dist/reactionary.js",
   "scripts": {
     "build": "webpack",
     "serve": "webpack-dev-server",

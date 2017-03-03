@@ -5,7 +5,7 @@ export default {
   entry: resolve(__dirname, 'src/Doc.js'),
 
   output: {
-    filename: 'Doc.min.js',
+    filename: 'reactionary.js',
     path: resolve(__dirname, 'dist'),
     libraryTarget: 'umd'
   },
