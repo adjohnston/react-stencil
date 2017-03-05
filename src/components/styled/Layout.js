@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Layout = styled.section`
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
 `
 
 Layout.propTypes = {
