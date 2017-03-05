@@ -8,16 +8,18 @@ const Doc = specs => {
         super(props)
 
         this.state = {}
+        this.extendedPresets = Object.assign(specs.presets, {
+          default: {...this.props}
+        })
         this.setPreset = this.setPreset.bind(this)
       }
 
       setPreset(preset) {
-        this.setState(preset)
+        this.setState({...this.extendedPresets[preset]})
       }
 
       render() {
         const extendedProps = Object.assign({}, this.props, this.state)
-        const extendedPresets = specs.presets.default = {...this.props}
         const extendedSpecs = Object.assign({}, specs, extendedSpecs)
 
         return (
