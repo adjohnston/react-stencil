@@ -2,10 +2,10 @@ import { resolve } from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
-  entry: resolve(__dirname, 'src/Doc.js'),
+  entry: resolve(__dirname, 'src/Reactionary.js'),
 
   output: {
-    filename: 'reactionary.js',
+    filename: 'Reactionary.js',
     path: resolve(__dirname, 'dist'),
     libraryTarget: 'umd'
   },
