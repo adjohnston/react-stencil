@@ -1,6 +1,13 @@
 import React, { PropTypes } from 'react'
 import Subtitle from 'components/styled/Subtitle'
 
+//    requiredProp : [string|object] -> element
+const requiredProp = prop => (
+  typeof prop === 'object' ? (
+    <b>{prop[0]}</b>
+  ) : prop
+)
+
 const Props = ({props}) => props && (
   <section>
     <Subtitle>
@@ -11,7 +18,7 @@ const Props = ({props}) => props && (
       {Object.keys(props).map(prop => (
         <li
           key={prop}>
-          {prop}: {props[prop]}
+          {prop}: {requiredProp(props[prop])}
         </li>
       ))}
     </ul>
