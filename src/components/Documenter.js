@@ -1,28 +1,55 @@
 import React, { PropTypes } from 'react'
-import Title from 'components/Title'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
+import Props from 'components/Props'
+import Layout from 'components/styled/Layout'
+import Column from 'components/styled/Column'
+import Title from 'components/styled/Title'
+import Preview from 'components/styled/Preview'
 
 const Documenter = ({
   name,
   notes,
+  props,
   presets,
   setPreset,
   children: Component
 }) => (
-  <section>
-    <Title
-      text={name} />
+  <div>
+    <Title>
+      {name}
+    </Title>
 
-    {Component}
+    <Layout>
+      <Column
+        grow="3">
+        <Preview>
+          <div>
+            {Component}
+          </div>
+        </Preview>
 
-    <Notes
-      notes={notes} />
+        <Layout>
+          <Column
+            grow="2">
+            <Presets
+              setPreset={setPreset}
+              presets={presets} />
+          </Column>
 
-    <Presets
-      setPreset={setPreset}
-      presets={presets} />
-  </section>
+          <Column>
+            <Props
+              props={props} />
+          </Column>
+        </Layout>
+      </Column>
+
+      <Column>
+        <Notes
+          notes={notes} />
+      </Column>
+    </Layout>
+  </div>
 )
 
 Documenter.propTypes = {
