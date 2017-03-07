@@ -5,6 +5,13 @@ import {
   Item
 } from 'components/styled/List'
 
+//    requiredProp : [string|object] -> element
+const requiredProp = prop => (
+  typeof prop === 'object' ? (
+    <b>{prop[0]}</b>
+  ) : prop
+)
+
 const Props = ({props}) => props && (
   <section>
     <Subtitle>
@@ -15,7 +22,7 @@ const Props = ({props}) => props && (
       {Object.keys(props).map(prop => (
         <Item
           key={prop}>
-          {prop}: {props[prop]}
+          {prop}: {requiredProp(props[prop])}
         </Item>
       ))}
     </List>

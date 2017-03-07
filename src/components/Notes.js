@@ -6,15 +6,13 @@ import {
   Message
 } from 'components/styled/Note'
 
-const addBreaks = str => {
-  return str.replace(/\n/g, '<br>')
-}
+//    addBreaks : string -> string
+const addBreaks = str => str.replace(/\n/g, '<br>')
 
-const renderNotes = str => {
-  return {
-    __html: addBreaks(str)
-  }
-}
+//    renderNotes : string -> object
+const renderNotes = str => ({
+  __html: addBreaks(str)
+})
 
 const Notes = ({notes}) => notes && (
   <div>
