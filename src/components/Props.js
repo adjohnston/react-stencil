@@ -1,5 +1,9 @@
 import React, { PropTypes } from 'react'
 import Subtitle from 'components/styled/Subtitle'
+import {
+  List,
+  Item
+} from 'components/styled/List'
 
 const Props = ({props}) => props && (
   <section>
@@ -7,14 +11,14 @@ const Props = ({props}) => props && (
       Props
     </Subtitle>
 
-    <ul>
+    <List>
       {Object.keys(props).map(prop => (
-        <li
+        <Item
           key={prop}>
           {prop}: {props[prop]}
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   </section>
 ) || null
 
