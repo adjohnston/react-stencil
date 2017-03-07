@@ -8,7 +8,10 @@ const requiredProp = prop => (
   ) : prop
 )
 
-const Props = ({props}) => props && (
+const Props = ({
+  props,
+  setProp
+}) => props && (
   <section>
     <Subtitle>
       Props
@@ -18,7 +21,9 @@ const Props = ({props}) => props && (
       {Object.keys(props).map(prop => (
         <li
           key={prop}>
-          {prop}: {requiredProp(props[prop])}
+          {prop}: {requiredProp(props[prop])}<br />
+          <input
+            onChange={(e) => setProp(prop, e.target.value)} />
         </li>
       ))}
     </ul>

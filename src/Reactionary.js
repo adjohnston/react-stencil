@@ -12,10 +12,15 @@ const Doc = specs => {
           default: {...this.props}
         })
         this.setPreset = this.setPreset.bind(this)
+        this.setProp = this.setProp.bind(this)
       }
 
       setPreset(preset) {
         this.setState({...this.extendedPresets[preset]})
+      }
+
+      setProp(prop, value) {
+        this.setState({[prop]: value})
       }
 
       render() {
@@ -25,6 +30,7 @@ const Doc = specs => {
         return (
           <Documenter
             setPreset={this.setPreset}
+            setProp={this.setProp}
             {...extendedSpecs}>
             <C {...extendedProps} />
           </Documenter>

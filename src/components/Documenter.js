@@ -13,6 +13,7 @@ const Documenter = ({
   props,
   presets,
   setPreset,
+  setProp,
   children: Component
 }) => (
   <div>
@@ -39,7 +40,8 @@ const Documenter = ({
 
           <Column>
             <Props
-              props={props} />
+              props={props}
+              setProp={setProp} />
           </Column>
         </Layout>
       </Column>
