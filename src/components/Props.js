@@ -5,7 +5,8 @@ import {
   Item
 } from 'components/styled/List'
 
-const isRequired = prop => typeof prop === 'object' ? true : false
+const isType = (propType, type) => propType === type
+const isRequired = propType => typeof propType === 'object' ? true : false
 const type = prop => isRequired(prop) ? prop[0] : prop
 
 class Props extends Component {
@@ -29,10 +30,12 @@ class Props extends Component {
 
     let inputElement
 
-    if (propType === 'string') {
+    if (isType(propType, 'string') || isType(propType, 'number')) {
       inputElement = (
         <input
-          onChange={({target: {value}}) => setProp(prop, value)} />
+          onChange={({target: {value}}) => {
+            setProp(prop, isType(propType, 'number') ? Number(value) : value)
+          }} />
       )
     }
 
