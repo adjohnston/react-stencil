@@ -1,5 +1,9 @@
 import React, { PropTypes } from 'react'
 import Subtitle from 'components/styled/Subtitle'
+import {
+  List,
+  Item
+} from 'components/styled/List'
 
 //    requiredProp : [string|object] -> element
 const requiredProp = prop => (
@@ -17,16 +21,16 @@ const Props = ({
       Props
     </Subtitle>
 
-    <ul>
+    <List>
       {Object.keys(props).map(prop => (
-        <li
+        <Item
           key={prop}>
           {prop}: {requiredProp(props[prop])}<br />
           <input
             onChange={(e) => setProp(prop, e.target.value)} />
-        </li>
+        </Item>
       ))}
-    </ul>
+    </List>
   </section>
 ) || null
 
