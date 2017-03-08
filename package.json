@@ -2,6 +2,9 @@
   "name": "@adjohnston/reactionary",
   "version": "1.0.5",
   "description": "",
+  "bin": {
+    "reactionary": "src/build.js"
+  },
   "main": "dist/reactionary.js",
   "scripts": {
     "build": "webpack",
@@ -21,9 +24,10 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "styled-components": "^1.4.3",
-    "webpack": "^2.2.1",
+    "webpack": "^2.2.1"
   },
   "dependencies": {
+    "minimist": "^1.2.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   }
