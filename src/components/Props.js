@@ -52,7 +52,7 @@ class Props extends Component {
 
   render() {
     const props = this.props.props
-    console.log(props);
+    
     return props && (
       <section>
         <Subtitle>
