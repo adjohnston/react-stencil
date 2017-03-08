@@ -1,40 +1,81 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Subtitle from 'components/styled/Subtitle'
 import {
   List,
   Item
 } from 'components/styled/List'
 
-//    requiredProp : [string|object] -> element
-const requiredProp = prop => (
-  typeof prop === 'object' ? (
-    <b>{prop[0]}</b>
-  ) : prop
-)
+const isRequired = prop => typeof prop === 'object' ? true : false
+const type = prop => isRequired(prop) ? prop[0] : prop
 
-const Props = ({
-  props,
-  setProp
-}) => props && (
-  <section>
-    <Subtitle>
-      Props
-    </Subtitle>
+class Props extends Component {
+  constructor(props) {
+    super(props)
 
-    <List>
-      {Object.keys(props).map(prop => (
-        <Item
-          key={prop}>
-          {prop}: {requiredProp(props[prop])}<br />
-          <input
-            onChange={(e) => setProp(prop, e.target.value)} />
-        </Item>
-      ))}
-    </List>
-  </section>
-) || null
+    this.state = {
+      value: ''
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.InputElement = this.InputElement.bind(this)
+  }
+
+  onChange(value) {
+    this.setState({value})
+  }
+
+  InputElement(prop, propType) {
+    const setProp = this.props.setProp
+
+    let inputElement
+
+    if (propType === 'string') {
+      inputElement = (
+        <input
+          onChange={({target: {value}}) => setProp(prop, value)} />
+      )
+    }
+
+    if (propType === 'bool') {
+      inputElement = (
+        <input
+          type="checkbox"
+          onClick={({target: {checked}}) => setProp(prop, checked)} />
+      )
+    }
+
+    return inputElement || null
+  }
+
+  render() {
+    const props = this.props.props
+    console.log(props);
+    return props && (
+      <section>
+        <Subtitle>
+          Props
+        </Subtitle>
+
+        <List>
+          {Object.keys(props).map(prop => {
+            const propTypes = props[prop]
+            const propType = type(propTypes)
+            return (
+              <Item
+                key={prop}>
+                {prop}: {isRequired(propTypes) ? <b>{propType}</b> : propType}<br />
+                {this.InputElement(prop, type(props[prop]))}
+              </Item>
+            )
+          })}
+        </List>
+      </section>
+    ) || null
+  }
+}
 
 Props.propTypes = {
+  setProp: PropTypes.func.isRequired,
   props: PropTypes.object
 }
 
