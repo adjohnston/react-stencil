@@ -23,8 +23,7 @@
     "html-webpack-plugin": "^2.28.0",
     "styled-components": "^1.4.3",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.3.0",
-    "yml-loader": "^1.1.0"
+    "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
     "react": "^15.4.2",
