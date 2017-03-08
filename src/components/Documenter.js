@@ -14,6 +14,7 @@ const Documenter = ({
   presets,
   setPreset,
   setProp,
+  componentProps,
   children: Component
 }) => (
   <div>
@@ -31,15 +32,16 @@ const Documenter = ({
         </Preview>
 
         <Layout>
-          <Column
-            grow="2">
+          <Column>
             <Presets
               setPreset={setPreset}
               presets={presets} />
           </Column>
 
-          <Column>
+          <Column
+            grow="2">
             <Props
+              state={componentProps}
               props={props}
               setProp={setProp} />
           </Column>

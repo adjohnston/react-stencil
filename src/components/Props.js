@@ -4,6 +4,8 @@ import {
   List,
   Item
 } from 'components/styled/List'
+import { Message } from 'components/styled/Note'
+import { InputText } from 'components/styled/Input'
 
 const isType = (propType, type) => propType === type
 const isRequired = propType => typeof propType === 'object' ? true : false
@@ -13,26 +15,22 @@ class Props extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      value: ''
-    }
-
-    this.onChange = this.onChange.bind(this)
     this.InputElement = this.InputElement.bind(this)
   }
 
-  onChange(value) {
-    this.setState({value})
-  }
-
   InputElement(prop, propType) {
-    const setProp = this.props.setProp
+    const {
+      state,
+      setProp
+    } = this.props
 
     let inputElement
 
     if (isType(propType, 'string') || isType(propType, 'number')) {
       inputElement = (
-        <input
+        <InputText
+          type="text"
+          value={state[prop]}
           onChange={({target: {value}}) => {
             setProp(prop, isType(propType, 'number') ? Number(value) : value)
           }} />
@@ -43,6 +41,7 @@ class Props extends Component {
       inputElement = (
         <input
           type="checkbox"
+          checked={state[prop]}
           onClick={({target: {checked}}) => setProp(prop, checked)} />
       )
     }
@@ -52,7 +51,7 @@ class Props extends Component {
 
   render() {
     const props = this.props.props
-    
+
     return props && (
       <section>
         <Subtitle>
@@ -61,13 +60,21 @@ class Props extends Component {
 
         <List>
           {Object.keys(props).map(prop => {
-            const propTypes = props[prop]
-            const propType = type(propTypes)
+            const property = props[prop]
+            const propType = type(property.type || property)
+            const propRequired = property.isRequired ? '*' : null
+            const propMsg = property.msg && (
+              <Message>
+                {property.msg}
+              </Message>
+            ) || null
+
             return (
               <Item
                 key={prop}>
-                {prop}: {isRequired(propTypes) ? <b>{propType}</b> : propType}<br />
-                {this.InputElement(prop, type(props[prop]))}
+                <b>{prop}</b> - {propType}{propRequired}<br />
+                {this.InputElement(prop, propType)}
+                {propMsg}
               </Item>
             )
           })}

@@ -31,6 +31,7 @@ const Doc = specs => {
           <Documenter
             setPreset={this.setPreset}
             setProp={this.setProp}
+            componentProps={extendedProps}
             {...extendedSpecs}>
             <C {...extendedProps} />
           </Documenter>
