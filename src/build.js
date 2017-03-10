@@ -28,16 +28,11 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
 
         ast
           .assignment(/.*(.propTypes)/)
-          .nodes
-          .map((node) => {
-            return (
-              node
-                .right
-                .properties
-                .map((prop) => {
-                  return {[prop.key.name]: prop.value}
-                })
-            )
+          .nodes[0]
+          .right
+          .properties
+          .map((prop) => {
+            return {[prop.key.name]: prop.value}
           })
 
         fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(ast), (err) => {
