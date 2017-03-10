@@ -3,15 +3,13 @@
 var path = require('path')
 var fs = require('fs-extra')
 var glob = require('globby')
-var recast = require('recast')
-var types = recast.types
+var program = require('ast-query')
 var argv = require('minimist')(process.argv.slice(2), {
   string: 'components',
   alias: {
     c: 'components'
   }
 })
-
 
 glob(`${argv.c}/**/*.?(js|jsx)`)
   .then((components) => {
@@ -23,32 +21,28 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
       fs.readFile(c, 'utf8', (err, data) => {
         if (err) throw err
 
-        // const ast = JSON.stringify(recast.parse(data).program.body.map((expression) => {
-        //   return expression.type === 'ExpressionStatement' ? expression : null
-        // }))
+        const ast = program(data, null, {
+          sourceType: 'module',
+          plugins: { jsx: true }
+        })
 
-        const ast = recast.parse(data).program.body
-        const names = types.someField()
-        debugger
+        ast
+          .assignment(/.*(.propTypes)/)
+          .nodes
+          .map((node) => {
+            return (
+              node
+                .right
+                .properties
+                .map((prop) => {
+                  return {[prop.key.name]: prop.value}
+                })
+            )
+          })
 
-        // recast.visit(ast, {
-        //   visitExpressionStatement: (p) => {
-        //     debugger
-        //   },
-        //
-        //   visitMemberExpression: (p) => {
-        //     debugger
-        //     if (p.node.object.property.name === 'propTypes') {
-        //       console.log('yay')
-        //     }
-        //
-        //     return false
-        //   }
-        // })
-
-        // fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), ast, (err) => {
-        //   if (err) throw err
-        // })
+        fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(ast), (err) => {
+          if (err) throw err
+        })
       })
     })
   })
