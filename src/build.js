@@ -26,7 +26,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           plugins: { jsx: true }
         })
 
-        ast
+        const propTypes = ast
           .assignment(/.*(.propTypes)/)
           .nodes[0]
           .right
@@ -35,7 +35,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             return {[prop.key.name]: prop.value}
           })
 
-        fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(ast), (err) => {
+        fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(propTypes), (err) => {
           if (err) throw err
         })
       })
