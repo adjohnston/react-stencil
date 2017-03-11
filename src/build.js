@@ -18,7 +18,7 @@ var argv = require('minimist')(process.argv.slice(2), {
 types = (object) => {
   const names = []
   const recurse = (object) => {
-    if (!object.object.name) {
+    if (object.object && !object.object.name) {
       names.push(object.property.name)
       return recurse(object.object)
     }
@@ -29,9 +29,7 @@ types = (object) => {
 
 glob(`${argv.c}/**/*.?(js|jsx)`)
   .then((components) => {
-    const comp = components.slice(0, 1)
-
-    comp.map(c => {
+    components.map(c => {
       const componentName = path.basename(c).split('.')[0]
 
       fs.readFile(c, 'utf8', (err, data) => {
