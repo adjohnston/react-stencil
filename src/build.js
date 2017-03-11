@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 
-var path = require('path')
-var fs = require('fs-extra')
-var glob = require('globby')
-var program = require('ast-query')
-var argv = require('minimist')(process.argv.slice(2), {
+const path = require('path')
+const fs = require('fs-extra')
+const glob = require('globby')
+const program = require('ast-query')
+const argv = require('minimist')(process.argv.slice(2), {
   string: ['components', 'specsDir'],
   alias: {
     c: 'components',
