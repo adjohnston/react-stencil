@@ -11,6 +11,18 @@ var argv = require('minimist')(process.argv.slice(2), {
   }
 })
 
+types = (object) => {
+  const names = []
+  const recurse = (object) => {
+    if (!object.object.name) {
+      names.push(object.property.name)
+      return recurse(object.object)
+    }
+  }
+  recurse(object)
+  return names.reverse()
+}
+
 glob(`${argv.c}/**/*.?(js|jsx)`)
   .then((components) => {
     const comp = components.slice(0, 1)
@@ -32,7 +44,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           .right
           .properties
           .map((prop) => {
-            return {[prop.key.name]: prop.value}
+            return {[prop.key.name]: types(prop.value)}
           })
 
         fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(propTypes), (err) => {
