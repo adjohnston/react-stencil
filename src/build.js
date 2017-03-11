@@ -5,9 +5,13 @@ var fs = require('fs-extra')
 var glob = require('globby')
 var program = require('ast-query')
 var argv = require('minimist')(process.argv.slice(2), {
-  string: 'components',
+  string: ['components', 'specsDir'],
   alias: {
-    c: 'components'
+    c: 'components',
+    d: 'specsDir'
+  },
+  default: {
+    d: './specs'
   }
 })
 
@@ -47,7 +51,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             return {[prop.key.name]: types(prop.value)}
           })
 
-        fs.outputFile(path.resolve(__dirname, 'specs', componentName, 'prop-types.js'), JSON.stringify(propTypes), (err) => {
+        fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), JSON.stringify(propTypes), (err) => {
           if (err) throw err
         })
       })
