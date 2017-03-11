@@ -50,8 +50,13 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             .map((prop) => {
               return {[prop.key.name]: types(prop.value)}
             })
+            .reduce((p, n) => {
+              return Object.assign(p, n)
+            }, {})
 
-          fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), JSON.stringify(propTypes), (err) => {
+          const output = `export default ${JSON.stringify(propTypes)}`
+
+          fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), output, (err) => {
             if (err) throw err
           })
         } catch(e) {
