@@ -35,23 +35,28 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
       fs.readFile(c, 'utf8', (err, code) => {
         if (err) throw err
 
-        const ast = program(code, null, {
-          sourceType: 'module',
-          plugins: { jsx: true }
-        })
-
-        const propTypes = ast
-          .assignment(/.*(.propTypes)/)
-          .nodes[0]
-          .right
-          .properties
-          .map((prop) => {
-            return {[prop.key.name]: types(prop.value)}
+        try {
+          const ast = program(code, null, {
+            sourceType: 'module',
+            ecmaVersion: 7,
+            plugins: { jsx: true }
           })
 
-        fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), JSON.stringify(propTypes), (err) => {
-          if (err) throw err
-        })
+          const propTypes = ast
+            .assignment(/.*(.propTypes)/)
+            .nodes[0]
+            .right
+            .properties
+            .map((prop) => {
+              return {[prop.key.name]: types(prop.value)}
+            })
+
+          fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), JSON.stringify(propTypes), (err) => {
+            if (err) throw err
+          })
+        } catch(e) {
+          console.log(`could not get propTypes from ${componentName}. This is most likely due to the component using the spread operator which does not seem to be supported by Acorn or Acorn JSX.`);
+        }
       })
     })
   })
