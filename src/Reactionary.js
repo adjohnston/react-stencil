@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 
-const Doc = specs => {
+const Reactionary = specs => {
   return C => {
     return class Doc extends Component {
       constructor(props) {
         super(props)
 
         this.state = {}
-        this.extendedPresets = Object.assign(specs.presets, {
+        this.extendedPresets = Object.assign(specs.presets || {}, {
           default: {...this.props}
         })
         this.setPreset = this.setPreset.bind(this)
@@ -41,4 +41,4 @@ const Doc = specs => {
   }
 }
 
-export default Doc
+export default Reactionary
