@@ -32,10 +32,10 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
     components.map(c => {
       const componentName = path.basename(c).split('.')[0]
 
-      fs.readFile(c, 'utf8', (err, data) => {
+      fs.readFile(c, 'utf8', (err, code) => {
         if (err) throw err
 
-        const ast = program(data, null, {
+        const ast = program(code, null, {
           sourceType: 'module',
           plugins: { jsx: true }
         })
