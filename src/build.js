@@ -15,7 +15,7 @@ const argv = require('minimist')(process.argv.slice(2), {
   }
 })
 
-types = (object) => {
+const getValues = (object) => {
   const names = []
   const recurse = (object) => {
     if (object.object && !object.object.name) {
@@ -25,6 +25,20 @@ types = (object) => {
   }
   recurse(object)
   return names.reverse()
+}
+
+const getTypes = (ast, regex) => {
+  const nodes = ast.assignment(regex).nodes[0]
+
+  return nodes && nodes
+    .right
+    .properties
+    .map((prop) => {
+      return {[prop.key.name]: getValues(prop.value)}
+    })
+    .reduce((p, n) => {
+      return Object.assign(p, n)
+    }, {}) || {}
 }
 
 glob(`${argv.c}/**/*.?(js|jsx)`)
@@ -38,23 +52,16 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
         try {
           const ast = program(code, null, {
             sourceType: 'module',
-            ecmaVersion: 7,
             plugins: { jsx: true }
           })
 
-          const propTypes = ast
-            .assignment(/.*(.propTypes)/)
-            .nodes[0]
-            .right
-            .properties
-            .map((prop) => {
-              return {[prop.key.name]: types(prop.value)}
-            })
-            .reduce((p, n) => {
-              return Object.assign(p, n)
-            }, {})
+          const propTypes = getTypes(ast, /.*(.propTypes)/)
+          const contextTypes = getTypes(ast, /.*(contextTypes)/)
+          const childContextTypes = getTypes(ast, /.*(.childContextTypes)/)
 
-          const output = `export default ${JSON.stringify(propTypes)}`
+          const output = (
+            `export default ${JSON.stringify({propTypes, contextTypes, childContextTypes})}`
+          )
 
           fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), output, (err) => {
             if (err) throw err
