@@ -60,7 +60,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           const childContextTypes = getTypes(ast, /.*(.childContextTypes)/)
 
           const output = (
-            `export default ${JSON.stringify({propTypes, contextTypes, childContextTypes})}`
+            `export default ${JSON.stringify({types: {propTypes, contextTypes, childContextTypes}})}`
           )
 
           fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), output, (err) => {
