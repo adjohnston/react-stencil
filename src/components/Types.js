@@ -11,7 +11,7 @@ const isType = (propType, type) => propType === type
 const isRequired = propType => typeof propType === 'object' ? true : false
 const type = prop => isRequired(prop) ? prop[0] : prop
 
-class Props extends Component {
+class Types extends Component {
   constructor(props) {
     super(props)
 
@@ -50,43 +50,45 @@ class Props extends Component {
   }
 
   render() {
-    const props = this.props.props
+    const typeGroups = this.props.types
 
-    return props && (
+    return typeGroups && (
       <section>
         <Subtitle>
-          Props
+          Types
         </Subtitle>
 
-        <List>
-          {Object.keys(props).map(prop => {
-            const property = props[prop]
-            const propType = type(property.type || property)
-            const propRequired = property.isRequired ? '*' : null
-            const propMsg = property.msg && (
-              <Message>
-                {property.msg}
-              </Message>
-            ) || null
+        <section>
+          {Object.keys(typeGroups).map((group) => (
+            <div>
+              <h3
+                key={group}>
+                {group}
+              </h3>
 
-            return (
-              <Item
-                key={prop}>
-                <b>{prop}</b> - {propType}{propRequired}<br />
-                {this.InputElement(prop, propType)}
-                {propMsg}
-              </Item>
-            )
-          })}
-        </List>
+              <List>
+                {Object.keys(typeGroups[group]).map((prop) => {
+                  const types = typeGroups[group][prop]
+                  return (
+                    <Item
+                      key={prop}>
+                      <b>{prop}</b> - {types[0]}{types[1] ? '*' : null}<br />
+                      {this.InputElement(prop, types[0])}
+                    </Item>
+                  )
+                })}
+              </List>
+            </div>
+          ))}
+        </section>
       </section>
     ) || null
   }
 }
 
-Props.propTypes = {
+Types.propTypes = {
   setProp: PropTypes.func.isRequired,
   props: PropTypes.object
 }
 
-export default Props
+export default Types
