@@ -25,14 +25,13 @@ const Reactionary = specs => {
 
       render() {
         const extendedProps = Object.assign({}, this.props, this.state)
-        const extendedSpecs = Object.assign({}, specs, extendedSpecs)
 
         return (
           <Documenter
             setPreset={this.setPreset}
             setProp={this.setProp}
             componentProps={extendedProps}
-            {...extendedSpecs}>
+            {...specs}>
             <C {...extendedProps} />
           </Documenter>
         )
