@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
-import Props from 'components/Props'
+import Types from 'components/Types'
 import Layout from 'components/styled/Layout'
 import Column from 'components/styled/Column'
 import Title from 'components/styled/Title'
@@ -10,7 +10,7 @@ import Preview from 'components/styled/Preview'
 const Documenter = ({
   name,
   notes,
-  props,
+  types,
   presets,
   setPreset,
   setProp,
@@ -40,9 +40,9 @@ const Documenter = ({
 
           <Column
             grow="2">
-            <Props
+            <Types
               state={componentProps}
-              props={props}
+              types={types}
               setProp={setProp} />
           </Column>
         </Layout>
