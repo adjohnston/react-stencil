@@ -69,10 +69,12 @@ class Types extends Component {
               <List>
                 {Object.keys(typeGroups[group]).map((prop) => {
                   const type = typeGroups[group][prop].type
+                  const msg = typeGroups[group][prop].msg
                   return (
                     <Item
                       key={prop}>
                       <b>{prop}</b> - {type[0]}{type[1] ? '*' : null}<br />
+                      {msg}<br />
                       {this.InputElement(prop, type[0])}
                     </Item>
                   )
