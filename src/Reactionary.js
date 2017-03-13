@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 
+export const specify = (globalDefs, {types}, defs) => {
+  const keys = Object.keys(types.propTypes)
+
+  return Object.assign(
+    {},
+    {types: {
+      propTypes: keys.reduce((p, key) => {
+        const next = Object.assign({}, {[key]: globalDefs[key]}, {[key]: types.propTypes[key]})
+        return Object.assign(p, next)
+      }, {})
+    }},
+    defs
+  )
+}
+
 const Reactionary = specs => {
   return C => {
     return class Doc extends Component {
