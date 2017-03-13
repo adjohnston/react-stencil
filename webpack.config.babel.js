@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export default {
   entry: resolve(__dirname, 'src/Reactionary.js'),
