@@ -16,15 +16,15 @@ const argv = require('minimist')(process.argv.slice(2), {
 })
 
 const getValues = (object) => {
-  const names = []
+  const value = []
   const recurse = (object) => {
     if (object.object && !object.object.name) {
-      names.push(object.property.name)
+      value.push(object.property.name)
       return recurse(object.object)
     }
   }
   recurse(object)
-  return names.reverse()
+  return {type: value.reverse()}
 }
 
 const getTypes = (ast, regex) => {
