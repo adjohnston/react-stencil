@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
+import assign from 'deep-assign'
 
 export const specify = (globalDefs, {types}, defs) => {
-  const keys = Object.keys(types.propTypes)
-
-  return Object.assign(
-    {},
-    {types: {
-      propTypes: keys.reduce((p, key) => {
-        const next = Object.assign({}, {[key]: globalDefs[key]}, {[key]: types.propTypes[key]})
-        return Object.assign(p, next)
-      }, {})
-    }},
-    defs
-  )
+  return assign({}, {
+    types: Object.keys(types).reduce((p, group) => {
+      return Object.assign(p, {
+        [group]: Object.keys(types[group]).reduce((p, key) => {
+          const next = {[key]: Object.assign({msg: globalDefs[key]}, types[group][key])}
+          return Object.assign(p, next)
+        }, {})
+      })
+    }, {})
+  }, defs)
 }
 
 const Reactionary = specs => {
