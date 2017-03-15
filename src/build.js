@@ -63,11 +63,11 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             `export default ${JSON.stringify({types: {propTypes, contextTypes, childContextTypes}})}`
           )
 
-          fs.outputFile(path.resolve(argv.d, componentName, 'props.js'), output, (err) => {
+          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), output, (err) => {
             if (err) throw err
           })
         } catch(e) {
-          console.log(`could not get propTypes from ${componentName}. This is most likely due to the component using the spread operator which does not seem to be supported by Acorn or Acorn JSX.`);
+          console.log(`could not get types from ${componentName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
         }
       })
     })
