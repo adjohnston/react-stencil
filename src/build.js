@@ -59,13 +59,13 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           const contextTypes = getTypes(ast, /.*(contextTypes)/)
           const childContextTypes = getTypes(ast, /.*(.childContextTypes)/)
 
-          const output = (
+          const typesJSON = (
             `export default ${JSON.stringify({
               types: {propTypes, contextTypes, childContextTypes}
             }, null, 2)}`
           )
 
-          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), output, (err) => {
+          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, (err) => {
             if (err) throw err
           })
         } catch(e) {
