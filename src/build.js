@@ -5,10 +5,11 @@ const fs = require('fs-extra')
 const glob = require('globby')
 const program = require('ast-query')
 const argv = require('minimist')(process.argv.slice(2), {
-  string: ['components', 'specsDir'],
+  string: ['components', 'specsDir', 'mapping'],
   alias: {
     c: 'components',
-    d: 'specsDir'
+    d: 'specsDir',
+    m: 'mapping'
   },
   default: {
     d: './specs'
@@ -68,6 +69,23 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, (err) => {
             if (err) throw err
           })
+
+          if (argv.m) {
+            const Component = (`
+              import React from 'react'
+              import Reactionary, {specify} from '@adjohnston/reactionary'
+              import C from '${c}'
+              import gD from '../global-definitions'
+              import t from './types'
+              import d from './definitions'
+              const s = specify(gD || {}, t, d || {})
+              export default Reactionary(s)(C)
+            `)
+
+            fs.outputFile(path.resolve(argv.d, componentName, 'Component.js'), Component, (err) => {
+              if (err) throw err
+            })
+          }
         } catch(e) {
           console.log(`could not get types from ${componentName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
         }
