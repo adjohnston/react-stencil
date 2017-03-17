@@ -94,4 +94,21 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
         }
       })
     })
+
+    if (argv.m) {
+      const mapping = new Promise((res, rej) => {
+        res(components.reduce((prev, c) => {
+          const component = path.basename(c).split('.')[0]
+          const componentName = component.split('-').map(w => w.toUpperCase()).join('')
+          return (
+            prev += `import ${componentName} from '${path.resolve(argv.d, component, 'component')}';
+            export {${componentName}};`
+          )
+        }, ''))
+      }).then((map) => {
+        fs.outputFile(path.resolve(argv.d, 'component-mappings.js'), map, throwErr)
+      })
+
+      fs.outputFile(path.resolve(argv.d, 'global-definitions.js'), '', throwErr)
+    }
   })
