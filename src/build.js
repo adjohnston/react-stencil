@@ -20,7 +20,8 @@ const getValues = (object) => {
   const value = []
   const recurse = (object) => {
     if (object.object && !object.object.name) {
-      value.push(object.property.name)
+      if (!object.property.name.match(/(React)|(PropTypes)/))
+        value.push(object.property.name)
       return recurse(object.object)
     }
   }
