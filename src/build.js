@@ -77,7 +77,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             const Component = (`
               import React from 'react'
               import Reactionary, {specify} from '@adjohnston/reactionary'
-              import C from '${c}'
+              import c from '${path.resolve(c)}'
               import gD from '../global-definitions'
               import t from './types'
               import d from './definitions'
