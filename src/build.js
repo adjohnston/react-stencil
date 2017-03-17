@@ -74,7 +74,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, throwErr)
 
           if (argv.m) {
-            const Component = (`
+            const component = `
               import React from 'react'
               import Reactionary, {specify} from '@adjohnston/reactionary'
               import c from '${path.resolve(c)}'
@@ -82,8 +82,8 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
               import t from './types'
               import d from './definitions'
               const s = specify(gD || {}, t, d || {})
-              export default Reactionary(s)(C)
-            `)
+              export default Reactionary(s)(c)
+            `
 
             fs.outputFile(path.resolve(argv.d, componentName, 'component.js'), component, throwErr)
 
