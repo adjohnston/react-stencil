@@ -67,7 +67,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
 
           const typesJSON = (
             `export default ${JSON.stringify({
-              types: {propTypes, contextTypes, childContextTypes}
+              propTypes, contextTypes, childContextTypes
             }, null, 2)}`
           )
 
