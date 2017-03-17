@@ -16,6 +16,10 @@ const argv = require('minimist')(process.argv.slice(2), {
   }
 })
 
+const throwErr = (err) => {
+  if (err) throw err
+}
+
 const getValues = (object) => {
   const value = []
   const recurse = (object) => {
@@ -67,9 +71,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             }, null, 2)}`
           )
 
-          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, (err) => {
-            if (err) throw err
-          })
+          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, throwErr)
 
           if (argv.m) {
             const Component = (`
@@ -83,9 +85,9 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
               export default Reactionary(s)(C)
             `)
 
-            fs.outputFile(path.resolve(argv.d, componentName, 'Component.js'), Component, (err) => {
-              if (err) throw err
-            })
+            fs.outputFile(path.resolve(argv.d, componentName, 'component.js'), component, throwErr)
+
+            fs.outputFile(path.resolve(argv.d, componentName, 'definitions.js'), '', throwErr)
           }
         } catch(e) {
           console.log(`could not get types from ${componentName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
