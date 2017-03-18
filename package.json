@@ -7,6 +7,7 @@
   },
   "main": "dist/reactionary.js",
   "scripts": {
+    "test": "jest",
     "build": "webpack",
     "serve": "webpack-dev-server",
     "prepublish": "webpack -p"
@@ -23,6 +24,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.23.0",
+    "jest": "^19.0.2",
     "styled-components": "^1.4.3",
     "webpack": "^2.2.1"
   },
