@@ -17,11 +17,11 @@ const joinChars = (chars) => {
 }
 
 //    getPathName : string -> string
-const getPathName = (p) => {
-  const bN = path.basename(p).split('.')
-  if (bN.length > 1)
-    return bN[0]
-  throw new Error(`path ${p} must include component file`)
+const getPathName = (componentPath) => {
+  const pathName = path.basename(componentPath).split('.')
+  if (pathName.length > 1)
+    return pathName[0]
+  throw new Error(`path ${componentPath} must include component file`)
 }
 
 //    getComponentName : string -> string
