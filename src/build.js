@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 
+const helpers = require('./helpers')
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('globby')
@@ -15,6 +16,10 @@ const argv = require('minimist')(process.argv.slice(2), {
     d: './specs'
   }
 })
+
+const {
+  getPathName
+} = helpers
 
 const throwErr = (err) => {
   if (err) throw err
