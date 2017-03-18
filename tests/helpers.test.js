@@ -1,4 +1,27 @@
-import { getPathName } from '../src/helpers'
+import {
+  splitOnHyphen,
+  upperCaseWords,
+  joinChars,
+  getPathName
+} from '../src/helpers'
+
+describe('#splitOnHyphen', () => {
+  test(`given 'hello-world' expect ['hello', 'world']`, () => {
+    expect(splitOnHyphen('hello-world')).toEqual(['hello', 'world'])
+  })
+})
+
+describe('#upperCaseWords', () => {
+  test(`given ['hello', 'world'] expect ['HELLO', 'WORLD']`, () => {
+    expect(upperCaseWords(['hello', 'world'])).toEqual(['HELLO', 'WORLD'])
+  })
+})
+
+describe('#joinChars', () => {
+  test(`given ['hello', 'world'] expect 'helloworld'`, () => {
+    expect(joinChars(['hello', 'world'])).toEqual('helloworld')
+  })
+})
 
 describe('#getPathName', () => {
   test('the name of the component from \'/components/atoms/button.jsx\' should be button', () => {
