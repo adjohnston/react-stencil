@@ -18,7 +18,8 @@ const argv = require('minimist')(process.argv.slice(2), {
 })
 
 const {
-  getPathName
+  getPathName,
+  getComponentName
 } = helpers
 
 const throwErr = (err) => {
@@ -53,11 +54,11 @@ const getTypes = (ast, regex) => {
 }
 
 glob(`${argv.c}/**/*.?(js|jsx)`)
-  .then((components) => {
-    components.map(c => {
-      const componentName = path.basename(c).split('.')[0]
+  .then((componentPaths) => {
+    componentPaths.map(componentPath => {
+      const componentPathName = getPathName(componentPath)
 
-      fs.readFile(c, 'utf8', (err, code) => {
+      fs.readFile(componentPath, 'utf8', (err, code) => {
         if (err) throw err
 
         try {
@@ -76,13 +77,13 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             }, null, 2)}`
           )
 
-          fs.outputFile(path.resolve(argv.d, componentName, 'types.js'), typesJSON, throwErr)
+          fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesJSON, throwErr)
 
           if (argv.m) {
             const component = `
               import React from 'react'
               import Reactionary, {specify} from '@adjohnston/reactionary'
-              import c from '${path.resolve(c)}'
+              import c from '${path.resolve(componentPathName)}'
               import gD from '../global-definitions'
               import t from './types'
               import d from './definitions'
@@ -90,23 +91,24 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
               export default Reactionary(s)(c)
             `
 
-            fs.outputFile(path.resolve(argv.d, componentName, 'component.js'), component, throwErr)
+            fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
 
-            fs.outputFile(path.resolve(argv.d, componentName, 'definitions.js'), '', throwErr)
+            fs.outputFile(path.resolve(argv.d, componentPathName, 'definitions.js'), '', throwErr)
           }
         } catch(e) {
-          console.log(`could not get types from ${componentName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
+          console.log(`could not get types from ${pathName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
         }
       })
     })
 
     if (argv.m) {
       const mapping = new Promise((res, rej) => {
-        res(components.reduce((prev, c) => {
-          const component = path.basename(c).split('.')[0]
-          const componentName = component.split('-').map(w => w.toUpperCase()).join('')
+        res(componentPaths.reduce((prev, componentPath) => {
+          const componentPathName = getPathName(componentPath)
+          const componentName = getComponentName(componentPathName)
+
           return (
-            prev += `import ${componentName} from '${path.resolve(argv.d, component, 'component')}';
+            prev += `import ${componentName} from '${path.resolve(argv.d, componentPath, 'component')}';
             export {${componentName}};`
           )
         }, ''))
