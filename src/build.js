@@ -83,7 +83,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             const component = `
               import React from 'react'
               import Reactionary, {specify} from '@adjohnston/reactionary'
-              import c from '${path.resolve(componentPathName)}'
+              import c from '${path.resolve(componentPath)}'
               import gD from '../global-definitions'
               import t from './types'
               import d from './definitions'
@@ -108,12 +108,12 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
           const componentName = getComponentName(componentPathName)
 
           return (
-            prev += `import ${componentName} from '${path.resolve(argv.d, componentPath, 'component')}';
+            prev += `import ${componentName} from '${path.resolve(argv.d, componentPathName, 'component')}';
             export {${componentName}};`
           )
         }, ''))
       }).then((map) => {
-        fs.outputFile(path.resolve(argv.d, 'component.js'), map, throwErr)
+        fs.outputFile(path.resolve(argv.d, 'components.js'), map, throwErr)
       })
 
       fs.outputFile(path.resolve(argv.d, 'global-definitions.js'), '', throwErr)
