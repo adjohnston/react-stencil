@@ -49,7 +49,8 @@ class Types extends Component {
           const typeGroup = Object.keys(typeGroups[group])
 
           return typeGroup.length ? (
-            <div>
+            <div
+              key={group}>
               <h3
                 key={group}>
                 {group}
