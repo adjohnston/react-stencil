@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
 import Types from 'components/Types'
+import { className } from 'helpers'
 
 const Documenter = ({
   name,
@@ -14,7 +15,8 @@ const Documenter = ({
   children: Component
 }) => (
   <section>
-    <h1>
+    <h1
+      className={className('title')}>
       {name}
     </h1>
 

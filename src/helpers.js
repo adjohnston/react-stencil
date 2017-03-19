@@ -1,6 +1,11 @@
 const R = require('ramda')
 const path = require('path')
 
+//    className : string -> string -> string
+const className = (el, mod) => {
+  return `rctnry${el ? `__${el}` : ''}${mod ? `--${mod}` : ''}`
+}
+
 //    splitOnHyphen : string -> array
 const splitOnHyphen = (str) => {
   return R.split('-', str)
@@ -34,6 +39,7 @@ const getComponentName = (componentPathName) => (
 )
 
 module.exports = {
+  className,
   splitOnHyphen,
   upperCaseWords,
   joinChars,
