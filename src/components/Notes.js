@@ -1,10 +1,4 @@
 import React, { PropTypes } from 'react'
-import Subtitle from 'components/styled/Subtitle'
-import {
-  Note,
-  Title,
-  Message
-} from 'components/styled/Note'
 
 //    addBreaks : string -> string
 const addBreaks = str => str.replace(/\n/g, '<br>')
@@ -15,22 +9,22 @@ const renderNotes = str => ({
 })
 
 const Notes = ({notes}) => notes && (
-  <div>
-    <Subtitle>
+  <aside>
+    <h2>
       Notes
-    </Subtitle>
+    </h2>
 
     {Object.keys(notes).map(user => (
-      <Note
+      <div
         key={user}>
-        <Title>
+        <h3>
           {user}
-        </Title>
-        <Message
+        </h3>
+        <p
           dangerouslySetInnerHTML={renderNotes(notes[user])} />
-      </Note>
+      </div>
     ))}
-  </div>
+  </aside>
 ) || null
 
 Notes.propTypes = {
