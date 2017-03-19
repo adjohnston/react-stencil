@@ -45,29 +45,33 @@ class Types extends Component {
           Types
         </h2>
 
-        {Object.keys(typeGroups).map((group) => (
-          <div>
-            <h3
-              key={group}>
-              {group}
-            </h3>
+        {Object.keys(typeGroups).map((group) => {
+          const typeGroup = Object.keys(typeGroups[group])
 
-            <ul>
-              {Object.keys(typeGroups[group]).map((prop) => {
-                const type = typeGroups[group][prop].type
-                const msg = typeGroups[group][prop].msg
-                return (
-                  <li
-                    key={prop}>
-                    <b>{prop}</b> - {type[0]}{type[1] ? '*' : null}<br />
-                    {msg}<br />
-                    {this.inputElement(prop, type[0])}
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        ))}
+          return typeGroup.length ? (
+            <div>
+              <h3
+                key={group}>
+                {group}
+              </h3>
+
+              <ul>
+                {typeGroup.map((prop) => {
+                  const type = typeGroups[group][prop].type
+                  const msg = typeGroups[group][prop].msg
+                  return (
+                    <li
+                      key={prop}>
+                      <b>{prop}</b> - {type[0]}{type[1] ? '*' : null}<br />
+                      {msg}<br />
+                      {this.inputElement(prop, type[0])}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          ) : null
+        })}
       </section>
     ) || null
   }
