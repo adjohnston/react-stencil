@@ -55,11 +55,15 @@ const getTypes = (ast, regex) => {
 
 glob(`${argv.c}/**/*.?(js|jsx)`)
   .then((componentPaths) => {
+    fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
+
     componentPaths.map(componentPath => {
       const componentPathName = getPathName(componentPath)
 
       fs.readFile(componentPath, 'utf8', (err, code) => {
         if (err) throw err
+
+        fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
 
         try {
           const ast = program(code, null, {
@@ -92,8 +96,6 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             `
 
             fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
-
-            fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
           }
         } catch(e) {
           console.log(`could not get types from ${componentPathName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
@@ -115,7 +117,5 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
       }).then((map) => {
         fs.outputFile(path.resolve(argv.d, 'components.js'), map, throwErr)
       })
-
-      fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
     }
   })
