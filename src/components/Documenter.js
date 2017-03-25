@@ -2,10 +2,7 @@ import React, { PropTypes } from 'react'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
 import Types from 'components/Types'
-import Layout from 'components/styled/Layout'
-import Column from 'components/styled/Column'
-import Title from 'components/styled/Title'
-import Preview from 'components/styled/Preview'
+import { className } from 'helpers'
 
 const Documenter = ({
   name,
@@ -17,43 +14,30 @@ const Documenter = ({
   componentProps,
   children: Component
 }) => (
-  <div>
-    <Title>
+  <section>
+    <h1
+      className={className('title')}>
       {name}
-    </Title>
+    </h1>
 
-    <Layout>
-      <Column
-        grow="3">
-        <Preview>
-          <div>
-            {Component}
-          </div>
-        </Preview>
+    <section>
+      <div>
+        {Component}
+      </div>
 
-        <Layout>
-          <Column>
-            <Presets
-              setPreset={setPreset}
-              presets={presets} />
-          </Column>
+      <Presets
+        setPreset={setPreset}
+        presets={presets} />
 
-          <Column
-            grow="2">
-            <Types
-              state={componentProps}
-              types={types}
-              setProp={setProp} />
-          </Column>
-        </Layout>
-      </Column>
+      <Types
+        state={componentProps}
+        types={types}
+        setProp={setProp} />
+    </section>
 
-      <Column>
-        <Notes
-          notes={notes} />
-      </Column>
-    </Layout>
-  </div>
+    <Notes
+      notes={notes} />
+  </section>
 )
 
 Documenter.propTypes = {

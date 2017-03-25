@@ -1,6 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import Subtitle from 'components/styled/Subtitle'
-import Button from 'components/styled/Button'
 
 class Presets extends Component {
   constructor(props) {
@@ -19,13 +17,13 @@ class Presets extends Component {
 
     return presets && (
       <section>
-        <Subtitle>
+        <h2>
           Presets
-        </Subtitle>
+        </h2>
 
         <div>
           {Object.keys(presets).map(preset => (
-            <Button
+            <button
               key={preset}
               current={preset === this.state.current}
               onClick={() => {
@@ -33,7 +31,7 @@ class Presets extends Component {
                 setPreset(preset)
               }}>
               {preset}
-            </Button>
+            </button>
           ))}
         </div>
       </section>

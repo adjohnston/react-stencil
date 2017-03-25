@@ -21,6 +21,7 @@ export default {
 
   resolve: {
     alias: {
+      helpers: resolve(__dirname, 'src/helpers.js'),
       components: resolve(__dirname, 'src/components')
     }
   }
