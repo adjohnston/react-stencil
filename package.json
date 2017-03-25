@@ -3,7 +3,7 @@
   "version": "1.0.5",
   "description": "",
   "bin": {
-    "reactionary": "src/build.js"
+    "reactionary": "src/cli.js"
   },
   "main": "dist/reactionary.js",
   "scripts": {
