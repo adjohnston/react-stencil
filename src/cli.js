@@ -4,7 +4,6 @@ const helpers = require('./helpers')
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('globby')
-const program = require('ast-query')
 const argv = require('minimist')(process.argv.slice(2), {
   string: ['components', 'specsDir', 'mapping'],
   alias: {
