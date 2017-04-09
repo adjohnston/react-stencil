@@ -4,6 +4,7 @@ const helpers = require('./helpers')
 const path = require('path')
 const fs = require('fs-extra')
 const glob = require('globby')
+const reactDocs = require('react-docgen')
 const argv = require('minimist')(process.argv.slice(2), {
   string: ['components', 'specsDir', 'mapping'],
   alias: {
@@ -25,33 +26,6 @@ const throwErr = (err) => {
   if (err) throw err
 }
 
-const getValues = (object) => {
-  const value = []
-  const recurse = (object) => {
-    if (object.object && !object.object.name) {
-      if (!object.property.name.match(/(React)|(PropTypes)/))
-        value.push(object.property.name)
-      return recurse(object.object)
-    }
-  }
-  recurse(object)
-  return {type: value.reverse()}
-}
-
-const getTypes = (ast, regex) => {
-  const nodes = ast.assignment(regex).nodes[0]
-
-  return nodes && nodes
-    .right
-    .properties
-    .map((prop) => {
-      return {[prop.key.name]: getValues(prop.value)}
-    })
-    .reduce((p, n) => {
-      return Object.assign(p, n)
-    }, {}) || {}
-}
-
 glob(`${argv.c}/**/*.?(js|jsx)`)
   .then((componentPaths) => {
     fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
@@ -64,40 +38,36 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
 
         fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
 
-        try {
-          const ast = program(code, null, {
-            sourceType: 'module',
-            plugins: { jsx: true }
-          })
+        const props = reactDocs.parse(code).props
+        const types = Object.keys(props).reduce((prev, prop) => {
+          const {
+            type: {name},
+            required
+          } = props[prop]
 
-          const propTypes = getTypes(ast, /.*(.propTypes)/)
-          const contextTypes = getTypes(ast, /.*(contextTypes)/)
-          const childContextTypes = getTypes(ast, /.*(.childContextTypes)/)
+          prev[prop] = [name, required]
+          return prev
+        }, {});
 
-          const typesJSON = (
-            `export default ${JSON.stringify({
-              propTypes, contextTypes, childContextTypes
-            }, null, 2)}`
-          )
+        const typesJSON = (
+          `export default ${JSON.stringify({types}, null, 2)}`
+        )
 
-          fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesJSON, throwErr)
+        fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesJSON, throwErr)
 
-          if (argv.m) {
-            const component = `
-              import React from 'react'
-              import Reactionary, {specify} from '@adjohnston/reactionary'
-              import c from '${path.resolve(componentPath)}'
-              import gD from '../global-definitions'
-              import t from './types'
-              import d from './definitions'
-              const s = specify(gD || {}, t, d || {})
-              export default Reactionary(s)(c)
-            `
+        if (argv.m) {
+          const component = `
+            import React from 'react'
+            import Reactionary, {specify} from '@adjohnston/reactionary'
+            import c from '${path.resolve(componentPath)}'
+            import gD from '../global-definitions'
+            import t from './types'
+            import d from './definitions'
+            const s = specify(gD || {}, t, d || {})
+            export default Reactionary(s)(c)
+          `
 
-            fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
-          }
-        } catch(e) {
-          console.log(`could not get types from ${componentPathName}. This is most likely due to the component using the spread operator which is not seem to be supported by Acorn or Acorn JSX.`);
+          fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
         }
       })
     })
