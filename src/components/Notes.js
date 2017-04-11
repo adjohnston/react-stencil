@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 //    addBreaks : string -> string
 const addBreaks = str => str.replace(/\n/g, '<br>')

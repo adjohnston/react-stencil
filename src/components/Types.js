@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 const isType = (propType, type) => propType === type
 const isRequired = propType => typeof propType === 'object' ? true : false
