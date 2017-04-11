@@ -38,7 +38,13 @@ glob(argv.c.map(c => `${c}/**/*.?(js|jsx)`))
 
         fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
 
-        const props = reactDocs.parse(code).props
+        let props
+        try {
+          props = reactDocs.parse(code).props
+        } catch(e) {
+          console.log(`Could not parse component ${componentPathName}`)
+        }
+
         const types = Object.keys(props).reduce((prev, prop) => {
           const {
             type: {name},
