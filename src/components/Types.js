@@ -5,31 +5,30 @@ const isRequired = propType => typeof propType === 'object' ? true : false
 const type = prop => isRequired(prop) ? prop[0] : prop
 
 class Types extends Component {
-  inputElement(prop, propType) {
+  inputElement(typeName, prop) {
     const {
       state,
       setProp
     } = this.props
 
     let inputElement
-
-    if (isType(propType, 'string') || isType(propType, 'number')) {
+    if (isType(prop, 'string') || isType(prop, 'number')) {
       inputElement = (
         <input
           type="text"
-          value={state[prop]}
+          value={state[typeName]}
           onChange={({target: {value}}) => {
-            setProp(prop, isType(propType, 'number') ? Number(value) : value)
+            setProp(typeName, isType(prop, 'number') ? Number(value) : value)
           }} />
       )
     }
 
-    if (propType === 'bool') {
+    if (prop === 'bool') {
       inputElement = (
         <input
           type="checkbox"
-          checked={state[prop]}
-          onClick={({target: {checked}}) => setProp(prop, checked)} />
+          checked={state[typeName]}
+          onClick={({target: {checked}}) => setProp(typeName, checked)} />
       )
     }
 
@@ -37,50 +36,47 @@ class Types extends Component {
   }
 
   render() {
-    const typeGroups = this.props.types
-
-    return typeGroups && (
+    const types = this.props.types
+    return types && (
       <section>
         <h2>
           Types
         </h2>
 
-        {Object.keys(typeGroups).map((group) => {
-          const typeGroup = Object.keys(typeGroups[group])
+        <ul>
+          {Object.keys(types).map(typeName => {
+            const props = types[typeName]['props']
+            const desc = types[typeName].description
 
-          return typeGroup.length ? (
-            <div
-              key={group}>
-              <h3
-                key={group}>
-                {group}
-              </h3>
+            const propsElement = (
+              <span>
+                <b>{typeName}</b><br />
+              </span>
+            )
 
-              <ul>
-                {typeGroup.map((prop) => {
-                  const type = typeGroups[group][prop].type
-                  const msg = typeGroups[group][prop].msg
-                  return (
-                    <li
-                      key={prop}>
-                      <b>{prop}</b> - {type[0]}{type[1] ? '*' : null}<br />
-                      {msg}<br />
-                      {this.inputElement(prop, type[0])}
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          ) : null
-        })}
+            const descElement = (
+              <div>
+                <i>{desc}</i>
+              </div>
+            )
+
+            return (
+              <li
+                key={typeName}>
+                {propsElement}
+                {this.inputElement(typeName, props[0])}
+                {descElement}
+              </li>
+            )
+          })}
+        </ul>
       </section>
     ) || null
   }
 }
 
 Types.propTypes = {
-  setProp: PropTypes.func.isRequired,
-  props: PropTypes.object
+  setProp: PropTypes.func.isRequired
 }
 
 export default Types
