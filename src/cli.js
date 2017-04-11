@@ -45,7 +45,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             required
           } = props[prop]
 
-          prev[prop] = [name, required]
+          prev[prop] = {props: [name, required]}
           return prev
         }, {});
 

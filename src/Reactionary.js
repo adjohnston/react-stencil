@@ -30,7 +30,6 @@ const Reactionary = specs => {
 
       render() {
         const extendedProps = Object.assign({}, this.props, this.state)
-
         return (
           <Documenter
             setPreset={this.setPreset}
