@@ -63,7 +63,7 @@ glob(`${argv.c}/**/*.?(js|jsx)`)
             import gD from '../global-definitions'
             import t from './types'
             import d from './definitions'
-            const s = specify(gD || {}, t, d || {})
+            const s = specify(gD || {}, t || {}, d || {})
             export default Reactionary(s)(c)
           `
 
