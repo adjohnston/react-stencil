@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { className } from 'helpers'
 
 class Presets extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class Presets extends Component {
 
     return presets && (
       <section>
-        <h2>
+        <h2
+          className={className('title')}>
           Presets
         </h2>
 
@@ -26,7 +28,10 @@ class Presets extends Component {
           {Object.keys(presets).map(preset => (
             <button
               key={preset}
-              current={preset === this.state.current}
+              className={[
+                className('preset'),
+                className('preset', preset === this.state.current && 'current')
+              ].join(' ')}
               onClick={() => {
                 this.setState({current: preset})
                 setPreset(preset)

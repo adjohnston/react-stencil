@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { className } from 'helpers'
 
 const isType = (propType, type) => propType === type
 const isRequired = propType => typeof propType === 'object' ? true : false
@@ -18,6 +19,7 @@ class Types extends Component {
         <input
           type="text"
           value={state[typeName]}
+          className={className('input')}
           onChange={({target: {value}}) => {
             setProp(typeName, isType(prop, 'number') ? Number(value) : value)
           }} />
@@ -29,6 +31,7 @@ class Types extends Component {
         <input
           type="checkbox"
           checked={state[typeName]}
+          className={className('input')}
           onClick={({target: {checked}}) => setProp(typeName, checked)} />
       )
     }
@@ -40,11 +43,13 @@ class Types extends Component {
     const types = this.props.types
     return types && (
       <section>
-        <h2>
+        <h2
+          className={className('title')}>
           Types
         </h2>
 
-        <ul>
+        <ul
+          className={className('list')}>
           {Object.keys(types).map(typeName => {
             const props = types[typeName]['props']
             const desc = types[typeName].description
@@ -63,7 +68,8 @@ class Types extends Component {
 
             return (
               <li
-                key={typeName}>
+                key={typeName}
+                className={className('list-item')}>
                 {propsElement}
                 {this.inputElement(typeName, props[0])}
                 {descElement}

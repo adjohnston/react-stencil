@@ -15,14 +15,17 @@ const Documenter = ({
   componentProps,
   children: Component
 }) => (
-  <section>
+  <section
+    className={className('layout')}>
     <h1
       className={className('title')}>
       {name}
     </h1>
 
-    <section>
-      <div>
+    <section
+      className={className('body')}>
+      <div
+        className={className('preview')}>
         {Component}
       </div>
 
