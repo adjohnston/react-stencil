@@ -41,9 +41,9 @@ const Documenter = ({
 )
 
 Documenter.propTypes = {
-  name: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
   setPreset: PropTypes.func.isRequired,
+  name: PropTypes.string,
   notes: PropTypes.object,
   presets: PropTypes.object
 }
