@@ -28,7 +28,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "deep-assign": "^2.0.0",
+    "assign-deep": "^0.4.5",
     "fs-extra": "^2.0.0",
     "glob": "^7.1.1",
     "globby": "^6.1.0",

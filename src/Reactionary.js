@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
-import assign from 'deep-assign'
+import assign from 'assign-deep'
 
 export const specify = (globalDefs, types, defs) => {
   return assign({}, {
