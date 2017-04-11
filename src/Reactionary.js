@@ -3,16 +3,7 @@ import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
 export const specify = (globalDefs, types, defs) => {
-  return assign({}, {
-    types: Object.keys(types).reduce((p, group) => {
-      return Object.assign(p, {
-        [group]: Object.keys(types[group]).reduce((p, key) => {
-          const next = {[key]: Object.assign({msg: globalDefs[key]}, types[group][key])}
-          return Object.assign(p, next)
-        }, {})
-      })
-    }, {})
-  }, defs)
+  return assign({}, globalDefs, types, defs)
 }
 
 const Reactionary = specs => {
