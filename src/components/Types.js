@@ -56,7 +56,7 @@ class Types extends Component {
 
             const propsElement = (
               <span>
-                <b>{typeName}</b><br />
+                <b>{typeName}{props[1] ? '*' : ''}</b><br />
               </span>
             )
 
