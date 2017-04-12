@@ -91,7 +91,7 @@ glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(a
 
           return (
             prev += `import ${componentName} from '${path.resolve(argv.d, componentPathName, 'component')}';
-            export {${componentName}};`
+            export {${componentName}};\n`
           )
         }, ''))
       }).then((map) => {
