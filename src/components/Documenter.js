@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
 import Types from 'components/Types'
@@ -14,14 +15,17 @@ const Documenter = ({
   componentProps,
   children: Component
 }) => (
-  <section>
+  <section
+    className={className('layout')}>
     <h1
       className={className('title')}>
       {name}
     </h1>
 
-    <section>
-      <div>
+    <section
+      className={className('body')}>
+      <div
+        className={className('preview')}>
         {Component}
       </div>
 
@@ -41,9 +45,9 @@ const Documenter = ({
 )
 
 Documenter.propTypes = {
-  name: PropTypes.string.isRequired,
   children: PropTypes.element.isRequired,
   setPreset: PropTypes.func.isRequired,
+  name: PropTypes.string,
   notes: PropTypes.object,
   presets: PropTypes.object
 }
