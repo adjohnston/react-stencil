@@ -26,6 +26,18 @@ class Types extends Component {
       )
     }
 
+    if (isType(prop, 'number')) {
+      inputElement = (
+        <input
+          type="number"
+          value={state[typeName]}
+          className={className('input')}
+          onChange={({target: {value}}) => {
+            setProp(typeName, isType(prop, 'number') ? Number(value) : value)
+          }} />
+      )
+    }
+
     if (prop === 'bool') {
       inputElement = (
         <input
