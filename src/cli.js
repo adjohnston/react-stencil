@@ -3,6 +3,8 @@
 const helpers = require('./helpers')
 const path = require('path')
 const fs = require('fs-extra')
+const log = require('single-line-log').stdout
+const chalk = require('chalk')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
 const argv = require('minimist')(process.argv.slice(2), {
@@ -16,6 +18,8 @@ const argv = require('minimist')(process.argv.slice(2), {
     d: './specs'
   }
 })
+
+let componentCount = 0;
 
 const {
   getPathName,
@@ -79,6 +83,10 @@ glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(a
 
           fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
         }
+
+        // just something nice for the terminal
+        componentCount++
+        log(chalk.green('•').repeat(componentCount))
       })
     })
 
