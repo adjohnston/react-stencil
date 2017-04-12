@@ -26,7 +26,11 @@ const throwErr = (err) => {
   if (err) throw err
 }
 
-glob(argv.c.map(c => `${c}/**/*.?(js|jsx)`))
+const getComponentPaths = c => {
+  return `${c}/**/*.?(js|jsx)`
+}
+
+glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(argv.c))
   .then((componentPaths) => {
     fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
 
