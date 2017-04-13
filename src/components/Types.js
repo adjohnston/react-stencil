@@ -78,12 +78,6 @@ class Types extends Component {
               </div>
             )
 
-            if (!props) {
-              throw new Error(`The prop: ${typeName} has not been included in the spec. Check that the component has the correct propTypes included.`)
-
-              return null
-            }
-
             return (
               <li
                 key={typeName}

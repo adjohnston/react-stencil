@@ -2,8 +2,16 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
-export const specify = (globalDefs, types, defs) => {
-  return assign({}, globalDefs, types, defs)
+export const specify = (globalDefs, {types}, defs) => {
+  return assign({}, {types: Object.keys(types).reduce((prev, type) => {
+    prev[type] = (
+      !!globalDefs[type] ?
+      Object.assign({}, types[type], globalDefs[type]) :
+      prev[type] = types[type]
+    )
+
+    return prev
+  }, {})}, defs)
 }
 
 const Reactionary = specs => {
