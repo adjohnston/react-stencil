@@ -8,7 +8,6 @@ const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
 
 const helpers = require('./helpers')
-const componentTemplate = require('./templates/component')
 
 const {
   getPathName,
@@ -84,7 +83,7 @@ inquirer.prompt([
 
           if (m) {
             const path = resolve(d, componentPathName, 'component.js')
-            const component = componentTemplate(resolve(componentPath))
+            const component = require('./templates/component')(resolve(componentPath))
 
             fs.outputFile(path, component, throwErr)
           }
@@ -93,13 +92,14 @@ inquirer.prompt([
 
       if (m) {
         const mapping = new Promise((res, rej) => {
+          const mappingTemplate = require('./templates/mapping')
+
           res(componentPaths.reduce((prev, componentPath) => {
             const componentPathName = getPathName(componentPath)
             const componentName = getComponentName(componentPathName)
 
             return (
-              prev += `import ${componentName} from '${resolve(d, componentPathName, 'component')}';
-              export {${componentName}};\n`
+              prev += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
             )
           }, ''))
         }).then((map) => {
