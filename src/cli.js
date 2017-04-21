@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 const helpers = require('./helpers')
-const path = require('path')
+const resolve = require('path').resolve
 const inspect = require('util').inspect
 const fs = require('fs-extra')
 const glob = require('globby')
@@ -41,7 +41,7 @@ inquirer.prompt([
 ]).then(answers => {
   glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(argv.c))
     .then((componentPaths) => {
-      fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
+      fs.ensureFile(resolve(argv.d, 'global-definitions.js'), throwErr)
 
       componentPaths.map(componentPath => {
         const componentPathName = getPathName(componentPath)
@@ -49,7 +49,7 @@ inquirer.prompt([
         fs.readFile(componentPath, 'utf8', (err, code) => {
           if (err) throw err
 
-          fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
+          fs.ensureFile(resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
 
           let props
           try {
@@ -72,7 +72,6 @@ inquirer.prompt([
             `export default ${inspect(types, false, null)}`
           )
 
-          fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesExport, throwErr)
 
           if (argv.m) {
             const component = `
@@ -87,6 +86,7 @@ inquirer.prompt([
             `
 
             fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
+          fs.outputFile(resolve(argv.d, componentPathName, 'types.js'), typesExport, throwErr)
           }
         })
       })
@@ -98,12 +98,12 @@ inquirer.prompt([
             const componentName = getComponentName(componentPathName)
 
             return (
-              prev += `import ${componentName} from '${path.resolve(argv.d, componentPathName, 'component')}';
+              prev += `import ${componentName} from '${resolve(argv.d, componentPathName, 'component')}';
               export {${componentName}};\n`
             )
           }, ''))
         }).then((map) => {
-          fs.outputFile(path.resolve(argv.d, 'components.js'), map, throwErr)
+          fs.outputFile(resolve(argv.d, 'components.js'), map, throwErr)
         })
       }
     })
