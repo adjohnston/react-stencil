@@ -7,17 +7,6 @@ const fs = require('fs-extra')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
-// const argv = require('minimist')(process.argv.slice(2), {
-//   string: ['components', 'specsDir', 'mapping'],
-//   alias: {
-//     c: 'components',
-//     d: 'specsDir',
-//     m: 'mapping'
-//   },
-//   default: {
-//     d: './specs'
-//   }
-// })
 
 inquirer.prompt([
   {
