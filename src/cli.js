@@ -39,9 +39,15 @@ inquirer.prompt([
     default: true
   }
 ]).then(answers => {
-  glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(argv.c))
+  const {
+    c,
+    d,
+    m
+  } = answers
+
+  glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
     .then((componentPaths) => {
-      fs.ensureFile(resolve(argv.d, 'global-definitions.js'), throwErr)
+      fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
 
       componentPaths.map(componentPath => {
         const componentPathName = getPathName(componentPath)
@@ -49,7 +55,7 @@ inquirer.prompt([
         fs.readFile(componentPath, 'utf8', (err, code) => {
           if (err) throw err
 
-          fs.ensureFile(resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
+          fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
           let props
           try {
@@ -72,38 +78,30 @@ inquirer.prompt([
             `export default ${inspect(types, false, null)}`
           )
 
+          fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
-          if (argv.m) {
-            const component = `
-              import React from 'react'
-              import Reactionary, {specify} from '@adjohnston/reactionary'
-              import c from '${path.resolve(componentPath)}'
-              import gD from '../global-definitions'
-              import t from './types'
-              import d from './definitions'
-              const s = specify(gD || {}, t || {}, d || {})
-              export default Reactionary(s)(c)
-            `
+          if (m) {
+            const path = resolve(d, componentPathName, 'component.js')
+            const component = componentTemplate(resolve(componentPath))
 
-            fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
-          fs.outputFile(resolve(argv.d, componentPathName, 'types.js'), typesExport, throwErr)
+            fs.outputFile(path, component, throwErr)
           }
         })
       })
 
-      if (argv.m) {
+      if (m) {
         const mapping = new Promise((res, rej) => {
           res(componentPaths.reduce((prev, componentPath) => {
             const componentPathName = getPathName(componentPath)
             const componentName = getComponentName(componentPathName)
 
             return (
-              prev += `import ${componentName} from '${resolve(argv.d, componentPathName, 'component')}';
+              prev += `import ${componentName} from '${resolve(d, componentPathName, 'component')}';
               export {${componentName}};\n`
             )
           }, ''))
         }).then((map) => {
-          fs.outputFile(resolve(argv.d, 'components.js'), map, throwErr)
+          fs.outputFile(resolve(d, 'components.js'), map, throwErr)
         })
       }
     })
