@@ -8,6 +8,19 @@ const glob = require('globby')
 const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
 
+const {
+  getPathName,
+  getComponentName
+} = helpers
+
+const throwErr = (err) => {
+  if (err) throw err
+}
+
+const getComponentPaths = c => {
+  return `${c}/**/*.?(js|jsx)`
+}
+
 inquirer.prompt([
   {
     name: 'c',
@@ -27,19 +40,6 @@ inquirer.prompt([
   }
 ]).then(answers => console.log(answers))
 
-// const {
-//   getPathName,
-//   getComponentName
-// } = helpers
-//
-// const throwErr = (err) => {
-//   if (err) throw err
-// }
-//
-// const getComponentPaths = c => {
-//   return `${c}/**/*.?(js|jsx)`
-// }
-//
 // glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(argv.c))
 //   .then((componentPaths) => {
 //     fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
