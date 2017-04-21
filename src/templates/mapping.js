@@ -1,4 +1,4 @@
-export default (name, path) => (
+module.exports = (name, path) => (
   `import ${name} from '${path}';
   export {${name}};\n`
 )

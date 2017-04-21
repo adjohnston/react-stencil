@@ -1,4 +1,4 @@
-export default (componentPath) => (
+module.exports = (componentPath) => (
   `import React from 'react'
   import Reactionary, {specify} from '@adjohnston/reactionary'
   import c from '${componentPath}'
