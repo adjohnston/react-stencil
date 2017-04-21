@@ -1,12 +1,14 @@
 #! /usr/bin/env node
 
-const helpers = require('./helpers')
 const resolve = require('path').resolve
 const inspect = require('util').inspect
 const fs = require('fs-extra')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
+
+const helpers = require('./helpers')
+const componentTemplate = require('./templates/component')
 
 const {
   getPathName,
