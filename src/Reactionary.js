@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
-export const specify = (globalDefs, {types}, defs) => {
+export const specify = (globalDefs, types, defs) => {
   return assign({}, {types: Object.keys(types).reduce((prev, type) => {
     prev[type] = (
       !!globalDefs[type] ?
