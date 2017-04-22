@@ -61,11 +61,8 @@ inquirer.prompt([
           fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
           let props
-          try {
-            props = reactDocs.parse(code).props
-          } catch(e) {
-            console.log(`Could not parse component ${componentPathName}`)
-          }
+          try { props = reactDocs.parse(code).props }
+          catch(e) { return }
 
           const types = Object.keys(props).reduce((prev, prop) => {
             const {
