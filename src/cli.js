@@ -1,20 +1,19 @@
 #! /usr/bin/env node
 
 const resolve = require('path').resolve
-const inspect = require('util').inspect
 const fs = require('fs-extra')
 const log = require('single-line-log').stdout
 const chalk = require('chalk')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
+
 const helpers = require('./helpers')
-
-let componentCount = 0;
-let mapping = ''
-
 const componentTemplate = require('./templates/component')
 const mappingTemplate = require('./templates/mapping')
+
+let componentCount = 0
+let mapping = ''
 
 const {
   getPathName,
@@ -54,8 +53,7 @@ inquirer
 
               componentCount++
               log(chalk.green('•').repeat(componentCount))
-            }
-            catch(e) { return }
+            } catch (e) { return }
 
             const types = Object.keys(props).reduce((prev, prop) => {
               const {
@@ -85,4 +83,4 @@ inquirer
           })
         })
       })
-})
+  })

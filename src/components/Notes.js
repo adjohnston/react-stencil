@@ -26,7 +26,7 @@ const Notes = ({notes}) => notes && (
       </div>
     ))}
   </aside>
-) || null
+)
 
 Notes.propTypes = {
   notes: PropTypes.object

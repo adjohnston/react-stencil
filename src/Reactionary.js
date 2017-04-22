@@ -5,9 +5,9 @@ import assign from 'assign-deep'
 export const specify = (globalDefs, types, defs) => {
   return assign({}, {types: Object.keys(types).reduce((prev, type) => {
     prev[type] = (
-      !!globalDefs[type] ?
-      Object.assign({}, types[type], globalDefs[type]) :
-      prev[type] = types[type]
+      globalDefs[type]
+      ? Object.assign({}, types[type], globalDefs[type])
+      : prev[type] = types[type]
     )
 
     return prev

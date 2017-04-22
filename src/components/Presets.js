@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { className } from 'helpers'
 
 class Presets extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -11,7 +11,7 @@ class Presets extends Component {
     }
   }
 
-  render() {
+  render () {
     const {
       setPreset,
       presets
@@ -41,7 +41,7 @@ class Presets extends Component {
           ))}
         </div>
       </section>
-    ) || null
+    )
   }
 }
 

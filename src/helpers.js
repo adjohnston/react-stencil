@@ -24,8 +24,8 @@ const joinChars = (chars) => {
 //    getPathName : string -> string
 const getPathName = (componentPath) => {
   const pathName = path.basename(componentPath).split('.')
-  if (pathName.length > 1)
-    return pathName[0]
+
+  if (pathName.length > 1) return pathName[0]
   throw new Error(`path ${componentPath} must include component file`)
 }
 
