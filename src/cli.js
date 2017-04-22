@@ -29,33 +29,29 @@ const getComponentPaths = c => {
   return `${c}/**/*.?(js|jsx)`
 }
 
-// inquirer.prompt([
-//   {
-//     name: 'c',
-//     message: 'Where are your components?',
-//     validate: (answer) => answer !== ''
-//   },
-//   {
-//     name: 'd',
-//     message: 'Where do you want generated specs to live?',
-//     validate: (answer) => answer !== ''
-//   },
-//   {
-//     type: 'confirm',
-//     name: 'm',
-//     message: 'Do you want to automagically generate component mapping?',
-//     default: true
-//   }
-// ]).then(answers => {
-//   const {
-//     c,
-//     d,
-//     m
-//   } = answers
-
-const c = 'node_modules/kahoot-components/js/components/'
-const d = 'src/spec'
-const m = true
+inquirer.prompt([
+  {
+    name: 'c',
+    message: 'Where are your components?',
+    validate: (answer) => answer !== ''
+  },
+  {
+    name: 'd',
+    message: 'Where do you want generated specs to live?',
+    validate: (answer) => answer !== ''
+  },
+  {
+    type: 'confirm',
+    name: 'm',
+    message: 'Do you want to automagically generate component mapping?',
+    default: true
+  }
+]).then(answers => {
+  const {
+    c,
+    d,
+    m
+  } = answers
 
   glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
     .then((componentPaths) => {
@@ -68,7 +64,12 @@ const m = true
           if (err) throw err
 
           let props
-          try { props = reactDocs.parse(code).props }
+          try {
+            props = reactDocs.parse(code).props
+
+            componentCount++
+            log(chalk.green('•').repeat(componentCount))
+          }
           catch(e) { return }
 
           const types = Object.keys(props).reduce((prev, prop) => {
@@ -79,11 +80,11 @@ const m = true
 
             prev[prop] = {props: [name, required]}
             return prev
-          })
+          }, {})
 
           fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
-          const typesExport = `export default ${inspect(types, false, null)}`
+          const typesExport = `export default ${JSON.stringify(types, null, 2)}`
           fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
           if (m) {
