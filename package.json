@@ -1,6 +1,6 @@
 {
   "name": "@adjohnston/reactionary",
-  "version": "1.0.5",
+  "version": "0.1.0",
   "description": "",
   "bin": {
     "reactionary": "src/cli.js"
@@ -44,9 +44,10 @@
     "globby": "^6.1.0",
     "inquirer": "^3.0.6",
     "ramda": "^0.23.0",
-    "react": "^15.4.2",
     "react-docgen": "^2.13.0",
-    "react-dom": "^15.4.2",
     "single-line-log": "^1.1.2"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2"
   }
 }
