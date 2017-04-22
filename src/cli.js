@@ -8,10 +8,13 @@ const chalk = require('chalk')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
 const inquirer = require('inquirer')
-
 const helpers = require('./helpers')
 
 let componentCount = 0;
+let mapping = ''
+
+const componentTemplate = require('./templates/component')
+const mappingTemplate = require('./templates/mapping')
 
 const {
   getPathName,
@@ -26,37 +29,37 @@ const getComponentPaths = c => {
   return `${c}/**/*.?(js|jsx)`
 }
 
-inquirer.prompt([
-  {
-    name: 'c',
-    message: 'Where are your components?',
-    validate: (answer) => answer !== ''
-  },
-  {
-    name: 'd',
-    message: 'Where do you want generated specs to live?',
-    validate: (answer) => answer !== ''
-  },
-  {
-    type: 'confirm',
-    name: 'm',
-    message: 'Do you want to automagically generate component mapping?',
-    default: true
-  }
-]).then(answers => {
-  const {
-    c,
-    d,
-    m
-  } = answers
+// inquirer.prompt([
+//   {
+//     name: 'c',
+//     message: 'Where are your components?',
+//     validate: (answer) => answer !== ''
+//   },
+//   {
+//     name: 'd',
+//     message: 'Where do you want generated specs to live?',
+//     validate: (answer) => answer !== ''
+//   },
+//   {
+//     type: 'confirm',
+//     name: 'm',
+//     message: 'Do you want to automagically generate component mapping?',
+//     default: true
+//   }
+// ]).then(answers => {
+//   const {
+//     c,
+//     d,
+//     m
+//   } = answers
+
+const c = 'node_modules/kahoot-components/js/components/'
+const d = 'src/spec'
+const m = true
 
   glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
     .then((componentPaths) => {
       fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
-
-      let mapping = ''
-      const componentTemplate = m && require('./templates/component')
-      const mappingTemplate = m && require('./templates/mapping')
 
       componentPaths.map(componentPath => {
         const componentPathName = getPathName(componentPath)
