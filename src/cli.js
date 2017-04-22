@@ -58,8 +58,6 @@ inquirer.prompt([
         fs.readFile(componentPath, 'utf8', (err, code) => {
           if (err) throw err
 
-          fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
-
           let props
           try { props = reactDocs.parse(code).props }
           catch(e) { return }
@@ -73,6 +71,8 @@ inquirer.prompt([
             prev[prop] = {props: [name, required]}
             return prev
           })
+
+          fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
           const typesExport = `export default ${inspect(types, false, null)}`
           fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
