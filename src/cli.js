@@ -2,6 +2,7 @@
 
 const helpers = require('./helpers')
 const path = require('path')
+const inspect = require('util').inspect
 const fs = require('fs-extra')
 const log = require('single-line-log').stdout
 const chalk = require('chalk')
@@ -63,11 +64,11 @@ glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(a
           return prev
         }, {});
 
-        const typesJSON = (
-          `export default ${JSON.stringify({types}, null, 2)}`
+        const typesExport = (
+          `export default ${inspect(types, false, null)}`
         )
 
-        fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesJSON, throwErr)
+        fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesExport, throwErr)
 
         if (argv.m) {
           const component = `
@@ -98,7 +99,7 @@ glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(a
 
           return (
             prev += `import ${componentName} from '${path.resolve(argv.d, componentPathName, 'component')}';
-            export {${componentName}};`
+            export {${componentName}};\n`
           )
         }, ''))
       }).then((map) => {

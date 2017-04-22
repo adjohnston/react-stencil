@@ -63,8 +63,10 @@ class Types extends Component {
         <ul
           className={className('list')}>
           {Object.keys(types).map(typeName => {
-            const props = types[typeName]['props']
-            const desc = types[typeName].description
+            const {
+              props,
+              description
+            } = types[typeName]
 
             const propsElement = (
               <span>
@@ -72,9 +74,9 @@ class Types extends Component {
               </span>
             )
 
-            const descElement = (
+            const descriptionElement = (
               <div>
-                <i>{desc}</i>
+                <i>{description}</i>
               </div>
             )
 
@@ -84,7 +86,7 @@ class Types extends Component {
                 className={className('list-item')}>
                 {propsElement}
                 {this.inputElement(typeName, props[0])}
-                {descElement}
+                {descriptionElement}
               </li>
             )
           })}

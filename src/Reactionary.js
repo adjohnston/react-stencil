@@ -16,7 +16,7 @@ export const specify = (globalDefs, {types}, defs) => {
 
 const Reactionary = specs => {
   return C => {
-    return class Doc extends Component {
+    return class Reactionary extends Component {
       constructor(props) {
         super(props)
 
