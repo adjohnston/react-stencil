@@ -50,7 +50,9 @@ inquirer.prompt([
     .then((componentPaths) => {
       fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
 
+      let mapping = ''
       const componentTemplate = m && require('./templates/component')
+      const mappingTemplate = m && require('./templates/mapping')
 
       componentPaths.map(componentPath => {
         const componentPathName = getPathName(componentPath)
@@ -78,27 +80,16 @@ inquirer.prompt([
           fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
           if (m) {
-            const path = resolve(d, componentPathName, 'component.js')
             const component = componentTemplate(resolve(componentPath))
+            const path = resolve(d, componentPathName, 'component.js')
+            const componentName = getComponentName(componentPathName)
+
+            mapping += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
 
             fs.outputFile(path, component, throwErr)
+            fs.outputFile(resolve(d, 'components.js'), mapping, throwErr)
           }
         })
       })
-
-      if (m) {
-        new Promise((res, rej) => {
-          const mappingTemplate = require('./templates/mapping')
-
-          res(componentPaths.reduce((prev, componentPath) => {
-            const componentPathName = getPathName(componentPath)
-            const componentName = getComponentName(componentPathName)
-
-            return prev += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
-          }, ''))
-        }).then((map) => {
-          fs.outputFile(resolve(d, 'components.js'), map, throwErr)
-        })
-      }
     })
 })
