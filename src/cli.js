@@ -94,9 +94,7 @@ inquirer.prompt([
             const componentPathName = getPathName(componentPath)
             const componentName = getComponentName(componentPathName)
 
-            return (
-              prev += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
-            )
+            return prev += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
           }, ''))
         }).then((map) => {
           fs.outputFile(resolve(d, 'components.js'), map, throwErr)
