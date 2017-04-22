@@ -50,6 +50,8 @@ inquirer.prompt([
     .then((componentPaths) => {
       fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
 
+      const componentTemplate = m && require('./templates/component')
+
       componentPaths.map(componentPath => {
         const componentPathName = getPathName(componentPath)
 
@@ -73,17 +75,14 @@ inquirer.prompt([
 
             prev[prop] = {props: [name, required]}
             return prev
-          }, {});
+          })
 
-          const typesExport = (
-            `export default ${inspect(types, false, null)}`
-          )
-
+          const typesExport = `export default ${inspect(types, false, null)}`
           fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
           if (m) {
             const path = resolve(d, componentPathName, 'component.js')
-            const component = require('./templates/component')(resolve(componentPath))
+            const component = componentTemplate(resolve(componentPath))
 
             fs.outputFile(path, component, throwErr)
           }
