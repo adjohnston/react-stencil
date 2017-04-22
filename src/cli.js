@@ -87,7 +87,7 @@ inquirer.prompt([
       })
 
       if (m) {
-        const mapping = new Promise((res, rej) => {
+        new Promise((res, rej) => {
           const mappingTemplate = require('./templates/mapping')
 
           res(componentPaths.reduce((prev, componentPath) => {
