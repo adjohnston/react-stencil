@@ -29,75 +29,60 @@ const getComponentPaths = c => {
   return `${c}/**/*.?(js|jsx)`
 }
 
-inquirer.prompt([
-  {
-    name: 'c',
-    message: 'Where are your components?',
-    validate: (answer) => answer !== ''
-  },
-  {
-    name: 'd',
-    message: 'Where do you want generated specs to live?',
-    validate: (answer) => answer !== ''
-  },
-  {
-    type: 'confirm',
-    name: 'm',
-    message: 'Do you want to automagically generate component mapping?',
-    default: true
-  }
-]).then(answers => {
-  const {
-    c,
-    d,
-    m
-  } = answers
+inquirer
+  .prompt(require('./helpers/prompts'))
+  .then(answers => {
+    const {
+      c,
+      d,
+      m
+    } = answers
 
-  glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
-    .then((componentPaths) => {
-      fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
+    glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
+      .then((componentPaths) => {
+        fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
 
-      componentPaths.map(componentPath => {
-        const componentPathName = getPathName(componentPath)
+        componentPaths.map(componentPath => {
+          const componentPathName = getPathName(componentPath)
 
-        fs.readFile(componentPath, 'utf8', (err, code) => {
-          if (err) throw err
+          fs.readFile(componentPath, 'utf8', (err, code) => {
+            if (err) throw err
 
-          let props
-          try {
-            props = reactDocs.parse(code).props
+            let props
+            try {
+              props = reactDocs.parse(code).props
 
-            componentCount++
-            log(chalk.green('•').repeat(componentCount))
-          }
-          catch(e) { return }
+              componentCount++
+              log(chalk.green('•').repeat(componentCount))
+            }
+            catch(e) { return }
 
-          const types = Object.keys(props).reduce((prev, prop) => {
-            const {
-              type: {name},
-              required
-            } = props[prop]
+            const types = Object.keys(props).reduce((prev, prop) => {
+              const {
+                type: {name},
+                required
+              } = props[prop]
 
-            prev[prop] = {props: [name, required]}
-            return prev
-          }, {})
+              prev[prop] = {props: [name, required]}
+              return prev
+            }, {})
 
-          fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
+            fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
-          const typesExport = `export default ${JSON.stringify(types, null, 2)}`
-          fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
+            const typesExport = `export default ${JSON.stringify(types, null, 2)}`
+            fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
-          if (m) {
-            const component = componentTemplate(resolve(componentPath))
-            const path = resolve(d, componentPathName, 'component.js')
-            const componentName = getComponentName(componentPathName)
+            if (m) {
+              const component = componentTemplate(resolve(componentPath))
+              const path = resolve(d, componentPathName, 'component.js')
+              const componentName = getComponentName(componentPathName)
 
-            mapping += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
+              mapping += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
 
-            fs.outputFile(path, component, throwErr)
-            fs.outputFile(resolve(d, 'components.js'), mapping, throwErr)
-          }
+              fs.outputFile(path, component, throwErr)
+              fs.outputFile(resolve(d, 'components.js'), mapping, throwErr)
+            }
+          })
         })
       })
-    })
 })
