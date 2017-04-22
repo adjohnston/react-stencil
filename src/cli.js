@@ -1,26 +1,20 @@
 #! /usr/bin/env node
 
-const helpers = require('./helpers')
-const path = require('path')
+const resolve = require('path').resolve
 const inspect = require('util').inspect
 const fs = require('fs-extra')
 const log = require('single-line-log').stdout
 const chalk = require('chalk')
 const glob = require('globby')
 const reactDocs = require('react-docgen')
-const argv = require('minimist')(process.argv.slice(2), {
-  string: ['components', 'specsDir', 'mapping'],
-  alias: {
-    c: 'components',
-    d: 'specsDir',
-    m: 'mapping'
-  },
-  default: {
-    d: './specs'
-  }
-})
+const inquirer = require('inquirer')
+const helpers = require('./helpers')
 
 let componentCount = 0;
+let mapping = ''
+
+const componentTemplate = require('./templates/component')
+const mappingTemplate = require('./templates/mapping')
 
 const {
   getPathName,
@@ -35,75 +29,75 @@ const getComponentPaths = c => {
   return `${c}/**/*.?(js|jsx)`
 }
 
-glob(Array.isArray(argv.c) ? argv.c.map(getComponentPaths) : getComponentPaths(argv.c))
-  .then((componentPaths) => {
-    fs.ensureFile(path.resolve(argv.d, 'global-definitions.js'), throwErr)
+inquirer.prompt([
+  {
+    name: 'c',
+    message: 'Where are your components?',
+    validate: (answer) => answer !== ''
+  },
+  {
+    name: 'd',
+    message: 'Where do you want generated specs to live?',
+    validate: (answer) => answer !== ''
+  },
+  {
+    type: 'confirm',
+    name: 'm',
+    message: 'Do you want to automagically generate component mapping?',
+    default: true
+  }
+]).then(answers => {
+  const {
+    c,
+    d,
+    m
+  } = answers
 
-    componentPaths.map(componentPath => {
-      const componentPathName = getPathName(componentPath)
+  glob(Array.isArray(c) ? c.map(getComponentPaths) : getComponentPaths(c))
+    .then((componentPaths) => {
+      fs.ensureFile(resolve(d, 'global-definitions.js'), throwErr)
 
-      fs.readFile(componentPath, 'utf8', (err, code) => {
-        if (err) throw err
+      componentPaths.map(componentPath => {
+        const componentPathName = getPathName(componentPath)
 
-        fs.ensureFile(path.resolve(argv.d, componentPathName, 'definitions.js'), throwErr)
+        fs.readFile(componentPath, 'utf8', (err, code) => {
+          if (err) throw err
 
-        let props
-        try {
-          props = reactDocs.parse(code).props
-        } catch(e) {
-          console.log(`Could not parse component ${componentPathName}`)
-        }
+          let props
+          try {
+            props = reactDocs.parse(code).props
 
-        const types = Object.keys(props).reduce((prev, prop) => {
-          const {
-            type: {name},
-            required
-          } = props[prop]
+            componentCount++
+            log(chalk.green('•').repeat(componentCount))
+          }
+          catch(e) { return }
 
-          prev[prop] = {props: [name, required]}
-          return prev
-        }, {});
+          const types = Object.keys(props).reduce((prev, prop) => {
+            const {
+              type: {name},
+              required
+            } = props[prop]
 
-        const typesExport = (
-          `export default ${inspect(types, false, null)}`
-        )
+            prev[prop] = {props: [name, required]}
+            return prev
+          }, {})
 
-        fs.outputFile(path.resolve(argv.d, componentPathName, 'types.js'), typesExport, throwErr)
+          fs.ensureFile(resolve(d, componentPathName, 'definitions.js'), throwErr)
 
-        if (argv.m) {
-          const component = `
-            import React from 'react'
-            import Reactionary, {specify} from '@adjohnston/reactionary'
-            import c from '${path.resolve(componentPath)}'
-            import gD from '../global-definitions'
-            import t from './types'
-            import d from './definitions'
-            const s = specify(gD || {}, t || {}, d || {})
-            export default Reactionary(s)(c)
-          `
+          const typesExport = `export default ${JSON.stringify(types, null, 2)}`
+          fs.outputFile(resolve(d, componentPathName, 'types.js'), typesExport, throwErr)
 
-          fs.outputFile(path.resolve(argv.d, componentPathName, 'component.js'), component, throwErr)
-        }
+          if (m) {
+            const component = componentTemplate(resolve(componentPath))
+            const path = resolve(d, componentPathName, 'component.js')
+            const componentName = getComponentName(componentPathName)
 
-        // just something nice for the terminal
-        componentCount++
-        log(chalk.green('•').repeat(componentCount))
+            mapping += mappingTemplate(componentName, resolve(d, componentPathName, 'component'))
+
+            fs.outputFile(path, component, throwErr)
+            fs.outputFile(resolve(d, 'components.js'), mapping, throwErr)
+          }
+        })
       })
     })
-
-    if (argv.m) {
-      const mapping = new Promise((res, rej) => {
-        res(componentPaths.reduce((prev, componentPath) => {
-          const componentPathName = getPathName(componentPath)
-          const componentName = getComponentName(componentPathName)
-
-          return (
-            prev += `import ${componentName} from '${path.resolve(argv.d, componentPathName, 'component')}';
-            export {${componentName}};\n`
-          )
-        }, ''))
-      }).then((map) => {
-        fs.outputFile(path.resolve(argv.d, 'components.js'), map, throwErr)
-      })
-    }
-  })
+})
