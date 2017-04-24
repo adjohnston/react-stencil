@@ -17,7 +17,7 @@ export const specify = (globalDefs, types, defs) => {
 const Reactionary = specs => {
   return C => {
     return class Reactionary extends Component {
-      constructor(props) {
+      constructor (props) {
         super(props)
 
         this.state = {}
@@ -28,15 +28,15 @@ const Reactionary = specs => {
         this.setProp = this.setProp.bind(this)
       }
 
-      setPreset(preset) {
+      setPreset (preset) {
         this.setState({...this.extendedPresets[preset]})
       }
 
-      setProp(prop, value) {
+      setProp (prop, value) {
         this.setState({[prop]: value})
       }
 
-      render() {
+      render () {
         const extendedProps = Object.assign({}, this.props, this.state)
         return (
           <Documenter
