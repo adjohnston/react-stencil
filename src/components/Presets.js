@@ -17,7 +17,7 @@ class Presets extends Component {
       presets
     } = this.props
 
-    return presets && (
+    return (presets && (
       <section>
         <h2
           className={className('title')}>
@@ -41,7 +41,7 @@ class Presets extends Component {
           ))}
         </div>
       </section>
-    )
+    )) || null
   }
 }
 

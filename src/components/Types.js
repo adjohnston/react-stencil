@@ -51,7 +51,7 @@ class Types extends Component {
 
   render () {
     const types = this.props.types
-    return types && (
+    return (types && (
       <section>
         <h2
           className={className('title')}>
@@ -90,7 +90,7 @@ class Types extends Component {
           })}
         </ul>
       </section>
-    )
+    )) || null
   }
 }
 

@@ -9,7 +9,7 @@ const renderNotes = str => ({
   __html: addBreaks(str)
 })
 
-const Notes = ({notes}) => notes && (
+const Notes = ({notes}) => (notes && (
   <aside>
     <h2>
       Notes
@@ -26,7 +26,7 @@ const Notes = ({notes}) => notes && (
       </div>
     ))}
   </aside>
-)
+)) || null
 
 Notes.propTypes = {
   notes: PropTypes.object
