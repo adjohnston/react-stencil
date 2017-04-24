@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adjohnston/docreact.git"
+    "url": "git+https://github.com/adjohnston/reactionary.git"
   },
   "author": "Adam Johnston",
   "license": "ISC",
