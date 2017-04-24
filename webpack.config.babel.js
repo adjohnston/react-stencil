@@ -1,10 +1,13 @@
 import { resolve } from 'path'
 
 export default {
-  entry: resolve(__dirname, 'src/Reactionary.js'),
+  entry: {
+    Reactionary: resolve(__dirname, 'src/Reactionary.js'),
+    cli: resolve(__dirname, 'src/cli.js')
+  },
 
   output: {
-    filename: 'Reactionary.js',
+    filename: '[name].js',
     path: resolve(__dirname, 'dist'),
     libraryTarget: 'umd'
   },
@@ -16,6 +19,9 @@ export default {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    }, {
+      test: /src\/cli.js$/,
+      loader: 'node-loader'
     }]
   },
 
