@@ -9,8 +9,8 @@
   "scripts": {
     "test": "jest",
     "build": "webpack",
-    "serve": "webpack-dev-server",
-    "prepublish": "webpack -p"
+    "postbuild": "cp ./src/cli.js ./dist/cli.js",
+    "prepublish": "npm run build -- -p"
   },
   "repository": {
     "type": "git",
