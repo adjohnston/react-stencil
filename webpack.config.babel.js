@@ -6,6 +6,7 @@ export default {
   output: {
     filename: 'Reactionary.js',
     path: resolve(__dirname, 'dist'),
+    library: 'Reactionary',
     libraryTarget: 'umd'
   },
 
