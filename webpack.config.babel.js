@@ -1,12 +1,12 @@
 import { resolve } from 'path'
 
 export default {
-  entry: resolve(__dirname, 'src/Reactionary.js'),
+  entry: resolve(__dirname, 'src/Stencil.js'),
 
   output: {
-    filename: 'Reactionary.js',
+    filename: 'Stencil.js',
     path: resolve(__dirname, 'dist'),
-    library: 'Reactionary',
+    library: 'Stencil',
     libraryTarget: 'umd'
   },
 

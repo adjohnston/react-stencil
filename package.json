@@ -2,7 +2,7 @@
   "name": "react-stencil",
   "version": "0.1.0",
   "description": "",
-  "main": "dist/Reactionary.js",
+  "main": "dist/Stencil.js",
   "scripts": {
     "test": "jest",
     "build": "webpack",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adjohnston/reactionary.git"
+    "url": "git+https://github.com/adjohnston/react-stencil.git"
   },
   "author": "Adam Johnston",
   "license": "ISC",

@@ -14,9 +14,9 @@ export const specify = (globalDefs, types, defs) => {
   }, {})}, defs)
 }
 
-const Reactionary = specs => {
+const Stencil = specs => {
   return C => {
-    return class Reactionary extends Component {
+    return class Stencil extends Component {
       constructor (props) {
         super(props)
 
@@ -52,4 +52,4 @@ const Reactionary = specs => {
   }
 }
 
-export default Reactionary
+export default Stencil
