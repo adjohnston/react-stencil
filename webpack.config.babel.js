@@ -25,5 +25,11 @@ export default {
       helpers: resolve(__dirname, 'src/helpers.js'),
       components: resolve(__dirname, 'src/components')
     }
+  },
+
+  externals: {
+    react: 'react',
+    'prop-types': 'prop-types',
+    'assign-deep': 'assign-deep'
   }
 }
