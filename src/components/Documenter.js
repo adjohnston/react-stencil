@@ -8,7 +8,7 @@ import { className } from 'helpers'
 const Documenter = ({
   name,
   notes,
-  types,
+  propDefs,
   presets,
   setPreset,
   setProp,
@@ -35,7 +35,7 @@ const Documenter = ({
 
       <Types
         state={componentProps}
-        types={types}
+        propDefs={propDefs}
         setProp={setProp} />
     </section>
 
@@ -49,7 +49,7 @@ Documenter.propTypes = {
   setPreset: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
-  types: PropTypes.object,
+  propDefs: PropTypes.object,
   name: PropTypes.string,
   notes: PropTypes.object,
   presets: PropTypes.object

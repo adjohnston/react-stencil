@@ -5,7 +5,7 @@ import { className } from 'helpers'
 const isType = (propType, type) => propType === type
 
 class Types extends Component {
-  inputElement (typeName, prop) {
+  inputElement (propTypeName, prop) {
     const {
       state,
       setProp
@@ -16,10 +16,10 @@ class Types extends Component {
       inputElement = (
         <input
           type='text'
-          value={state[typeName]}
+          value={state[propTypeName]}
           className={className('input')}
           onChange={({target: {value}}) => {
-            setProp(typeName, isType(prop, 'number') ? Number(value) : value)
+            setProp(propTypeName, isType(prop, 'number') ? Number(value) : value)
           }} />
       )
     }
@@ -28,10 +28,10 @@ class Types extends Component {
       inputElement = (
         <input
           type='number'
-          value={state[typeName]}
+          value={state[propTypeName]}
           className={className('input')}
           onChange={({target: {value}}) => {
-            setProp(typeName, isType(prop, 'number') ? Number(value) : value)
+            setProp(propTypeName, isType(prop, 'number') ? Number(value) : value)
           }} />
       )
     }
@@ -40,9 +40,9 @@ class Types extends Component {
       inputElement = (
         <input
           type='checkbox'
-          checked={state[typeName]}
+          checked={state[propTypeName]}
           className={className('input')}
-          onClick={({target: {checked}}) => setProp(typeName, checked)} />
+          onClick={({target: {checked}}) => setProp(propTypeName, checked)} />
       )
     }
 
@@ -50,8 +50,8 @@ class Types extends Component {
   }
 
   render () {
-    const types = this.props.types
-    return (types && (
+    const propDefs = this.props.propDefs
+    return (propDefs && (
       <section>
         <h2
           className={className('title')}>
@@ -60,15 +60,15 @@ class Types extends Component {
 
         <ul
           className={className('list')}>
-          {Object.keys(types).map(typeName => {
+          {Object.keys(propDefs).map(propTypeName => {
             const {
               props,
               description
-            } = types[typeName]
+            } = propDefs[propTypeName]
 
             const propsElement = (
               <span>
-                <b>{typeName}{props && props[1] ? '*' : ''}</b><br />
+                <b>{propTypeName}{props && props[1] ? '*' : ''}</b><br />
               </span>
             )
 
@@ -80,10 +80,10 @@ class Types extends Component {
 
             return (
               <li
-                key={typeName}
+                key={propTypeName}
                 className={className('list-item')}>
                 {propsElement}
-                {this.inputElement(typeName, props[0])}
+                {this.inputElement(propTypeName, props[0])}
                 {descriptionElement}
               </li>
             )
@@ -96,7 +96,7 @@ class Types extends Component {
 
 Types.propTypes = {
   state: PropTypes.object.isRequired,
-  types: PropTypes.object.isRequired,
+  propDefs: PropTypes.object.isRequired,
   setProp: PropTypes.func.isRequired
 }
 
