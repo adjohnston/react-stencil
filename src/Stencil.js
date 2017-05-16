@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
-export const specify = (globalDefs, types, defs) => {
-  return assign({}, {types: Object.keys(types).reduce((prev, type) => {
-    prev[type] = (
-      globalDefs[type]
-      ? Object.assign({}, types[type], globalDefs[type])
-      : prev[type] = types[type]
+export const specify = (globalDefs, propDefs, componentDefs) => {
+  return assign({}, {propDefs: Object.keys(propDefs).reduce((prev, prop) => {
+    prev[prop] = (
+      globalDefs[prop]
+      ? Object.assign({}, propDefs[prop], globalDefs[prop])
+      : prev[prop] = propDefs[prop]
     )
 
     return prev
-  }, {})}, defs)
+  }, {})}, componentDefs)
 }
 
 const Stencil = specs => {

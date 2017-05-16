@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
-import Types from 'components/Types'
+import Properties from 'components/Properties'
 import { className } from 'helpers'
 
 const Documenter = ({
   name,
   notes,
-  types,
+  propDefs,
   presets,
   setPreset,
   setProp,
@@ -33,9 +33,9 @@ const Documenter = ({
         setPreset={setPreset}
         presets={presets} />
 
-      <Types
+      <Properties
         state={componentProps}
-        types={types}
+        propDefs={propDefs}
         setProp={setProp} />
     </section>
 
@@ -49,7 +49,7 @@ Documenter.propTypes = {
   setPreset: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
-  types: PropTypes.object,
+  propDefs: PropTypes.object,
   name: PropTypes.string,
   notes: PropTypes.object,
   presets: PropTypes.object
