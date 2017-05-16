@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { className } from 'helpers'
 
-const isType = (propType, type) => propType === type
+const isPropType = (propType, type) => propType === type
 
 class Types extends Component {
   inputElement (propTypeName, prop) {
@@ -12,26 +12,26 @@ class Types extends Component {
     } = this.props
 
     let inputElement
-    if (isType(prop, 'string') || isType(prop, 'number')) {
+    if (isPropType(prop, 'string') || isPropType(prop, 'number')) {
       inputElement = (
         <input
           type='text'
           value={state[propTypeName]}
           className={className('input')}
           onChange={({target: {value}}) => {
-            setProp(propTypeName, isType(prop, 'number') ? Number(value) : value)
+            setProp(propTypeName, isPropType(prop, 'number') ? Number(value) : value)
           }} />
       )
     }
 
-    if (isType(prop, 'number')) {
+    if (isPropType(prop, 'number')) {
       inputElement = (
         <input
           type='number'
           value={state[propTypeName]}
           className={className('input')}
           onChange={({target: {value}}) => {
-            setProp(propTypeName, isType(prop, 'number') ? Number(value) : value)
+            setProp(propTypeName, isPropType(prop, 'number') ? Number(value) : value)
           }} />
       )
     }
