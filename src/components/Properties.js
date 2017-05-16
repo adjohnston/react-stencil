@@ -4,7 +4,7 @@ import { className } from 'helpers'
 
 const isPropType = (propType, type) => propType === type
 
-class Types extends Component {
+class Properties extends Component {
   inputElement (propTypeName, prop) {
     const {
       state,
@@ -94,10 +94,10 @@ class Types extends Component {
   }
 }
 
-Types.propTypes = {
+Properties.propTypes = {
   state: PropTypes.object.isRequired,
   propDefs: PropTypes.object.isRequired,
   setProp: PropTypes.func.isRequired
 }
 
-export default Types
+export default Properties

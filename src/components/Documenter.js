@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Presets from 'components/Presets'
-import Types from 'components/Types'
+import Properties from 'components/Properties'
 import { className } from 'helpers'
 
 const Documenter = ({
@@ -33,7 +33,7 @@ const Documenter = ({
         setPreset={setPreset}
         presets={presets} />
 
-      <Types
+      <Properties
         state={componentProps}
         propDefs={propDefs}
         setProp={setProp} />
