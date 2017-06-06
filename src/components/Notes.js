@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Notes = ({notes}) => (notes && (
-  <aside>
+  <section>
     <h2>
       Notes
     </h2>
@@ -16,7 +16,7 @@ const Notes = ({notes}) => (notes && (
         {notes[group]}
       </div>
     ))}
-  </aside>
+  </section>
 )) || null
 
 Notes.propTypes = {

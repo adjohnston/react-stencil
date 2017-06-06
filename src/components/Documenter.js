@@ -39,10 +39,10 @@ const Documenter = ({
         state={componentProps}
         propDefs={propDefs}
         setProp={setProp} />
-    </section>
 
-    <Notes
-      notes={notes} />
+      <Notes
+        notes={notes} />
+    </section>
   </section>
 )
 
