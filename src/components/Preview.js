@@ -7,7 +7,7 @@ export default class Preview extends Component {
     super(props)
 
     this.state = {
-      currentSwatch: ''
+      current: ''
     }
 
     this.setSwatch = this.setSwatch.bind(this)
@@ -15,13 +15,16 @@ export default class Preview extends Component {
 
   setSwatch (swatch) {
     this.setState({
-      currentSwatch: swatch
+      current: swatch
     })
   }
 
   render () {
-    const swatches = this.props.swatches
-    const currentSwatch = this.state.currentSwatch
+    const current = this.state.current
+    const {
+      swatches,
+      children: Component
+    } = this.props
 
     return (
       <div>
@@ -31,12 +34,13 @@ export default class Preview extends Component {
 
         {swatches.map(swatch => (
           <button
+            key={swatch}
             style={{width: 20, height: 20, background: swatch, border: '1px solid rgba(0, 0, 0, .5)'}}
             onClick={() => this.setSwatch(swatch)} />
         ))}
 
         <div
-          style={{background: currentSwatch}}
+          style={{background: current}}
           className={className('preview')}>
           {Component}
         </div>
@@ -46,5 +50,6 @@ export default class Preview extends Component {
 }
 
 Preview.propTypes = {
+  children: PropTypes.element.isRequired,
   swatches: PropTypes.arrayOf(PropTypes.string)
 }
