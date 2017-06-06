@@ -1,14 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-//    addBreaks : string -> string
-const addBreaks = str => str.replace(/\n/g, '<br>')
-
-//    renderNotes : string -> object
-const renderNotes = str => ({
-  __html: addBreaks(str)
-})
-
 const hasNotes = (notes) => Object.keys(notes).length > 0
 
 const Notes = ({notes}) => (hasNotes(notes) && (
@@ -17,14 +9,13 @@ const Notes = ({notes}) => (hasNotes(notes) && (
       Notes
     </h2>
 
-    {Object.keys(notes).map(user => (
+    {Object.keys(notes).map(group => (
       <div
-        key={user}>
+        key={group}>
         <h3>
-          {user}
+          {group}
         </h3>
-        <p
-          dangerouslySetInnerHTML={renderNotes(notes[user])} />
+        {notes[group]}
       </div>
     ))}
   </aside>
