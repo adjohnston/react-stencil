@@ -2,16 +2,8 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
-export const specify = (globalDefs, propDefs, componentDefs) => {
-  return assign({}, {propDefs: Object.keys(propDefs).reduce((prev, prop) => {
-    prev[prop] = (
-      globalDefs[prop]
-      ? Object.assign({}, propDefs[prop], globalDefs[prop])
-      : prev[prop] = propDefs[prop]
-    )
-
-    return prev
-  }, {})}, componentDefs)
+export const specify = (globals, props, component) => {
+  return assign({propDefs: props}, globals, component)
 }
 
 const Stencil = specs => {
@@ -21,15 +13,15 @@ const Stencil = specs => {
         super(props)
 
         this.state = {}
-        this.extendedPresets = Object.assign(specs.presets || {}, {
+        this.extendedExamples = Object.assign(specs.examples || {}, {
           default: {...this.props}
         })
-        this.setPreset = this.setPreset.bind(this)
+        this.setExample = this.setExample.bind(this)
         this.setProp = this.setProp.bind(this)
       }
 
-      setPreset (preset) {
-        this.setState({...this.extendedPresets[preset]})
+      setExample (example) {
+        this.setState({...this.extendedExamples[example]})
       }
 
       setProp (prop, value) {
@@ -40,7 +32,7 @@ const Stencil = specs => {
         const extendedProps = Object.assign({}, this.props, this.state)
         return (
           <Documenter
-            setPreset={this.setPreset}
+            setExample={this.setExample}
             setProp={this.setProp}
             componentProps={extendedProps}
             {...specs}>

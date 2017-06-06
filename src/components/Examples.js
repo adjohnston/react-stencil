@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { className } from 'helpers'
 
-class Presets extends Component {
+class Examples extends Component {
   constructor (props) {
     super(props)
 
@@ -13,30 +13,30 @@ class Presets extends Component {
 
   render () {
     const {
-      setPreset,
-      presets
+      setExample,
+      examples
     } = this.props
 
-    return (presets && (
+    return (examples && (
       <section>
         <h2
           className={className('title')}>
-          Presets
+          Examples
         </h2>
 
         <div>
-          {Object.keys(presets).map(preset => (
+          {Object.keys(examples).map(example => (
             <button
-              key={preset}
+              key={example}
               className={[
-                className('preset'),
-                className('preset', preset === this.state.current && 'current')
+                className('example'),
+                className('example', example === this.state.current && 'current')
               ].join(' ')}
               onClick={() => {
-                this.setState({current: preset})
-                setPreset(preset)
+                this.setState({current: example})
+                setExample(example)
               }}>
-              {preset}
+              {example}
             </button>
           ))}
         </div>
@@ -45,9 +45,9 @@ class Presets extends Component {
   }
 }
 
-Presets.propTypes = {
-  setPreset: PropTypes.func.isRequired,
-  presets: PropTypes.object
+Examples.propTypes = {
+  setExample: PropTypes.func.isRequired,
+  examples: PropTypes.object
 }
 
-export default Presets
+export default Examples

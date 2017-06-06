@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
-import Presets from 'components/Presets'
+import Preview from 'components/Preview'
+import Examples from 'components/Examples'
 import Properties from 'components/Properties'
 import { className } from 'helpers'
 
@@ -9,10 +10,11 @@ const Documenter = ({
   name,
   notes,
   propDefs,
-  presets,
-  setPreset,
+  examples,
+  setExample,
   setProp,
   componentProps,
+  swatches,
   children: Component
 }) => (
   <section
@@ -24,35 +26,36 @@ const Documenter = ({
 
     <section
       className={className('body')}>
-      <div
-        className={className('preview')}>
+      <Preview
+        swatches={swatches}>
         {Component}
-      </div>
+      </Preview>
 
-      <Presets
-        setPreset={setPreset}
-        presets={presets} />
+      <Examples
+        setExample={setExample}
+        examples={examples} />
 
       <Properties
         state={componentProps}
         propDefs={propDefs}
         setProp={setProp} />
-    </section>
 
-    <Notes
-      notes={notes} />
+      <Notes
+        notes={notes} />
+    </section>
   </section>
 )
 
 Documenter.propTypes = {
   children: PropTypes.element.isRequired,
-  setPreset: PropTypes.func.isRequired,
+  setExample: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
   propDefs: PropTypes.object,
+  swatches: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   notes: PropTypes.object,
-  presets: PropTypes.object
+  examples: PropTypes.object
 }
 
 export default Documenter
