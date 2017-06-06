@@ -29,7 +29,7 @@ export default class Preview extends Component {
     return (
       <div>
         <button
-          style={{width: 20, height: 20, background: '', border: '1px solid rgba(0, 0, 0, .5)'}}
+          style={{width: 20, height: 20, background: 'linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)', border: '1px solid rgba(0, 0, 0, .5)'}}
           onClick={() => this.setSwatch('')} />
 
         {swatches.map(swatch => (
