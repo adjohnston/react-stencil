@@ -9,7 +9,9 @@ const renderNotes = str => ({
   __html: addBreaks(str)
 })
 
-const Notes = ({notes}) => (notes && (
+const hasNotes = (notes) => Object.keys(notes).length > 0
+
+const Notes = ({notes}) => (hasNotes(notes) && (
   <aside>
     <h2>
       Notes
