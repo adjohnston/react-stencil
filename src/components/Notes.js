@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const hasNotes = (notes) => Object.keys(notes).length > 0
-
-const Notes = ({notes}) => (hasNotes(notes) && (
+const Notes = ({notes}) => (notes && (
   <aside>
     <h2>
       Notes
