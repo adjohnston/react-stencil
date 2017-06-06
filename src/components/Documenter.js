@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Preview from 'components/Preview'
-import Presets from 'components/Presets'
+import Examples from 'components/Examples'
 import Properties from 'components/Properties'
 import { className } from 'helpers'
 
@@ -10,8 +10,8 @@ const Documenter = ({
   name,
   notes,
   propDefs,
-  presets,
-  setPreset,
+  examples,
+  setExample,
   setProp,
   componentProps,
   swatches,
@@ -27,11 +27,13 @@ const Documenter = ({
     <section
       className={className('body')}>
       <Preview
-        swatches={swatches} />
+        swatches={swatches}>
+        {Component}
+      </Preview>
 
-      <Presets
-        setPreset={setPreset}
-        presets={presets} />
+      <Examples
+        setExample={setExample}
+        examples={examples} />
 
       <Properties
         state={componentProps}
@@ -46,14 +48,14 @@ const Documenter = ({
 
 Documenter.propTypes = {
   children: PropTypes.element.isRequired,
-  setPreset: PropTypes.func.isRequired,
+  setExample: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
   propDefs: PropTypes.object,
   swatches: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   notes: PropTypes.object,
-  presets: PropTypes.object
+  examples: PropTypes.object
 }
 
 export default Documenter

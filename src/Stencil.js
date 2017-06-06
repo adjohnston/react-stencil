@@ -21,15 +21,15 @@ const Stencil = specs => {
         super(props)
 
         this.state = {}
-        this.extendedPresets = Object.assign(specs.presets || {}, {
+        this.extendedExamples = Object.assign(specs.examples || {}, {
           default: {...this.props}
         })
-        this.setPreset = this.setPreset.bind(this)
+        this.setExample = this.setExample.bind(this)
         this.setProp = this.setProp.bind(this)
       }
 
-      setPreset (preset) {
-        this.setState({...this.extendedPresets[preset]})
+      setExample (example) {
+        this.setState({...this.extendedExamples[example]})
       }
 
       setProp (prop, value) {
@@ -40,7 +40,7 @@ const Stencil = specs => {
         const extendedProps = Object.assign({}, this.props, this.state)
         return (
           <Documenter
-            setPreset={this.setPreset}
+            setExample={this.setExample}
             setProp={this.setProp}
             componentProps={extendedProps}
             {...specs}>
