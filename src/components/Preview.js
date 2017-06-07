@@ -26,18 +26,27 @@ export default class Preview extends Component {
       children: Component
     } = this.props
 
+    let swatchButtons
+    if (swatches.length > 0) {
+      swatchButtons = (
+        <div>
+          <button
+            style={{width: 20, height: 20, background: 'linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)', border: '1px solid rgba(0, 0, 0, .5)'}}
+            onClick={() => this.setSwatch('')} />
+
+          {swatches.map(swatch => (
+            <button
+              key={swatch}
+              style={{width: 20, height: 20, background: swatch, border: '1px solid rgba(0, 0, 0, .5)'}}
+              onClick={() => this.setSwatch(swatch)} />
+          ))}
+        </div>
+      )
+    }
+
     return (
       <div>
-        <button
-          style={{width: 20, height: 20, background: 'linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)', border: '1px solid rgba(0, 0, 0, .5)'}}
-          onClick={() => this.setSwatch('')} />
-
-        {swatches.map(swatch => (
-          <button
-            key={swatch}
-            style={{width: 20, height: 20, background: swatch, border: '1px solid rgba(0, 0, 0, .5)'}}
-            onClick={() => this.setSwatch(swatch)} />
-        ))}
+        {swatchButtons}
 
         <div
           style={{background: current}}
