@@ -1,5 +1,8 @@
 import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import PropTypes from 'prop-types'
+import jsxToString from 'jsx-to-string'
+import Code from 'components/Code'
 import Notes from 'components/Notes'
 import Preview from 'components/Preview'
 import Examples from 'components/Examples'
@@ -30,6 +33,10 @@ const Documenter = ({
         swatches={swatches}>
         {Component}
       </Preview>
+
+      <Code
+        jsx={jsxToString(Component)}
+        html={renderToStaticMarkup(Component)} />
 
       <Examples
         setExample={setExample}

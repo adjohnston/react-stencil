@@ -36,6 +36,7 @@
   "dependencies": {
     "assign-deep": "^0.4.5",
     "codemirror": "^5.26.0",
+    "jsx-to-string": "^1.1.0",
     "react": "^15.4.2",
     "react-codemirror": "^1.0.0",
     "react-dom": "^15.5.4"
