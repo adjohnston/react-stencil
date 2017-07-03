@@ -7,7 +7,7 @@ export const specify = (globals, props, component) => {
 }
 
 const stencil = specs => {
-  return C => {
+  return wrappedComponent => {
     return class Stencil extends Component {
       constructor (props) {
         super(props)
@@ -36,7 +36,7 @@ const stencil = specs => {
             setProp={this.setProp}
             componentProps={extendedProps}
             {...specs}>
-            <C {...extendedProps} />
+            <wrappedComponent {...extendedProps} />
           </Documenter>
         )
       }
