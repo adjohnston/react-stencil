@@ -6,7 +6,7 @@ export const specify = (globals, props, component) => {
   return assign({propDefs: props}, globals, component)
 }
 
-const Stencil = specs => {
+const stencil = specs => {
   return C => {
     return class Stencil extends Component {
       constructor (props) {
@@ -44,4 +44,4 @@ const Stencil = specs => {
   }
 }
 
-export default Stencil
+export default stencil
