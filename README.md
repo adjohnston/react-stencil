@@ -69,6 +69,12 @@ const spec = {
       description: 'A unique ID'
     },
 
+    warning: {
+      type: 'bool',
+      required: false,
+      description: 'Should this button be shown as a warning button'
+    }
+
     children: {
       type: 'string',
       required: true,
@@ -79,6 +85,19 @@ const spec = {
       type: 'func',
       required: true,
       description: 'An action to fire when the button is clicked'
+    }
+  },
+
+  examples: {
+    'Default': {
+      id: 'default-button',
+      children: 'I am just an everyday action',
+    },
+
+    'Warning': {
+      id: 'warning-button'
+      warning: true,
+      children: 'I am a dangerous action!'
     }
   },
 
@@ -132,6 +151,9 @@ A list of the all the props the component accepts keyed by the name of the prop.
 - defaultValue is the initial value that the component has set on it.
 - description can be used to document what the prop does or how it can be used.
 
+### Examples
+You can provide props to build examples. Choosing an example will update the preview with those props allowing users to see how a component can/should be used.
+
 ### Notes
 Notes can be used to further document the component. It's an object and each key will give you a new header while the value is the documentation itself. You can pass strings or components affording you the option to document in any way you feel appropriate.
 
@@ -157,14 +179,14 @@ export default {
 
 // specs/components/button.js
 import stencil, { merge } from 'react-stencil'
-import globalSpec from ../globals
+import globalSpec from '../../global-spec'
 import Button from 'button'
 
-const componentSpec = {
+const buttonSpec = {
   // a whole bunch of button specs
 }
 
-const spec = merge(globalSpec, componentSpec)
+const spec = merge(globalSpec, buttonSpec)
 
 export default stencil(spec)(Button)
 ```
