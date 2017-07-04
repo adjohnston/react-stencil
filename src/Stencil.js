@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 import assign from 'assign-deep'
 
-export const specify = (globals, props, component) => {
-  return assign({propDefs: props}, globals, component)
+export const merge = ({props, swatches} = {}, component) => {
+  return assign({}, {props, swatches}, component)
 }
 
 const stencil = specs => {
