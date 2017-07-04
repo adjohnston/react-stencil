@@ -2,7 +2,7 @@
   "name": "react-stencil",
   "version": "0.5.1",
   "description": "",
-  "main": "dist/Stencil.js",
+  "main": "dist/stencil.js",
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
