@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/Stencil.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
     "build": "webpack",
     "watch": "webpack -w",
     "prepublish": "webpack -p"
