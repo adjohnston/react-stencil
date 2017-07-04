@@ -4,7 +4,7 @@ import Notes from 'components/Notes'
 import Preview from 'components/Preview'
 import Examples from 'components/Examples'
 import Properties from 'components/Properties'
-import { className } from 'helpers'
+import className from 'helpers/class-name'
 
 const Documenter = ({
   name,

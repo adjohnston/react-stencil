@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { className } from 'helpers'
+import className from 'helpers/class-name'
 
 export default class Preview extends Component {
   constructor (props) {

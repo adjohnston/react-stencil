@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
-import assign from 'assign-deep'
 
-export const merge = ({props, swatches} = {}, component) => {
-  return assign({}, {props, swatches}, component)
-}
-
+//    stencil : object -> component -> component
 const stencil = specs => {
   return wrappedComponent => {
     return class Stencil extends Component {
@@ -44,4 +40,5 @@ const stencil = specs => {
   }
 }
 
+export { merge } from 'helpers/merge'
 export default stencil
