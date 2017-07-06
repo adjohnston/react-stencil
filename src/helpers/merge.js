@@ -5,4 +5,4 @@ const merge = ({props, swatches} = {}, component) => {
   return assign({}, {props, swatches}, component)
 }
 
-export default merge
+export { merge }
