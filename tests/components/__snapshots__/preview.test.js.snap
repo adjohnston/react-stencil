@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a different background colour when a swatch is clicked 1`] = `
+<div>
+  <div>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "white",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "black",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#f35",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+  </div>
+  <div
+    className="stencil__preview"
+    style={
+      Object {
+        "background": "#f35",
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a list of swatch buttons if swatches are passed 1`] = `
+<div>
+  <div>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "white",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "black",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#f35",
+          "border": "1px solid rgba(0, 0, 0, .5)",
+          "height": 20,
+          "width": 20,
+        }
+      }
+    />
+  </div>
+  <div
+    className="stencil__preview"
+    style={
+      Object {
+        "background": "",
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <div
+    className="stencil__preview"
+    style={
+      Object {
+        "background": "",
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;
