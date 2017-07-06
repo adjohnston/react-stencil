@@ -28,7 +28,7 @@ export default class Preview extends Component {
     } = this.props
 
     let swatchButtons
-    if (swatches.length > 0) {
+    if (swatches && swatches.length > 0) {
       swatchButtons = (
         <div>
           <Swatch
