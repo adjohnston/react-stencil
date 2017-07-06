@@ -72,3 +72,16 @@ html, body, body > div {
   border-width: 0 0 .125rem;
   font: 1rem/1 arial;
 }
+
+.stncl__swatch-button {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(
+    45deg,
+    white 42.5%,
+    red 42.5%,
+    red 57.5%,
+    white 57.5%
+  );
+  border: 1px solid rgba(0, 0, 0, .5);
+}
