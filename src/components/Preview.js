@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import className from 'helpers/class-name'
+import Swatch from 'components/Swatch'
 
 export default class Preview extends Component {
   constructor (props) {
@@ -30,16 +31,15 @@ export default class Preview extends Component {
     if (swatches.length > 0) {
       swatchButtons = (
         <div>
-          <button
-            className={className('swatch-button')}
-            onClick={() => this.setSwatch(null)} />
+          <Swatch
+            swatch={null}
+            onClick={this.setSwatch} />
 
           {swatches.map(swatch => (
-            <button
+            <Swatch
               key={swatch}
-              className={className('swatch-button')}
-              style={{background: swatch}}
-              onClick={() => this.setSwatch(swatch)} />
+              swatch={swatch}
+              onClick={this.setSwatch} />
           ))}
         </div>
       )
