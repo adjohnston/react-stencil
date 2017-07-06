@@ -36,7 +36,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "assign-deep": "^0.4.5",
+    "assign-deep": "^0.4.5"
   },
   "peerDependencies": {
     "react": "^15.4.2"
