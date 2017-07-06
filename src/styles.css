@@ -4,27 +4,27 @@ html, body, body > div {
   height: 100%;
 }
 
-.rctnry__layout {
+.stncl__layout {
   display: flex;
   flex-flow: column;
   flex: 1 0 auto;
   padding: 1rem;
 }
 
-.rctnry__body {
+.stncl__body {
   display: flex;
   flex-flow: column;
   flex: 1 0 auto;
 }
 
-.rctnry__title {
+.stncl__title {
   margin: 0 0 1rem;
 }
 
 /*
 //  background url taken from http://www.heropatterns.com/
 */
-.rctnry__preview {
+.stncl__preview {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ html, body, body > div {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 8 8'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
 }
 
-.rctnry__preset {
+.stncl__preset {
   margin: 0 .25rem 0 0;
   padding: .5rem 1.5rem;
   background: transparent;
@@ -44,28 +44,28 @@ html, body, body > div {
   font: 1rem/1 arial;
 }
 
-.rctnry__preset:last-child {
+.stncl__preset:last-child {
   margin-right: 0;
 }
 
-.rctnry__preset--current {
+.stncl__preset--current {
   background: #dffbe5;
 }
 
-.rctnry__list {
+.stncl__list {
   padding: 0;
   list-style: none;
 }
 
-.rctnry__list-item {
+.stncl__list-item {
   margin: 0 0 1rem;
 }
 
-.rctnry__list-item:last-child {
+.stncl__list-item:last-child {
   margin-bottom: 0;
 }
 
-.rctnry__input {
+.stncl__input {
   width: 100%;
   padding: .5rem 0 .375rem;
   border: 0 solid rgba(0, 0, 0, .25);
