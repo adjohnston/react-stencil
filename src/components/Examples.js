@@ -9,13 +9,17 @@ class Examples extends Component {
     this.state = {
       current: 'default'
     }
+
+    this.onChange = this.onChange.bind(this)
+  }
+
+  onChange ({target: { value }}) {
+    this.props.setExample(value)
+    this.setState({current: value})
   }
 
   render () {
-    const {
-      setExample,
-      examples
-    } = this.props
+    const examples = this.props.examples
 
     return (examples && (
       <section>
@@ -24,22 +28,17 @@ class Examples extends Component {
           Examples
         </h2>
 
-        <div>
+        <select
+          className={className('dropdown')}
+          onChange={this.onChange}
+          value={this.state.current}>
           {Object.keys(examples).map(example => (
-            <button
-              key={example}
-              className={[
-                className('example'),
-                className('example', example === this.state.current && 'current')
-              ].join(' ')}
-              onClick={() => {
-                this.setState({current: example})
-                setExample(example)
-              }}>
+            <option
+              key={example}>
               {example}
-            </button>
+            </option>
           ))}
-        </div>
+        </select>
       </section>
     )) || null
   }
