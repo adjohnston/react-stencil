@@ -3,7 +3,7 @@ import Documenter from 'components/Documenter'
 
 //    stencil : object -> component -> component
 const stencil = specs => {
-  return wrappedComponent => {
+  return WrappedComponent => {
     return class Stencil extends Component {
       constructor (props) {
         super(props)
@@ -32,7 +32,7 @@ const stencil = specs => {
             setProp={this.setProp}
             componentProps={extendedProps}
             {...specs}>
-            <wrappedComponent {...extendedProps} />
+            <WrappedComponent {...extendedProps} />
           </Documenter>
         )
       }
