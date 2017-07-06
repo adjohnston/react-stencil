@@ -40,5 +40,5 @@ const stencil = specs => {
   }
 }
 
-export { merge } from 'helpers/merge'
+export { default as merge } from 'helpers/merge'
 export default stencil
