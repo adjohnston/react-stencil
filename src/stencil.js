@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Documenter from 'components/Documenter'
 
 //    stencil : object -> component -> component
-const stencil = specs => {
+const stencil = (specs = {}) => {
   return WrappedComponent => {
     return class Stencil extends Component {
       constructor (props) {
