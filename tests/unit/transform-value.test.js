@@ -9,6 +9,10 @@ test('return a string given a type of string', () => {
   expect(transformValue('hello world', 'string')).toBe('hello world')
 })
 
+test('return an empty string given a type of func', () => {
+  expect(transformValue(() => {}, 'func')).toBe('')
+})
+
 test('return a number given a type of number', () => {
   expect(transformValue('32', 'number')).toBe(32)
 })
