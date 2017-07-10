@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Preview from 'components/Preview'
 import Examples from 'components/Examples'
-import Properties from 'components/Properties'
+import Props from 'components/Props'
 import className from 'helpers/class-name'
 
 const Documenter = ({
@@ -35,7 +35,7 @@ const Documenter = ({
         setExample={setExample}
         examples={examples} />
 
-      <Properties
+      <Props
         state={componentProps}
         props={props}
         setProp={setProp} />
