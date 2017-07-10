@@ -85,3 +85,42 @@ html, body, body > div {
   );
   border: 1px solid rgba(0, 0, 0, .5);
 }
+
+.stncl__dropdown {
+  position: relative;
+  background: white;
+  border: 2px solid currentcolor;
+  border-radius: .25em;
+}
+
+.stncl__dropdown__select {
+  display: block;
+  width: 100%;
+  height: 2em;
+  padding: 0 3em 0 1em;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.stncl__dropdown__arrow {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2em;
+  height: 2em;
+  background: currentcolor;
+  cursor: pointer;
+}
+
+.stncl__dropdown__arrow:before {
+  content: '▼';
+  color: white;
+}

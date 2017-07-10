@@ -9,11 +9,18 @@ exports[`it should render correctly 1`] = `
   >
     Examples
   </h2>
-  <select
+  <div
     className="stncl__dropdown"
-    onChange={[Function]}
-    value="default"
-  />
+  >
+    <select
+      className="stncl__dropdown__select"
+      onChange={[Function]}
+      value="default"
+    />
+    <div
+      className="stncl__dropdown__arrow"
+    />
+  </div>
 </section>
 `;
 
@@ -24,14 +31,21 @@ exports[`it should show the value when the selection is changed 1`] = `
   >
     Examples
   </h2>
-  <select
+  <div
     className="stncl__dropdown"
-    onChange={[Function]}
-    value="something else"
   >
-    <option>
-      something else
-    </option>
-  </select>
+    <select
+      className="stncl__dropdown__select"
+      onChange={[Function]}
+      value="something else"
+    >
+      <option>
+        something else
+      </option>
+    </select>
+    <div
+      className="stncl__dropdown__arrow"
+    />
+  </div>
 </section>
 `;

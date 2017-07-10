@@ -28,17 +28,22 @@ class Examples extends Component {
           Examples
         </h2>
 
-        <select
-          className={className('dropdown')}
-          onChange={this.onChange}
-          value={this.state.current}>
-          {Object.keys(examples).map(example => (
-            <option
-              key={example}>
-              {example}
-            </option>
-          ))}
-        </select>
+        <div
+          className={className('dropdown')}>
+          <select
+            className={className('dropdown__select')}
+            onChange={this.onChange}
+            value={this.state.current}>
+            {Object.keys(examples).map(example => (
+              <option
+                key={example}>
+                {example}
+              </option>
+            ))}
+          </select>
+
+          <div className={className('dropdown__arrow')} />
+        </div>
       </section>
     )) || null
   }

@@ -70,15 +70,22 @@ exports[`it should render correctly 1`] = `
       >
         Examples
       </h2>
-      <select
+      <div
         className="stncl__dropdown"
-        onChange={[Function]}
-        value="default"
       >
-        <option>
-          Basic example
-        </option>
-      </select>
+        <select
+          className="stncl__dropdown__select"
+          onChange={[Function]}
+          value="default"
+        >
+          <option>
+            Basic example
+          </option>
+        </select>
+        <div
+          className="stncl__dropdown__arrow"
+        />
+      </div>
     </section>
     <section>
       <h2>
@@ -173,15 +180,22 @@ exports[`it should render correctly without a description 1`] = `
       >
         Examples
       </h2>
-      <select
+      <div
         className="stncl__dropdown"
-        onChange={[Function]}
-        value="default"
       >
-        <option>
-          Basic example
-        </option>
-      </select>
+        <select
+          className="stncl__dropdown__select"
+          onChange={[Function]}
+          value="default"
+        >
+          <option>
+            Basic example
+          </option>
+        </select>
+        <div
+          className="stncl__dropdown__arrow"
+        />
+      </div>
     </section>
     <section>
       <h2>
@@ -363,15 +377,22 @@ exports[`it should render correctly without a notes 1`] = `
       >
         Examples
       </h2>
-      <select
+      <div
         className="stncl__dropdown"
-        onChange={[Function]}
-        value="default"
       >
-        <option>
-          Basic example
-        </option>
-      </select>
+        <select
+          className="stncl__dropdown__select"
+          onChange={[Function]}
+          value="default"
+        >
+          <option>
+            Basic example
+          </option>
+        </select>
+        <div
+          className="stncl__dropdown__arrow"
+        />
+      </div>
     </section>
   </section>
 </section>
@@ -409,15 +430,22 @@ exports[`it should render correctly without a swatches 1`] = `
       >
         Examples
       </h2>
-      <select
+      <div
         className="stncl__dropdown"
-        onChange={[Function]}
-        value="default"
       >
-        <option>
-          Basic example
-        </option>
-      </select>
+        <select
+          className="stncl__dropdown__select"
+          onChange={[Function]}
+          value="default"
+        >
+          <option>
+            Basic example
+          </option>
+        </select>
+        <div
+          className="stncl__dropdown__arrow"
+        />
+      </div>
     </section>
     <section>
       <h2>
