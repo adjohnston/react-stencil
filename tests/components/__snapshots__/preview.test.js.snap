@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it renders a different background colour when a swatch is clicked 1`] = `
+<div>
+  <div>
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": null,
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "white",
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "black",
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#f35",
+        }
+      }
+    />
+  </div>
+  <div
+    className="stncl__preview"
+    style={
+      Object {
+        "background": "#f35",
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders a list of swatch buttons if swatches are passed 1`] = `
+<div>
+  <div>
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": null,
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "white",
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "black",
+        }
+      }
+    />
+    <button
+      className="stncl__swatch-button"
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#f35",
+        }
+      }
+    />
+  </div>
+  <div
+    className="stncl__preview"
+    style={
+      Object {
+        "background": null,
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`it renders correctly 1`] = `
+<div>
+  <div
+    className="stncl__preview"
+    style={
+      Object {
+        "background": null,
+      }
+    }
+  >
+    <div>
+      Just a test
+    </div>
+  </div>
+</div>
+`;

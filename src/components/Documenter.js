@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import Notes from 'components/Notes'
 import Preview from 'components/Preview'
 import Examples from 'components/Examples'
-import Properties from 'components/Properties'
-import { className } from 'helpers'
+import Props from 'components/Props'
+import className from 'helpers/class-name'
 
 const Documenter = ({
   name,
   notes,
-  propDefs,
+  props,
   examples,
   setExample,
   setProp,
@@ -35,9 +35,9 @@ const Documenter = ({
         setExample={setExample}
         examples={examples} />
 
-      <Properties
+      <Props
         state={componentProps}
-        propDefs={propDefs}
+        props={props}
         setProp={setProp} />
 
       <Notes
@@ -51,7 +51,7 @@ Documenter.propTypes = {
   setExample: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
-  propDefs: PropTypes.object,
+  props: PropTypes.object,
   swatches: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
   notes: PropTypes.object,

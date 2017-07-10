@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { className } from 'helpers'
+import className from 'helpers/class-name'
 
 class Examples extends Component {
   constructor (props) {
@@ -9,13 +9,17 @@ class Examples extends Component {
     this.state = {
       current: 'default'
     }
+
+    this.onChange = this.onChange.bind(this)
+  }
+
+  onChange ({target: { value }}) {
+    this.props.setExample(value)
+    this.setState({current: value})
   }
 
   render () {
-    const {
-      setExample,
-      examples
-    } = this.props
+    const examples = this.props.examples
 
     return (examples && (
       <section>
@@ -24,21 +28,21 @@ class Examples extends Component {
           Examples
         </h2>
 
-        <div>
-          {Object.keys(examples).map(example => (
-            <button
-              key={example}
-              className={[
-                className('example'),
-                className('example', example === this.state.current && 'current')
-              ].join(' ')}
-              onClick={() => {
-                this.setState({current: example})
-                setExample(example)
-              }}>
-              {example}
-            </button>
-          ))}
+        <div
+          className={className('dropdown')}>
+          <select
+            className={className('dropdown__select')}
+            onChange={this.onChange}
+            value={this.state.current}>
+            {Object.keys(examples).map(example => (
+              <option
+                key={example}>
+                {example}
+              </option>
+            ))}
+          </select>
+
+          <div className={className('dropdown__arrow')} />
         </div>
       </section>
     )) || null
