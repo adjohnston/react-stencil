@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer'
 import Documenter from 'components/Documenter'
 
 const Test = () => <div>Just a test</div>
-const props = {
+const mockProps = {
   setExample: () => {},
   setProp: () => {},
   componentProps: {
@@ -20,6 +20,7 @@ const props = {
   children: <Test />,
   name: 'Test',
   description: 'Just a simple test component',
+  status: 'READY',
   notes: {
     'Developer notes': 'I am just a string',
     'Designer notes': <div>I use a component</div>
@@ -33,7 +34,7 @@ const props = {
 
 test('it should render correctly', () => {
   const tree = renderer
-    .create(<Documenter {...props} />)
+    .create(<Documenter {...mockProps} />)
     .toJSON()
 
   expect(tree).toMatchSnapshot()
@@ -43,7 +44,7 @@ test('it should render correctly without a description', () => {
   const {
     description,
     ...otherProps
-  } = props
+  } = mockProps
 
   const tree = renderer
     .create(<Documenter {...otherProps} />)
@@ -56,7 +57,7 @@ test('it should render correctly without a swatches', () => {
   const {
     swatches,
     ...otherProps
-  } = props
+  } = mockProps
 
   const tree = renderer
     .create(<Documenter {...otherProps} />)
@@ -69,7 +70,7 @@ test('it should render correctly without a notes', () => {
   const {
     notes,
     ...otherProps
-  } = props
+  } = mockProps
 
   const tree = renderer
     .create(<Documenter {...otherProps} />)
@@ -82,7 +83,20 @@ test('it should render correctly without a examples', () => {
   const {
     examples,
     ...otherProps
-  } = props
+  } = mockProps
+
+  const tree = renderer
+    .create(<Documenter {...otherProps} />)
+    .toJSON()
+
+  expect(tree).toMatchSnapshot()
+})
+
+test('it should render correctly without a status', () => {
+  const {
+    status,
+    ...otherProps
+  } = mockProps
 
   const tree = renderer
     .create(<Documenter {...otherProps} />)
