@@ -21,7 +21,7 @@ class Examples extends Component {
   render () {
     const examples = this.props.examples
 
-    return (examples && (
+    return (!!examples && (
       <section>
         <h2
           className={classString('__title')}>
