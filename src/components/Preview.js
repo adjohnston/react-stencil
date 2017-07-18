@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import className from 'helpers/class-name'
+import classString from 'helpers/class-string'
 import Swatch from 'components/Swatch'
 
 export default class Preview extends Component {
@@ -51,7 +51,7 @@ export default class Preview extends Component {
 
         <div
           style={{background: current}}
-          className={className('preview')}>
+          className={classString('__preview')}>
           {Component}
         </div>
       </div>

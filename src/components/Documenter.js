@@ -5,7 +5,7 @@ import Description from 'components/Description'
 import Preview from 'components/Preview'
 import Examples from 'components/Examples'
 import Props from 'components/Props'
-import className from 'helpers/class-name'
+import classString from 'helpers/class-string'
 
 const Documenter = ({
   name,
@@ -20,9 +20,9 @@ const Documenter = ({
   children: Component
 }) => (
   <section
-    className={className('layout')}>
+    className={classString('__layout')}>
     <h1
-      className={className('title')}>
+      className={classString('__title')}>
       {name}
     </h1>
 
@@ -31,7 +31,7 @@ const Documenter = ({
     </Description>
 
     <section
-      className={className('body')}>
+      className={classString('__body')}>
       <Preview
         swatches={swatches}>
         {Component}

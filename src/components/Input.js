@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import className from 'helpers/class-name'
+import classString from 'helpers/class-string'
 import transformValue from 'helpers/transform-value'
 
 const Input = ({name, type, onChange, value}) => {
@@ -18,7 +18,7 @@ const Input = ({name, type, onChange, value}) => {
       <input
         type='text'
         value={value}
-        className={className('input')}
+        className={classString('__input')}
         onChange={handleOnChange} />
     )
   }
@@ -28,7 +28,7 @@ const Input = ({name, type, onChange, value}) => {
       <input
         type='number'
         value={value}
-        className={className('input')}
+        className={classString('__input')}
         onChange={handleOnChange} />
     )
   }

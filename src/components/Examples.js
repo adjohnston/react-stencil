@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import className from 'helpers/class-name'
+import classString from 'helpers/class-string'
 
 class Examples extends Component {
   constructor (props) {
@@ -24,14 +24,14 @@ class Examples extends Component {
     return (examples && (
       <section>
         <h2
-          className={className('title')}>
+          className={classString('__title')}>
           Examples
         </h2>
 
         <div
-          className={className('dropdown')}>
+          className={classString('__dropdown')}>
           <select
-            className={className('dropdown__select')}
+            className={classString('__dropdown__select')}
             onChange={this.onChange}
             value={this.state.current}>
             {Object.keys(examples).map(example => (
@@ -42,7 +42,7 @@ class Examples extends Component {
             ))}
           </select>
 
-          <div className={className('dropdown__arrow')} />
+          <div className={classString('__dropdown__arrow')} />
         </div>
       </section>
     )) || null
