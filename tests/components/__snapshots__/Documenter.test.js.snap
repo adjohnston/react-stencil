@@ -10,6 +10,11 @@ exports[`it should render correctly 1`] = `
     Test
   </h1>
   <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
+  <section
     className="stncl__body"
   >
     <div>
@@ -230,6 +235,11 @@ exports[`it should render correctly without a examples 1`] = `
     Test
   </h1>
   <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
+  <section
     className="stncl__body"
   >
     <div>
@@ -316,6 +326,11 @@ exports[`it should render correctly without a notes 1`] = `
   >
     Test
   </h1>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >
@@ -407,6 +422,11 @@ exports[`it should render correctly without a swatches 1`] = `
   >
     Test
   </h1>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >
