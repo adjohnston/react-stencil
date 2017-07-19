@@ -89,11 +89,6 @@ const spec = {
   },
 
   examples: {
-    'Default': {
-      id: 'default-button',
-      children: 'I am just an everyday action',
-    },
-
     'Warning': {
       id: 'warning-button'
       warning: true,
