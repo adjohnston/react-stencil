@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/adjohnston/react-stencil/tree/master.svg?style=svg)](https://circleci.com/gh/adjohnston/react-stencil/tree/master)
+
 # Stencil
 
 ## Introduction
