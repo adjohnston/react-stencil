@@ -3,7 +3,7 @@
 # Stencil
 
 ## Introduction
-React Stencil is a tool to help you functioning component documentation for use internally for design and development or externally as a part of a wider design system for all.
+React Stencil is a tool to help you create functioning component documentation for use internally for design and development or externally as a part of a wider design system for all to use.
 
 It provides a higher order function that will wrap a React component and render component documentation with various information.
 
