@@ -1,6 +1,6 @@
 {
   "name": "react-stencil",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "",
   "main": "dist/stencil.js",
   "scripts": {
@@ -43,7 +43,8 @@
   "jest": {
     "moduleNameMapper": {
       "^helpers(.*)$": "<rootDir>/src/helpers$1",
-      "^components(.*)$": "<rootDir>/src/components$1"
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^constants(.*)$": "<rootDir>/src/constants$1"
     },
     "collectCoverageFrom": [
       "src/**/*.js"

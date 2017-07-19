@@ -9,6 +9,16 @@ exports[`it should render correctly 1`] = `
   >
     Test
   </h1>
+  <span
+    className="stncl__status stncl__status--ready"
+  >
+    Ready
+  </span>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >
@@ -119,6 +129,11 @@ exports[`it should render correctly without a description 1`] = `
   >
     Test
   </h1>
+  <span
+    className="stncl__status stncl__status--ready"
+  >
+    Ready
+  </span>
   <section
     className="stncl__body"
   >
@@ -229,6 +244,16 @@ exports[`it should render correctly without a examples 1`] = `
   >
     Test
   </h1>
+  <span
+    className="stncl__status stncl__status--ready"
+  >
+    Ready
+  </span>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >
@@ -316,6 +341,16 @@ exports[`it should render correctly without a notes 1`] = `
   >
     Test
   </h1>
+  <span
+    className="stncl__status stncl__status--ready"
+  >
+    Ready
+  </span>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >
@@ -398,6 +433,121 @@ exports[`it should render correctly without a notes 1`] = `
 </section>
 `;
 
+exports[`it should render correctly without a status 1`] = `
+<section
+  className="stncl__layout"
+>
+  <h1
+    className="stncl__title"
+  >
+    Test
+  </h1>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
+  <section
+    className="stncl__body"
+  >
+    <div>
+      <div>
+        <button
+          className="stncl__swatch-button"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": null,
+            }
+          }
+        />
+        <button
+          className="stncl__swatch-button"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "white",
+            }
+          }
+        />
+        <button
+          className="stncl__swatch-button"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "black",
+            }
+          }
+        />
+        <button
+          className="stncl__swatch-button"
+          onClick={[Function]}
+          style={
+            Object {
+              "background": "#f35",
+            }
+          }
+        />
+      </div>
+      <div
+        className="stncl__preview"
+        style={
+          Object {
+            "background": null,
+          }
+        }
+      >
+        <div>
+          Just a test
+        </div>
+      </div>
+    </div>
+    <section>
+      <h2
+        className="stncl__title"
+      >
+        Examples
+      </h2>
+      <div
+        className="stncl__dropdown"
+      >
+        <select
+          className="stncl__dropdown__select"
+          onChange={[Function]}
+          value="default"
+        >
+          <option>
+            Basic example
+          </option>
+        </select>
+        <div
+          className="stncl__dropdown__arrow"
+        />
+      </div>
+    </section>
+    <section>
+      <h2>
+        Notes
+      </h2>
+      <div>
+        <h3>
+          Developer notes
+        </h3>
+        I am just a string
+      </div>
+      <div>
+        <h3>
+          Designer notes
+        </h3>
+        <div>
+          I use a component
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+`;
+
 exports[`it should render correctly without a swatches 1`] = `
 <section
   className="stncl__layout"
@@ -407,6 +557,16 @@ exports[`it should render correctly without a swatches 1`] = `
   >
     Test
   </h1>
+  <span
+    className="stncl__status stncl__status--ready"
+  >
+    Ready
+  </span>
+  <section
+    className="stncl__description"
+  >
+    Just a simple test component
+  </section>
   <section
     className="stncl__body"
   >

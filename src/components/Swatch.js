@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import className from 'helpers/class-name'
+import classString from 'helpers/class-string'
 
 const Swatch = ({swatch, onClick}) => {
   const handleOnClick = () => {
@@ -9,7 +9,7 @@ const Swatch = ({swatch, onClick}) => {
 
   return (
     <button
-      className={className('swatch-button')}
+      className={classString('__swatch-button')}
       style={{background: swatch}}
       onClick={handleOnClick} />
   )
