@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { className } from 'helpers'
+import classString from 'helpers/class-string'
+import Swatch from 'components/Swatch'
 
 export default class Preview extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      current: ''
+      current: null
     }
 
     this.setSwatch = this.setSwatch.bind(this)
@@ -27,18 +28,18 @@ export default class Preview extends Component {
     } = this.props
 
     let swatchButtons
-    if (swatches.length > 0) {
+    if (swatches && swatches.length > 0) {
       swatchButtons = (
         <div>
-          <button
-            style={{width: 20, height: 20, background: 'linear-gradient(45deg, white 42.5%, red 42.5%, red 57.5%, white 57.5%)', border: '1px solid rgba(0, 0, 0, .5)'}}
-            onClick={() => this.setSwatch('')} />
+          <Swatch
+            swatch={null}
+            onClick={this.setSwatch} />
 
           {swatches.map(swatch => (
-            <button
+            <Swatch
               key={swatch}
-              style={{width: 20, height: 20, background: swatch, border: '1px solid rgba(0, 0, 0, .5)'}}
-              onClick={() => this.setSwatch(swatch)} />
+              swatch={swatch}
+              onClick={this.setSwatch} />
           ))}
         </div>
       )
@@ -50,7 +51,7 @@ export default class Preview extends Component {
 
         <div
           style={{background: current}}
-          className={className('preview')}>
+          className={classString('__preview')}>
           {Component}
         </div>
       </div>

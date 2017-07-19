@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Notes = ({notes}) => (notes && (
+const Notes = ({notes}) => (!!notes && (
   <section>
     <h2>
       Notes
