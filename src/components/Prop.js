@@ -5,8 +5,18 @@ import Input from 'components/Input'
 const Prop = ({name, defs = {}, ...restProps}) => {
   const {
     type,
-    required
+    required,
+    description
   } = defs
+
+  let descriptionElement
+  if (description) {
+    descriptionElement = (
+      <div>
+        {description}
+      </div>
+    )
+  }
 
   let inputElement
   if (type === 'string' || type === 'number' || type === 'bool') {
@@ -29,6 +39,7 @@ const Prop = ({name, defs = {}, ...restProps}) => {
         {required ? <i> - is required</i> : null}
       </div>
 
+      {descriptionElement}
       {inputElement}
     </li>
   )
