@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
 import transformValue from 'src/helpers/transform-value'
 
-const Input = ({name, type, onChange, value}) => {
-  const handleOnChange = ({ target: { value } }) => {
-    return onChange(name, transformValue(value, type))
-  }
+const handleInputOnChange = (onChange, name, type) => ({ target }) => {
+  return onChange(name, transformValue(
+    (type === 'bool')
+    ? target.checked
+    : target.value
+  ), type)
+}
 
-  const handleOnToggle = ({ target: { checked } }) => {
-    return onChange(name, transformValue(checked, type))
-  }
+const Input = ({name, type, onChange, value}) => {
+  const handleOnChange = handleInputOnChange(onChange, name, type)
 
   let inputElement
   if (type === 'string') {
@@ -39,7 +41,7 @@ const Input = ({name, type, onChange, value}) => {
         type='checkbox'
         checked={value}
         className={classString('__checkbox')}
-        onChange={handleOnToggle} />
+        onChange={handleOnChange} />
     )
   }
 
@@ -61,4 +63,5 @@ Input.propTypes = {
   ])
 }
 
+export { handleInputOnChange }
 export default Input
