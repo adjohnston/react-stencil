@@ -10,9 +10,9 @@ const Input = ({name, type, onChange, value}) => {
 
   }
 
-  let inputEl
+  let inputElement
   if (type === 'string') {
-    inputEl = (
+    inputElement = (
       <input
         type='text'
         value={value}
@@ -22,7 +22,7 @@ const Input = ({name, type, onChange, value}) => {
   }
 
   if (type === 'number') {
-    inputEl = (
+    inputElement = (
       <input
         type='number'
         value={value}
@@ -31,17 +31,22 @@ const Input = ({name, type, onChange, value}) => {
     )
   }
 
-  return inputEl || null
+  return inputElement || null
 }
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf([
+    'string',
+    'number',
+    'bool'
+  ]).isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array
-  ]).isRequired
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool
+  ])
 }
 
 export default Input
