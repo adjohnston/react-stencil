@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "build": "webpack -p",
-    "watch": "webpack -w",
+    "build:watch": "webpack -w",
     "prepublish": "npm run build"
   },
   "repository": {
