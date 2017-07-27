@@ -8,6 +8,16 @@ const Prop = ({name, defs = {}, ...restProps}) => {
     required
   } = defs
 
+  let inputElement
+  if (type === 'string' || type === 'number' || type === 'bool') {
+    inputElement = (
+      <Input
+        type={type}
+        name={name}
+        {...restProps} />
+    )
+  }
+
   return (
     <li>
       <div>
@@ -19,10 +29,7 @@ const Prop = ({name, defs = {}, ...restProps}) => {
         {required ? <i> - is required</i> : null}
       </div>
 
-      <Input
-        type={type}
-        name={name}
-        {...restProps} />
+      {inputElement}
     </li>
   )
 }

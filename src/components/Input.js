@@ -8,8 +8,6 @@ const Input = ({name, type, onChange, value}) => {
     return onChange(name, transformValue(value, type))
   }
 
-  if (type === 'func') {
-    return null
   }
 
   let inputEl
