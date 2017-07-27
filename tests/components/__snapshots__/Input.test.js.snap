@@ -8,3 +8,21 @@ exports[`renders correctly 1`] = `
   value="button"
 />
 `;
+
+exports[`renders input type of checkbox given a type of bool 1`] = `
+<input
+  checked={false}
+  className="stncl__checkbox"
+  onChange={[Function]}
+  type="checkbox"
+/>
+`;
+
+exports[`renders input type of checkbox given a type of bool and has attribute checked 1`] = `
+<input
+  checked={true}
+  className="stncl__checkbox"
+  onChange={[Function]}
+  type="checkbox"
+/>
+`;

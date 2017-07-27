@@ -21,3 +21,23 @@ test('renders correctly', () => {
 
   expect(tree).toMatchSnapshot()
 })
+
+test('renders a toggle element with a type of bool', () => {
+  const mockProps = {
+    name: 'isActive',
+    defs: {
+      type: 'bool',
+      required: true,
+      defaultValue: false,
+      description: 'isActive indicates whether the component is active or not'
+    },
+    value: true,
+    onChange: () => {}
+  }
+
+  const tree = renderer
+    .create(<Prop {...mockProps} />)
+    .toJSON()
+
+  expect(tree).toMatchSnapshot()
+})
