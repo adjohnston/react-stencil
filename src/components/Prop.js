@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from 'components/Input'
+import Input from 'src/components/Input'
 
 const Prop = ({name, defs = {}, ...restProps}) => {
   const {

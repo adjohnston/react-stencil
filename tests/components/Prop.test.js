@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Prop from 'components/Prop'
+import Prop from 'src/components/Prop'
 
 test('renders correctly', () => {
   const mockProps = {

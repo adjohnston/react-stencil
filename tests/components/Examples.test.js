@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Examples from 'components/Examples'
+import Examples from 'src/components/Examples'
 
 test('it should not render without examples', () => {
   const props = {

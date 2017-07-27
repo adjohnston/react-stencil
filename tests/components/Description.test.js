@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Description from 'components/Description'
+import Description from 'src/components/Description'
 
 test('it should render correctly with children as a string', () => {
   const mockProps = {

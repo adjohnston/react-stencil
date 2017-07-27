@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Notes from 'components/Notes'
-import Description from 'components/Description'
-import Status from 'components/Status'
-import Preview from 'components/Preview'
-import Examples from 'components/Examples'
-import Props from 'components/Props'
-import classString from 'helpers/class-string'
+import Notes from 'src/components/Notes'
+import Description from 'src/components/Description'
+import Status from 'src/components/Status'
+import Preview from 'src/components/Preview'
+import Examples from 'src/components/Examples'
+import Props from 'src/components/Props'
+import classString from 'src/helpers/class-string'
 
 const Documenter = ({
   name,

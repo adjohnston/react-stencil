@@ -42,9 +42,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^helpers(.*)$": "<rootDir>/src/helpers$1",
-      "^components(.*)$": "<rootDir>/src/components$1",
-      "^constants(.*)$": "<rootDir>/src/constants$1"
+      "^src(.*)$": "<rootDir>/src$1"
     },
     "coverageThreshold": {
       "global": {

@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Notes from 'components/Notes'
+import Notes from 'src/components/Notes'
 
 test(`it doesn't render without notes`, () => {
   const tree = renderer

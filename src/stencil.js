@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Documenter from 'components/Documenter'
+import Documenter from 'src/components/Documenter'
 
 //    stencil : object -> component -> component
 const stencil = (specs = {}) => {
@@ -40,5 +40,5 @@ const stencil = (specs = {}) => {
   }
 }
 
-export { default as merge } from 'helpers/merge'
+export { default as merge } from 'src/helpers/merge'
 export default stencil

@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Props from 'components/Props'
+import Props from 'src/components/Props'
 
 const mockState = {
   id: 'just-a-string-id',

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classString from 'helpers/class-string'
-import transformValue from 'helpers/transform-value'
+import classString from 'src/helpers/class-string'
+import transformValue from 'src/helpers/transform-value'
 
 const Input = ({name, type, onChange, value}) => {
   const handleOnChange = ({ target: { value } }) => {

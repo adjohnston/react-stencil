@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classString from 'helpers/class-string'
+import classString from 'src/helpers/class-string'
 
 class Examples extends Component {
   constructor (props) {

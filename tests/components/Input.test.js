@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Input from 'components/Input'
+import Input from 'src/components/Input'
 
 test('renders correctly', () => {
   const mockProps = {
