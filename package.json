@@ -38,6 +38,14 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "assign-deep": "^0.4.5",
+    "codemirror": "^5.26.0",
+    "jsx-to-string": "^1.1.0",
+    "react": "^15.4.2",
+    "react-codemirror": "^1.0.0",
+    "react-dom": "^15.5.4"
+=======
     "assign-deep": "^0.4.5"
   },
   "jest": {
@@ -55,5 +63,6 @@
     "collectCoverageFrom": [
       "src/**/*.js"
     ]
+>>>>>>> ed6b7f7dc2751349ecc12a6c9ac13cf717059fc7
   }
 }

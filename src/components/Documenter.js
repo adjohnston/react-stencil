@@ -1,5 +1,15 @@
 import React from 'react'
+import { renderToStaticMarkup } from 'react-dom/server'
 import PropTypes from 'prop-types'
+<<<<<<< HEAD
+import jsxToString from 'jsx-to-string'
+import Code from 'components/Code'
+import Notes from 'components/Notes'
+import Preview from 'components/Preview'
+import Examples from 'components/Examples'
+import Properties from 'components/Properties'
+import { className } from 'helpers'
+=======
 import Notes from 'src/components/Notes'
 import Description from 'src/components/Description'
 import Status from 'src/components/Status'
@@ -7,6 +17,7 @@ import Preview from 'src/components/Preview'
 import Examples from 'src/components/Examples'
 import Props from 'src/components/Props'
 import classString from 'src/helpers/class-string'
+>>>>>>> ed6b7f7dc2751349ecc12a6c9ac13cf717059fc7
 
 const Documenter = ({
   name,
@@ -41,6 +52,10 @@ const Documenter = ({
         swatches={swatches}>
         {Component}
       </Preview>
+
+      <Code
+        jsx={jsxToString(Component)}
+        html={renderToStaticMarkup(Component)} />
 
       <Examples
         setExample={setExample}
