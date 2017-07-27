@@ -1,6 +1,6 @@
 {
   "name": "react-stencil",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "",
   "main": "dist/stencil.js",
   "scripts": {
