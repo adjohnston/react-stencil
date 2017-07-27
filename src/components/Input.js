@@ -8,6 +8,8 @@ const Input = ({name, type, onChange, value}) => {
     return onChange(name, transformValue(value, type))
   }
 
+  const handleOnToggle = ({ target: { checked } }) => {
+    return onChange(name, transformValue(checked, type))
   }
 
   let inputElement
@@ -28,6 +30,16 @@ const Input = ({name, type, onChange, value}) => {
         value={value}
         className={classString('__input')}
         onChange={handleOnChange} />
+    )
+  }
+
+  if (type === 'bool') {
+    inputElement = (
+      <input
+        type='checkbox'
+        checked={value}
+        className={classString('__checkbox')}
+        onChange={handleOnToggle} />
     )
   }
 
