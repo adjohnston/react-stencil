@@ -2,46 +2,44 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import Input from 'src/components/Input'
 
-test('renders correctly', () => {
-  const mockProps = {
-    name: 'className',
-    type: 'string',
-    value: 'button',
-    onChange: () => {}
-  }
+const mockInputStringProps = {
+  name: 'className',
+  type: 'string',
+  value: 'button',
+  onChange: () => {}
+}
 
+const mockCheckboxBoolProps = {
+  name: 'isActive',
+  type: 'bool',
+  value: false,
+  onChange: () => {}
+}
+
+test('renders correctly', () => {
   const tree = renderer
-    .create(<Input {...mockProps} />)
+    .create(<Input {...mockInputStringProps} />)
     .toJSON()
 
   expect(tree).toMatchSnapshot()
 })
 
 test('renders input type of checkbox given a type of bool', () => {
-  const mockProps = {
-    name: 'isActive',
-    type: 'bool',
-    value: false,
-    onChange: () => {}
-  }
-
   const tree = renderer
-    .create(<Input {...mockProps} />)
+    .create(<Input {...mockCheckboxBoolProps} />)
     .toJSON()
 
   expect(tree).toMatchSnapshot()
 })
 
 test('renders input type of checkbox given a type of bool and has attribute checked', () => {
-  const mockProps = {
-    name: 'isActive',
-    type: 'bool',
-    value: true,
-    onChange: () => {}
-  }
+  const {
+    value,
+    ...restProps
+  } = mockCheckboxBoolProps
 
   const tree = renderer
-    .create(<Input {...mockProps} />)
+    .create(<Input {...restProps} value={true} />)
     .toJSON()
 
   expect(tree).toMatchSnapshot()
