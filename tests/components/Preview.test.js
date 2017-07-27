@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Preview from 'components/Preview'
+import Preview from 'src/components/Preview'
 
 const Test = () => <div>Just a test</div>
 

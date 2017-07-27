@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Swatch from 'components/Swatch'
+import Swatch from 'src/components/Swatch'
 
 test('it renders correctly', () => {
   const props = {

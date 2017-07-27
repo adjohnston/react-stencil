@@ -60,6 +60,9 @@ exports[`renders correctly 1`] = `
           string
         </b>
       </div>
+      <div>
+        Just a basic description
+      </div>
       <input
         className="stncl__input"
         onChange={[Function]}

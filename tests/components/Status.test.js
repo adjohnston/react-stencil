@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Status from 'components/Status'
+import Status from 'src/components/Status'
 
 test('it should render correctly with status - DANGEROUS', () => {
   const mockProps = {

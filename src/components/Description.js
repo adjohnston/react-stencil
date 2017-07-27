@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classString from 'helpers/class-string'
+import classString from 'src/helpers/class-string'
 
 const Description = ({children: description}) => ((!!description && (
   <section

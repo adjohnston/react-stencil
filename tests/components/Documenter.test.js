@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import Documenter from 'components/Documenter'
+import Documenter from 'src/components/Documenter'
 
 const Test = () => <div>Just a test</div>
 const mockProps = {

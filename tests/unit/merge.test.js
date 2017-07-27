@@ -1,4 +1,4 @@
-import merge from 'helpers/merge'
+import merge from 'src/helpers/merge'
 
 describe('#merge', () => {
   test('return an empty object if no arguments are passed', () => {

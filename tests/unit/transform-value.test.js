@@ -1,4 +1,4 @@
-import transformValue from 'helpers/transform-value'
+import transformValue from 'src/helpers/transform-value'
 
 test('return a value as is without a type', () => {
   expect(transformValue('hello world')).toBe('hello world')
