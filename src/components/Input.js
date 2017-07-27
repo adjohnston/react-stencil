@@ -4,7 +4,7 @@ import classString from 'helpers/class-string'
 import transformValue from 'helpers/transform-value'
 
 const Input = ({name, type, onChange, value}) => {
-  const handleOnChange = ({target: {value}}) => {
+  const handleOnChange = ({ target: { value } }) => {
     return onChange(name, transformValue(value, type))
   }
 
