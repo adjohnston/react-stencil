@@ -22,9 +22,7 @@ export default {
 
   resolve: {
     alias: {
-      helpers: resolve(__dirname, 'src/helpers'),
-      components: resolve(__dirname, 'src/components'),
-      constants: resolve(__dirname, 'src/constants')
+      src: resolve(__dirname, 'src')
     }
   },
 

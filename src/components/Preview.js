@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import classString from 'helpers/class-string'
-import Swatch from 'components/Swatch'
+import classString from 'src/helpers/class-string'
+import Swatch from 'src/components/Swatch'
 
 export default class Preview extends Component {
   constructor (props) {

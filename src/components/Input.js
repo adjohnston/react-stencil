@@ -1,20 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classString from 'helpers/class-string'
-import transformValue from 'helpers/transform-value'
+import classString from 'src/helpers/class-string'
+import transformValue from 'src/helpers/transform-value'
+
+const handleInputOnChange = (onChange, name, type) => ({ target }) => {
+  return onChange(name, transformValue(
+    (type === 'bool')
+    ? target.checked
+    : target.value
+  ), type)
+}
 
 const Input = ({name, type, onChange, value}) => {
-  const handleOnChange = ({target: {value}}) => {
-    return onChange(name, transformValue(value, type))
-  }
+  const handleOnChange = handleInputOnChange(onChange, name, type)
 
-  if (type === 'func') {
-    return null
-  }
-
-  let inputEl
+  let inputElement
   if (type === 'string') {
-    inputEl = (
+    inputElement = (
       <input
         type='text'
         value={value}
@@ -24,7 +26,7 @@ const Input = ({name, type, onChange, value}) => {
   }
 
   if (type === 'number') {
-    inputEl = (
+    inputElement = (
       <input
         type='number'
         value={value}
@@ -33,17 +35,33 @@ const Input = ({name, type, onChange, value}) => {
     )
   }
 
-  return inputEl || null
+  if (type === 'bool') {
+    inputElement = (
+      <input
+        type='checkbox'
+        checked={value}
+        className={classString('__checkbox')}
+        onChange={handleOnChange} />
+    )
+  }
+
+  return inputElement || null
 }
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf([
+    'string',
+    'number',
+    'bool'
+  ]).isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.array
-  ]).isRequired
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.bool
+  ])
 }
 
+export { handleInputOnChange }
 export default Input

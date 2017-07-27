@@ -1,12 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from 'components/Input'
+import Input from 'src/components/Input'
 
 const Prop = ({name, defs = {}, ...restProps}) => {
   const {
     type,
-    required
+    required,
+    description
   } = defs
+
+  let descriptionElement
+  if (description) {
+    descriptionElement = (
+      <div>
+        {description}
+      </div>
+    )
+  }
+
+  let inputElement
+  if (type === 'string' || type === 'number' || type === 'bool') {
+    inputElement = (
+      <Input
+        type={type}
+        name={name}
+        {...restProps} />
+    )
+  }
 
   return (
     <li>
@@ -19,10 +39,8 @@ const Prop = ({name, defs = {}, ...restProps}) => {
         {required ? <i> - is required</i> : null}
       </div>
 
-      <Input
-        type={type}
-        name={name}
-        {...restProps} />
+      {descriptionElement}
+      {inputElement}
     </li>
   )
 }

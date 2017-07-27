@@ -1,5 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders a toggle element with a type of bool 1`] = `
+<li>
+  <div>
+    isActive
+  </div>
+  <div>
+    <b>
+      bool
+    </b>
+    <i>
+       - is required
+    </i>
+  </div>
+  <div>
+    isActive indicates whether the component is active or not
+  </div>
+  <input
+    checked={true}
+    className="stncl__checkbox"
+    onChange={[Function]}
+    type="checkbox"
+  />
+</li>
+`;
+
 exports[`renders correctly 1`] = `
 <li>
   <div>
@@ -12,6 +37,9 @@ exports[`renders correctly 1`] = `
     <i>
        - is required
     </i>
+  </div>
+  <div>
+    Add a class to the element
   </div>
   <input
     className="stncl__input"

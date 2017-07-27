@@ -1,13 +1,13 @@
 {
   "name": "react-stencil",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "",
   "main": "dist/stencil.js",
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "build": "webpack -p",
-    "watch": "webpack -w",
+    "build:watch": "webpack -w",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -42,9 +42,15 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^helpers(.*)$": "<rootDir>/src/helpers$1",
-      "^components(.*)$": "<rootDir>/src/components$1",
-      "^constants(.*)$": "<rootDir>/src/constants$1"
+      "^src(.*)$": "<rootDir>/src$1"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
     },
     "collectCoverageFrom": [
       "src/**/*.js"

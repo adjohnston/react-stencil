@@ -1,4 +1,4 @@
-import classString from 'helpers/class-string'
+import classString from 'src/helpers/class-string'
 
 describe('#classString', () => {
   test(`given no argument should return null`, () => {

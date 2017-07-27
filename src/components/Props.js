@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Prop from 'components/Prop'
-import transformValue from 'helpers/transform-value'
+import Prop from 'src/components/Prop'
+import transformValue from 'src/helpers/transform-value'
 
 const Props = ({state, setProp, props}) => {
   return (!!props & !!state && (
