@@ -1,13 +1,14 @@
 {
   "name": "react-stencil",
-  "version": "0.5.1",
+  "version": "0.8.0",
   "description": "",
-  "main": "dist/Stencil.js",
+  "main": "dist/stencil.js",
   "scripts": {
-    "test": "jest",
-    "build": "webpack",
-    "watch": "webpack -w",
-    "prepublish": "webpack -p"
+    "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
+    "build": "webpack -p",
+    "build:watch": "webpack -w",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -25,20 +26,43 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^4.3.0",
     "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.3",
     "eslint-plugin-node": "^4.2.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^19.0.2",
     "prop-types": "^15.5.6",
+    "react": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
     "webpack": "^2.2.1"
   },
   "dependencies": {
+<<<<<<< HEAD
     "assign-deep": "^0.4.5",
     "codemirror": "^5.26.0",
     "jsx-to-string": "^1.1.0",
     "react": "^15.4.2",
     "react-codemirror": "^1.0.0",
     "react-dom": "^15.5.4"
+=======
+    "assign-deep": "^0.4.5"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^src(.*)$": "<rootDir>/src$1"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+>>>>>>> ed6b7f7dc2751349ecc12a6c9ac13cf717059fc7
   }
 }

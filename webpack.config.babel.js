@@ -1,12 +1,12 @@
 import { resolve } from 'path'
 
 export default {
-  entry: resolve(__dirname, 'src/Stencil.js'),
+  entry: resolve(__dirname, 'src/stencil.js'),
 
   output: {
-    filename: 'Stencil.js',
+    filename: 'stencil.js',
     path: resolve(__dirname, 'dist'),
-    library: 'Stencil',
+    library: 'stencil',
     libraryTarget: 'umd'
   },
 
@@ -22,8 +22,7 @@ export default {
 
   resolve: {
     alias: {
-      helpers: resolve(__dirname, 'src/helpers.js'),
-      components: resolve(__dirname, 'src/components')
+      src: resolve(__dirname, 'src')
     }
   },
 

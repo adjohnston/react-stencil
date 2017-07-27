@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
-import Documenter from 'components/Documenter'
-import assign from 'assign-deep'
+import Documenter from 'src/components/Documenter'
 
-export const specify = (globals, props, component) => {
-  return assign({propDefs: props}, globals, component)
-}
-
-const Stencil = specs => {
-  return C => {
+//    stencil : object -> component -> component
+const stencil = (specs = {}) => {
+  return WrappedComponent => {
     return class Stencil extends Component {
       constructor (props) {
         super(props)
@@ -36,7 +32,7 @@ const Stencil = specs => {
             setProp={this.setProp}
             componentProps={extendedProps}
             {...specs}>
-            <C {...extendedProps} />
+            <WrappedComponent {...extendedProps} />
           </Documenter>
         )
       }
@@ -44,4 +40,5 @@ const Stencil = specs => {
   }
 }
 
-export default Stencil
+export { default as merge } from 'src/helpers/merge'
+export default stencil

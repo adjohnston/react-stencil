@@ -1,6 +1,7 @@
 import React from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import PropTypes from 'prop-types'
+<<<<<<< HEAD
 import jsxToString from 'jsx-to-string'
 import Code from 'components/Code'
 import Notes from 'components/Notes'
@@ -8,11 +9,22 @@ import Preview from 'components/Preview'
 import Examples from 'components/Examples'
 import Properties from 'components/Properties'
 import { className } from 'helpers'
+=======
+import Notes from 'src/components/Notes'
+import Description from 'src/components/Description'
+import Status from 'src/components/Status'
+import Preview from 'src/components/Preview'
+import Examples from 'src/components/Examples'
+import Props from 'src/components/Props'
+import classString from 'src/helpers/class-string'
+>>>>>>> ed6b7f7dc2751349ecc12a6c9ac13cf717059fc7
 
 const Documenter = ({
   name,
+  description,
+  status,
   notes,
-  propDefs,
+  props,
   examples,
   setExample,
   setProp,
@@ -21,14 +33,21 @@ const Documenter = ({
   children: Component
 }) => (
   <section
-    className={className('layout')}>
+    className={classString('__layout')}>
     <h1
-      className={className('title')}>
+      className={classString('__title')}>
       {name}
     </h1>
 
+    <Status
+      status={status} />
+
+    <Description>
+      {description}
+    </Description>
+
     <section
-      className={className('body')}>
+      className={classString('__body')}>
       <Preview
         swatches={swatches}>
         {Component}
@@ -42,9 +61,9 @@ const Documenter = ({
         setExample={setExample}
         examples={examples} />
 
-      <Properties
+      <Props
         state={componentProps}
-        propDefs={propDefs}
+        props={props}
         setProp={setProp} />
 
       <Notes
@@ -58,11 +77,15 @@ Documenter.propTypes = {
   setExample: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
-  propDefs: PropTypes.object,
+  props: PropTypes.object,
   swatches: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
+  description: PropTypes.node,
   notes: PropTypes.object,
-  examples: PropTypes.object
+  examples: PropTypes.object,
+  status: PropTypes.oneOf([
+    'DANGEROUS', 'WIP', 'READY'
+  ])
 }
 
 export default Documenter
