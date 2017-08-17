@@ -26,6 +26,34 @@ html, body, body > div {
   margin: 0 0 1rem;
 }
 
+.stncl__status {
+  padding: .125rem .5rem;
+  border-radius: .1875rem;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  color: #fff;
+}
+
+.stncl__status--dangerous {
+  background: #e21b3c;
+  box-shadow: 0 2px 0 #bf0020;
+  text-shadow: 0 2px #bf0020;
+}
+
+.stncl__status--wip {
+  background: #f5a23d;
+  box-shadow: 0 2px 0 #dc7900;
+  text-shadow: 0 2px #dc7900;
+}
+
+.stncl__status--ready {
+  background: #66bf39;
+  box-shadow: 0 2px 0 #329400;
+  text-shadow: 0 2px #329400;
+}
+
 /*
 //  background url taken from http://www.heropatterns.com/
 */
