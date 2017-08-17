@@ -21,7 +21,8 @@ const Input = ({name, type, onChange, value}) => {
         type='text'
         value={value}
         className={classString('__input')}
-        onChange={handleOnChange} />
+        onChange={handleOnChange}
+        placeholder={`Change '${name}' prop value...`} />
     )
   }
 
