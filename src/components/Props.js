@@ -4,6 +4,7 @@ import classString from 'src/helpers/class-string'
 import Prop from 'src/components/Prop'
 import transformValue from 'src/helpers/transform-value'
 import sortAlphabetical from 'src/helpers/sort-alphabetical'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 
 const Props = ({state, setProp, props}) => {
   return (!!props & !!state && (
@@ -11,6 +12,8 @@ const Props = ({state, setProp, props}) => {
       className={`${classString('__section')} ${classString('__section--slim')}`}>
       <h2
         className={classString('__heading')}>
+        <HeadingAnchor
+          anchorId='props' />
         Props
       </h2>
 

@@ -34,6 +34,29 @@ html, body, body > div {
   max-width: 30rem;
 }
 
+.stncl__anchor-scroll-point {
+  position: relative;
+  top: -70px;
+}
+
+.stncl__anchor-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1.75rem;
+  width: 1.5rem;
+  opacity: 0;
+  transition: opacity 100ms;
+}
+
+.stncl__heading:hover .stncl__anchor-link,
+.stncl__prop-list-item:hover .stncl__anchor-link {
+  opacity: 1;
+}
+
 .stncl__component-header {
   display: flex;
   align-items: center;
@@ -107,6 +130,7 @@ html, body, body > div {
 }
 
 .stncl__heading {
+  position: relative;
   margin: 0 0 .5rem;
   font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1.5;
@@ -246,6 +270,7 @@ html, body, body > div {
 }
 
 .stncl__prop-heading {
+  position: relative;
   margin: 0 0 .25rem;
   font-size: 1rem;
 }

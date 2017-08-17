@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
+import kebabCase from 'src/helpers/kebab-case'
 import Input from 'src/components/Input'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 
 const Prop = ({name, defs = {}, ...restProps}) => {
   const {
@@ -62,6 +64,8 @@ const Prop = ({name, defs = {}, ...restProps}) => {
       className={`${classString('__list-item')} ${classString('__prop-list-item')}`}>
       <h3
         className={classString('__prop-heading')}>
+        <HeadingAnchor
+          anchorId={`prop-${kebabCase(name)}`} />
         <code
           className={classString('__prop-name')}>
           {name}

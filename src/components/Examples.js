@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
 import sortAlphabetical from 'src/helpers/sort-alphabetical'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 
 class Examples extends Component {
   constructor (props) {
@@ -27,6 +28,8 @@ class Examples extends Component {
         className={`${classString('__section')} ${classString('__section--slim')}`}>
         <h2
           className={classString('__heading')}>
+          <HeadingAnchor
+            anchorId='examples' />
           Examples
         </h2>
 

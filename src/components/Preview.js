@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 import Swatch from 'src/components/Swatch'
 
 export default class Preview extends Component {
@@ -53,6 +54,8 @@ export default class Preview extends Component {
         className={classString('__section')}>
         <h2
           className={classString('__heading')}>
+          <HeadingAnchor
+            anchorId='preview' />
           Preview
         </h2>
 
