@@ -10,6 +10,16 @@ const Prop = ({name, defs = {}, ...restProps}) => {
     description
   } = defs
 
+  let typeElement
+  if (type) {
+    typeElement = (
+      <span
+        className={classString('__prop-type')}>
+        ({type})
+      </span>
+    )
+  }
+
   let requiredElement
   if (required) {
     requiredElement = (
@@ -46,7 +56,8 @@ const Prop = ({name, defs = {}, ...restProps}) => {
       </div>
 
       <div>
-        <b>{type}</b>
+        {typeElement}
+
         {requiredElement}
       </div>
 

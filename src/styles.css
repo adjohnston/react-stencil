@@ -141,6 +141,13 @@ html, body, body > div {
   color: white;
 }
 
+.stncl__prop-type {
+  margin-right: .5rem;
+  font-family: monospace;
+  font-style: italic;
+  color: #737373;
+}
+
 .stncl__prop-required {
   padding: .125rem .25rem;
   background: #864cbf;
