@@ -15,7 +15,10 @@ const Notes = ({notes}) => (!!notes && (
           className={classString('__heading')}>
           {group}
         </h3>
-        {notes[group]}
+        <p
+          className={classString('__p')}>
+          {notes[group]}
+        </p>
       </div>
     ))}
   </section>

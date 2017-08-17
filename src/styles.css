@@ -96,6 +96,16 @@ html, body, body > div {
   line-height: 1.5;
 }
 
+.stncl__p {
+  margin: 0 0 .5rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.stncl__p:last-child {
+  margin-bottom: 0;
+}
+
 .stncl__preset--current {
   background: #dffbe5;
 }
