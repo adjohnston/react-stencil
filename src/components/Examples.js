@@ -8,7 +8,7 @@ class Examples extends Component {
     super(props)
 
     this.state = {
-      current: 'default'
+      current: 'Default'
     }
 
     this.onChange = this.onChange.bind(this)

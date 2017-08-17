@@ -10,7 +10,7 @@ const stencil = (specs = {}) => {
 
         this.state = {}
         this.extendedExamples = Object.assign(specs.examples || {}, {
-          default: {...this.props}
+          Default: {...this.props}
         })
         this.setExample = this.setExample.bind(this)
         this.setProp = this.setProp.bind(this)
