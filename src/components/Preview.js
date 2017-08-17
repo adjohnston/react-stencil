@@ -30,15 +30,18 @@ export default class Preview extends Component {
     let swatchButtons
     if (swatches && swatches.length > 0) {
       swatchButtons = (
-        <div>
+        <div
+          className={classString('__swatch-list')}>
           <Swatch
             swatch={null}
+            isActive={current === null}
             onClick={this.setSwatch} />
 
           {swatches.map(swatch => (
             <Swatch
               key={swatch}
               swatch={swatch}
+              isActive={current === swatch}
               onClick={this.setSwatch} />
           ))}
         </div>
