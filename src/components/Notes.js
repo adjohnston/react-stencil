@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 
 const Notes = ({notes}) => (!!notes && (
   <section>
-    <h2>
+    <h2
+      className={classString('__heading')}>
       Notes
     </h2>
 
     {Object.keys(notes).map(group => (
       <div
         key={group}>
-        <h3>
+        <h3
+          className={classString('__heading')}>
           {group}
         </h3>
         {notes[group]}

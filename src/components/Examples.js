@@ -24,7 +24,7 @@ class Examples extends Component {
     return (!!examples && (
       <section>
         <h2
-          className={classString('__title')}>
+          className={classString('__heading')}>
           Examples
         </h2>
 

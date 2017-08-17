@@ -6,7 +6,8 @@ import transformValue from 'src/helpers/transform-value'
 const Props = ({state, setProp, props}) => {
   return (!!props & !!state && (
     <section>
-      <h2>
+      <h2
+        className={classString('__heading')}>
         Props
       </h2>
 

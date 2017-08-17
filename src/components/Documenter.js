@@ -26,7 +26,7 @@ const Documenter = ({
     <header
       className={classString('__component-header')}>
       <h1
-        className={classString('__title')}>
+        className={classString('__heading')}>
         {name}
       </h1>
 
