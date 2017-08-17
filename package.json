@@ -38,7 +38,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "assign-deep": "^0.4.5"
+    "lodash.merge": "^4.6.0"
   },
   "jest": {
     "moduleNameMapper": {
