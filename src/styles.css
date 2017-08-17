@@ -140,3 +140,16 @@ html, body, body > div {
   content: '▼';
   color: white;
 }
+
+.stncl__prop-required {
+  padding: .125rem .25rem;
+  background: #864cbf;
+  border-radius: .1875rem;
+  box-shadow: 0 2px 0 #6309bb;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .75rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  text-shadow: 0 2px rgba(0, 0, 0, .1);
+  color: #fff;
+}

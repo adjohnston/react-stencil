@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classString from 'src/helpers/class-string'
 import Input from 'src/components/Input'
 
 const Prop = ({name, defs = {}, ...restProps}) => {
@@ -8,6 +9,16 @@ const Prop = ({name, defs = {}, ...restProps}) => {
     required,
     description
   } = defs
+
+  let requiredElement
+  if (required) {
+    requiredElement = (
+      <span
+        className={classString('__prop-required')}>
+        Required
+      </span>
+    )
+  }
 
   let descriptionElement
   if (description) {
@@ -36,7 +47,7 @@ const Prop = ({name, defs = {}, ...restProps}) => {
 
       <div>
         <b>{type}</b>
-        {required ? <i> - is required</i> : null}
+        {requiredElement}
       </div>
 
       {descriptionElement}
