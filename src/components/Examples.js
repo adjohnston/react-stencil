@@ -35,12 +35,14 @@ class Examples extends Component {
             className={classString('__dropdown__select')}
             onChange={this.onChange}
             value={this.state.current}>
-            {Object.keys(examples).map(example => (
-              <option
-                key={example}>
-                {example}
-              </option>
-            ))}
+            {Object.keys(examples)
+              .sort()
+              .map(example => (
+                <option
+                  key={example}>
+                  {example}
+                </option>
+              ))}
           </select>
 
           <div className={classString('__dropdown__arrow')} />
