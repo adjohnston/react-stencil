@@ -26,6 +26,17 @@ html, body, body > div {
   margin: 0 0 1rem;
 }
 
+.stncl__component-header {
+  display: flex;
+  align-items: center;
+  margin: 0 0 .5rem;
+  line-height: 1.5;
+}
+
+.stncl__component-header .stncl__heading {
+  margin: 0 1rem 0 0;
+}
+
 .stncl__status {
   padding: .125rem .5rem;
   border-radius: .1875rem;
