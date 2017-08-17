@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
+import sortAlphabetical from 'src/helpers/sort-alphabetical'
 
 class Examples extends Component {
   constructor (props) {
@@ -35,8 +36,7 @@ class Examples extends Component {
             className={classString('__dropdown__select')}
             onChange={this.onChange}
             value={this.state.current}>
-            {Object.keys(examples)
-              .sort()
+            {sortAlphabetical(Object.keys(examples))
               .map(example => (
                 <option
                   key={example}>

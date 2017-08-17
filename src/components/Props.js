@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
 import Prop from 'src/components/Prop'
 import transformValue from 'src/helpers/transform-value'
+import sortAlphabetical from 'src/helpers/sort-alphabetical'
 
 const Props = ({state, setProp, props}) => {
   return (!!props & !!state && (
@@ -15,8 +16,7 @@ const Props = ({state, setProp, props}) => {
 
       <ul
         className={`${classString('__list')} ${classString('__prop-list')}`}>
-        {Object.keys(props)
-          .sort()
+        {sortAlphabetical(Object.keys(props))
           .map(prop => (
             <Prop
               key={prop}
