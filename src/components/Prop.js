@@ -18,6 +18,13 @@ const Prop = ({name, defs = {}, ...restProps}) => {
         ({type})
       </span>
     )
+  } else {
+    typeElement = (
+      <span
+        className={classString('__prop-type-missing')}>
+        Missing type
+      </span>
+    )
   }
 
   let requiredElement

@@ -148,11 +148,10 @@ html, body, body > div {
   color: #737373;
 }
 
+.stncl__prop-type-missing,
 .stncl__prop-required {
   padding: .125rem .25rem;
-  background: #864cbf;
   border-radius: .1875rem;
-  box-shadow: 0 2px 0 #6309bb;
   font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
   font-size: .75rem;
   font-weight: bold;
@@ -160,3 +159,14 @@ html, body, body > div {
   text-shadow: 0 2px rgba(0, 0, 0, .1);
   color: #fff;
 }
+
+.stncl__prop-type-missing {
+  background: #e21b3c;
+  box-shadow: 0 2px 0 #bf0020;
+}
+
+.stncl__prop-required {
+  background: #864cbf;
+  box-shadow: 0 2px 0 #6309bb;
+}
+
