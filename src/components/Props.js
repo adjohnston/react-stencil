@@ -13,15 +13,18 @@ const Props = ({state, setProp, props}) => {
         Props
       </h2>
 
-      <ul>
-        {Object.keys(props).map(prop => (
-          <Prop
-            key={prop}
-            name={prop}
-            defs={props[prop]}
-            value={transformValue(state[prop], props[prop].type)}
-            onChange={setProp} />
-        ))}
+      <ul
+        className={`${classString('__list')} ${classString('__prop-list')}`}>
+        {Object.keys(props)
+          .sort()
+          .map(prop => (
+            <Prop
+              key={prop}
+              name={prop}
+              defs={props[prop]}
+              value={transformValue(state[prop], props[prop].type)}
+              onChange={setProp} />
+          ))}
       </ul>
     </section>
   )) || null
