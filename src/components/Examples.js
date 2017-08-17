@@ -22,7 +22,8 @@ class Examples extends Component {
     const examples = this.props.examples
 
     return (!!examples && (
-      <section>
+      <section
+        className={`${classString('__section')} ${classString('__section--slim')}`}>
         <h2
           className={classString('__heading')}>
           Examples

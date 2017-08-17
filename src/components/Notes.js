@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classString from 'src/helpers/class-string'
 
 const Notes = ({notes}) => (!!notes && (
-  <section>
+  <section
+    className={`${classString('__section')} ${classString('__section--slim')}`}>
     <h2
       className={classString('__heading')}>
       Notes

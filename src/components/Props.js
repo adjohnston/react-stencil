@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classString from 'src/helpers/class-string'
 import Prop from 'src/components/Prop'
 import transformValue from 'src/helpers/transform-value'
 
 const Props = ({state, setProp, props}) => {
   return (!!props & !!state && (
-    <section>
+    <section
+      className={`${classString('__section')} ${classString('__section--slim')}`}>
       <h2
         className={classString('__heading')}>
         Props

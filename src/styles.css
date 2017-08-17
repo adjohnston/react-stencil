@@ -22,6 +22,18 @@ html, body, body > div {
   flex: 1 0 auto;
 }
 
+.stncl__section {
+  margin: 0 0 1rem;
+}
+
+.stncl__section:last-child {
+  margin-bottom: 0;
+}
+
+.stncl__section--slim {
+  max-width: 30rem;
+}
+
 .stncl__component-header {
   display: flex;
   align-items: center;

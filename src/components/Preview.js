@@ -49,7 +49,8 @@ export default class Preview extends Component {
     }
 
     return (
-      <div>
+      <section
+        className={classString('__section')}>
         {swatchButtons}
 
         <div
@@ -57,7 +58,7 @@ export default class Preview extends Component {
           className={classString('__preview')}>
           {Component}
         </div>
-      </div>
+      </section>
     )
   }
 }
