@@ -13,7 +13,7 @@ html, body, body > div {
   display: flex;
   flex-flow: column;
   flex: 1 0 auto;
-  padding: 1rem;
+  padding: 1.75rem 2rem 2rem;
 }
 
 .stncl__body {
