@@ -40,9 +40,10 @@ const Prop = ({name, defs = {}, ...restProps}) => {
   let descriptionElement
   if (description) {
     descriptionElement = (
-      <div>
+      <p
+        className={classString('__p')}>
         {description}
-      </div>
+      </p>
     )
   }
 
@@ -57,18 +58,22 @@ const Prop = ({name, defs = {}, ...restProps}) => {
   }
 
   return (
-    <li>
-      <div>
-        {name}
-      </div>
+    <li
+      className={`${classString('__list-item')} ${classString('__prop-list-item')}`}>
+      <h3
+        className={classString('__prop-heading')}>
+        <code
+          className={classString('__prop-name')}>
+          {name}
+        </code>
 
-      <div>
         {typeElement}
 
         {requiredElement}
-      </div>
+      </h3>
 
       {descriptionElement}
+
       {inputElement}
     </li>
   )
