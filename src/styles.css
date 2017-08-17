@@ -81,6 +81,19 @@ html, body, body > div {
   line-height: 1rem;
 }
 
+.stncl__checkbox {
+  margin-right: .5rem;
+}
+
+.stncl__checkbox-label {
+  padding: .125rem .3125rem;
+  background: #fff;
+  border: 2px solid #ccc;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .875rem;
+  cursor: pointer;
+}
+
 .stncl__swatch-list {
   margin: 0 0 .25rem;
 }
