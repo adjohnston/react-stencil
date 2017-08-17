@@ -121,17 +121,18 @@ html, body, body > div {
 .stncl__dropdown {
   position: relative;
   background: white;
-  border: 2px solid currentcolor;
-  border-radius: .25em;
+  border: 2px solid #ccc;
 }
 
 .stncl__dropdown__select {
   display: block;
   width: 100%;
-  height: 2em;
-  padding: 0 3em 0 1em;
+  height: 2.15rem;
+  padding: 0 3em 0 .5em;
   background: transparent;
   border: 0;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .875rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -146,14 +147,18 @@ html, body, body > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2em;
-  height: 2em;
-  background: currentcolor;
+  width: 2.25em;
+  height: 100%;
+  background: #ccc;
+  font-size: .875rem;
   cursor: pointer;
 }
 
 .stncl__dropdown__arrow:before {
   content: '▼';
+  position: relative;
+  top: 2px;
+  left: 1px;
   color: white;
 }
 
