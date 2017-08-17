@@ -12,7 +12,8 @@ const Notes = ({notes}) => (!!notes && (
 
     {Object.keys(notes).map(group => (
       <div
-        key={group}>
+        key={group}
+        className={classString('__note')}>
         <h3
           className={classString('__heading')}>
           {group}

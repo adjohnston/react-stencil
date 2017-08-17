@@ -292,3 +292,10 @@ html, body, body > div {
   box-shadow: 0 2px 0 #6309bb;
 }
 
+.stncl__note {
+  margin: 0 0 1.5rem;
+}
+
+.stncl__note:last-child {
+  margin-bottom: 0;
+}
