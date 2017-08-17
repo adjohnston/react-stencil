@@ -36,7 +36,7 @@ class Examples extends Component {
             className={classString('__dropdown__select')}
             onChange={this.onChange}
             value={this.state.current}>
-            {sortAlphabetical(Object.keys(examples))
+            {sortAlphabetical(Object.keys(examples), 'Default')
               .map(example => (
                 <option
                   key={example}>
