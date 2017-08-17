@@ -51,6 +51,11 @@ export default class Preview extends Component {
     return (
       <section
         className={classString('__section')}>
+        <h2
+          className={classString('__heading')}>
+          Preview
+        </h2>
+
         {swatchButtons}
 
         <div
