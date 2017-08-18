@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 import Swatch from 'src/components/Swatch'
 
 export default class Preview extends Component {
@@ -30,15 +31,18 @@ export default class Preview extends Component {
     let swatchButtons
     if (swatches && swatches.length > 0) {
       swatchButtons = (
-        <div>
+        <div
+          className={classString('__swatch-list')}>
           <Swatch
             swatch={null}
+            isActive={current === null}
             onClick={this.setSwatch} />
 
           {swatches.map(swatch => (
             <Swatch
               key={swatch}
               swatch={swatch}
+              isActive={current === swatch}
               onClick={this.setSwatch} />
           ))}
         </div>
@@ -46,7 +50,15 @@ export default class Preview extends Component {
     }
 
     return (
-      <div>
+      <section
+        className={classString('__section')}>
+        <h2
+          className={classString('__heading')}>
+          <HeadingAnchor
+            anchorId='preview' />
+          Preview
+        </h2>
+
         {swatchButtons}
 
         <div
@@ -54,7 +66,7 @@ export default class Preview extends Component {
           className={classString('__preview')}>
           {Component}
         </div>
-      </div>
+      </section>
     )
   }
 }

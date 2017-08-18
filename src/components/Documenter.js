@@ -23,13 +23,16 @@ const Documenter = ({
 }) => (
   <section
     className={classString('__layout')}>
-    <h1
-      className={classString('__title')}>
-      {name}
-    </h1>
+    <header
+      className={classString('__component-header')}>
+      <h1
+        className={classString('__heading')}>
+        {name}
+      </h1>
 
-    <Status
-      status={status} />
+      <Status
+        status={status} />
+    </header>
 
     <Description>
       {description}

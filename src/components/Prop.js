@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classString from 'src/helpers/class-string'
+import kebabCase from 'src/helpers/kebab-case'
 import Input from 'src/components/Input'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 
 const Prop = ({name, defs = {}, ...restProps}) => {
   const {
@@ -9,12 +12,40 @@ const Prop = ({name, defs = {}, ...restProps}) => {
     description
   } = defs
 
+  let typeElement
+  if (type) {
+    typeElement = (
+      <span
+        className={classString('__prop-type')}>
+        ({type})
+      </span>
+    )
+  } else {
+    typeElement = (
+      <span
+        className={classString('__prop-type-missing')}>
+        Missing type
+      </span>
+    )
+  }
+
+  let requiredElement
+  if (required) {
+    requiredElement = (
+      <span
+        className={classString('__prop-required')}>
+        Required
+      </span>
+    )
+  }
+
   let descriptionElement
   if (description) {
     descriptionElement = (
-      <div>
+      <p
+        className={classString('__p')}>
         {description}
-      </div>
+      </p>
     )
   }
 
@@ -29,17 +60,24 @@ const Prop = ({name, defs = {}, ...restProps}) => {
   }
 
   return (
-    <li>
-      <div>
-        {name}
-      </div>
+    <li
+      className={`${classString('__list-item')} ${classString('__prop-list-item')}`}>
+      <h3
+        className={classString('__prop-heading')}>
+        <HeadingAnchor
+          anchorId={`prop-${kebabCase(name)}`} />
+        <code
+          className={classString('__prop-name')}>
+          {name}
+        </code>
 
-      <div>
-        <b>{type}</b>
-        {required ? <i> - is required</i> : null}
-      </div>
+        {typeElement}
+
+        {requiredElement}
+      </h3>
 
       {descriptionElement}
+
       {inputElement}
     </li>
   )

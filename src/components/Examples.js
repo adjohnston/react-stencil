@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
+import sortAlphabetical from 'src/helpers/sort-alphabetical'
+import HeadingAnchor from 'src/components/HeadingAnchor'
 
 class Examples extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      current: 'default'
+      current: 'Default'
     }
 
     this.onChange = this.onChange.bind(this)
@@ -22,9 +24,12 @@ class Examples extends Component {
     const examples = this.props.examples
 
     return (!!examples && (
-      <section>
+      <section
+        className={`${classString('__section')} ${classString('__section--slim')}`}>
         <h2
-          className={classString('__title')}>
+          className={classString('__heading')}>
+          <HeadingAnchor
+            anchorId='examples' />
           Examples
         </h2>
 
@@ -34,12 +39,13 @@ class Examples extends Component {
             className={classString('__dropdown__select')}
             onChange={this.onChange}
             value={this.state.current}>
-            {Object.keys(examples).map(example => (
-              <option
-                key={example}>
-                {example}
-              </option>
-            ))}
+            {sortAlphabetical(Object.keys(examples), 'Default')
+              .map(example => (
+                <option
+                  key={example}>
+                  {example}
+                </option>
+              ))}
           </select>
 
           <div className={classString('__dropdown__arrow')} />

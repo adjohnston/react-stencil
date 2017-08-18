@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 html, body, body > div {
   min-width: 100vw;
   min-height: 100vh;
@@ -8,7 +13,7 @@ html, body, body > div {
   display: flex;
   flex-flow: column;
   flex: 1 0 auto;
-  padding: 1rem;
+  padding: 1.75rem 2rem 2rem;
 }
 
 .stncl__body {
@@ -17,21 +22,97 @@ html, body, body > div {
   flex: 1 0 auto;
 }
 
-.stncl__title {
+.stncl__section {
   margin: 0 0 1rem;
+}
+
+.stncl__section:last-child {
+  margin-bottom: 0;
+}
+
+.stncl__section--slim {
+  max-width: 30rem;
+}
+
+.stncl__anchor-scroll-point {
+  position: relative;
+  top: -70px;
+}
+
+.stncl__anchor-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1.75rem;
+  width: 1.5rem;
+  opacity: 0;
+  transition: opacity 100ms;
+}
+
+.stncl__heading:hover .stncl__anchor-link,
+.stncl__prop-list-item:hover .stncl__anchor-link {
+  opacity: 1;
+}
+
+.stncl__component-header {
+  display: flex;
+  align-items: center;
+  margin: 0 0 .5rem;
+  line-height: 1.5;
+}
+
+.stncl__component-header .stncl__heading {
+  margin: 0 1rem 0 0;
+}
+
+.stncl__component-description {
+  font-size: 1.125rem;
+}
+
+.stncl__status {
+  padding: .125rem .5rem;
+  border-radius: .1875rem;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  color: #fff;
+}
+
+.stncl__status--dangerous {
+  background: #e21b3c;
+  box-shadow: 0 2px 0 #bf0020;
+  text-shadow: 0 2px #bf0020;
+}
+
+.stncl__status--wip {
+  background: #f5a23d;
+  box-shadow: 0 2px 0 #dc7900;
+  text-shadow: 0 2px #dc7900;
+}
+
+.stncl__status--ready {
+  background: #66bf39;
+  box-shadow: 0 2px 0 #329400;
+  text-shadow: 0 2px #329400;
 }
 
 /*
 //  background url taken from http://www.heropatterns.com/
 */
 .stncl__preview {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 0 auto;
-  margin: 0 0 1rem;
   padding: 2rem;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 8 8'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
+  border: 2px solid #ccc;
+  box-shadow: inset 0 0 0 2px #fff;
 }
 
 .stncl__preset {
@@ -46,6 +127,23 @@ html, body, body > div {
 
 .stncl__preset:last-child {
   margin-right: 0;
+}
+
+.stncl__heading {
+  position: relative;
+  margin: 0 0 .5rem;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  line-height: 1.5;
+}
+
+.stncl__p {
+  margin: 0 0 .5rem;
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.stncl__p:last-child {
+  margin-bottom: 0;
 }
 
 .stncl__preset--current {
@@ -67,15 +165,36 @@ html, body, body > div {
 
 .stncl__input {
   width: 100%;
-  padding: .5rem 0 .375rem;
-  border: 0 solid rgba(0, 0, 0, .25);
-  border-width: 0 0 .125rem;
-  font: 1rem/1 arial;
+  height: 2.15rem;
+  padding: 0 .5rem;
+  background: #fff;
+  border: 2px solid #ccc;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .875rem;
+  line-height: 1rem;
+}
+
+.stncl__checkbox {
+  margin-right: .5rem;
+}
+
+.stncl__checkbox-label {
+  padding: .125rem .3125rem;
+  background: #fff;
+  border: 2px solid #ccc;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .875rem;
+  cursor: pointer;
+}
+
+.stncl__swatch-list {
+  margin: 0 0 .25rem;
 }
 
 .stncl__swatch-button {
   width: 1.5rem;
   height: 1.5rem;
+  margin: 0 .25rem .25rem 0;
   background: linear-gradient(
     45deg,
     white 42.5%,
@@ -83,23 +202,30 @@ html, body, body > div {
     red 57.5%,
     white 57.5%
   );
+  color: red;
   border: 1px solid rgba(0, 0, 0, .5);
+}
+
+.stncl__swatch-button-active {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px currentColor, inset 0 0 0 3px white, 0 0 0 2px #864cbf;
 }
 
 .stncl__dropdown {
   position: relative;
   background: white;
-  border: 2px solid currentcolor;
-  border-radius: .25em;
+  border: 2px solid #ccc;
 }
 
 .stncl__dropdown__select {
   display: block;
   width: 100%;
-  height: 2em;
-  padding: 0 3em 0 1em;
+  height: 2.15rem;
+  padding: 0 3em 0 .5em;
   background: transparent;
   border: 0;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .875rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -114,13 +240,87 @@ html, body, body > div {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2em;
-  height: 2em;
-  background: currentcolor;
+  width: 2.25em;
+  height: 100%;
+  background: #ccc;
+  font-size: .875rem;
   cursor: pointer;
 }
 
 .stncl__dropdown__arrow:before {
   content: '▼';
+  position: relative;
+  top: 2px;
+  left: 1px;
   color: white;
+}
+
+.stncl__prop-list {
+  margin: 0;
+}
+
+.stncl__prop-list-item {
+  margin: 0 0 1rem;
+  padding: 1rem;
+  background: #f8f8f8;
+}
+
+.stncl__prop-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.stncl__prop-heading {
+  position: relative;
+  margin: 0 0 .25rem;
+  font-size: 1rem;
+}
+
+.stncl__prop-heading:last-child {
+  margin-bottom: 0;
+}
+
+.stncl__prop-name,
+.stncl__prop-type {
+  margin-right: .5rem;
+  font-family: monospace;
+}
+
+.stncl__prop-name {
+  font-weight: bold;
+  color: #864cbf;
+}
+
+.stncl__prop-type {
+  font-style: italic;
+  color: #737373;
+}
+
+.stncl__prop-type-missing,
+.stncl__prop-required {
+  padding: .125rem .25rem;
+  border-radius: .1875rem;
+  font-family: "Montserrat", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: .75rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  text-shadow: 0 2px rgba(0, 0, 0, .1);
+  color: #fff;
+}
+
+.stncl__prop-type-missing {
+  background: #e21b3c;
+  box-shadow: 0 2px 0 #bf0020;
+}
+
+.stncl__prop-required {
+  background: #864cbf;
+  box-shadow: 0 2px 0 #6309bb;
+}
+
+.stncl__note {
+  margin: 0 0 1.5rem;
+}
+
+.stncl__note:last-child {
+  margin-bottom: 0;
 }

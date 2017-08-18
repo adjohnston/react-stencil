@@ -4,7 +4,7 @@ import classString from 'src/helpers/class-string'
 
 const Description = ({children: description}) => ((!!description && (
   <section
-    className={classString('__description')}>
+    className={`${classString('__section')} ${classString('__section--slim')} ${classString('__component-description')}`}>
     {description}
   </section>
 )) || null)

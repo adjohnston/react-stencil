@@ -21,7 +21,8 @@ const Input = ({name, type, onChange, value}) => {
         type='text'
         value={value}
         className={classString('__input')}
-        onChange={handleOnChange} />
+        onChange={handleOnChange}
+        placeholder={`Change '${name}' prop value...`} />
     )
   }
 
@@ -37,11 +38,15 @@ const Input = ({name, type, onChange, value}) => {
 
   if (type === 'bool') {
     inputElement = (
-      <input
-        type='checkbox'
-        checked={value}
-        className={classString('__checkbox')}
-        onChange={handleOnChange} />
+      <label
+        className={classString('__checkbox-label')}>
+        <input
+          type='checkbox'
+          checked={value}
+          className={classString('__checkbox')}
+          onChange={handleOnChange} />
+        {value ? `'${name}' is true` : `'${name}' is false`}
+      </label>
     )
   }
 
