@@ -32,9 +32,7 @@ const Documenter = ({
     <Status
       status={status} />
 
-    <Description>
-      {description}
-    </Description>
+    {descriptionElement(template, description)}
 
     <section
       className={classString('__body')}>
@@ -69,9 +67,21 @@ Documenter.propTypes = {
   description: PropTypes.node,
   notes: PropTypes.object,
   examples: PropTypes.object,
+  template: PropTypes.shape({
+    description: PropTypes.func
+  }),
   status: PropTypes.oneOf([
     'DANGEROUS', 'WIP', 'READY'
   ])
 }
 
 export default Documenter
+
+function descriptionElement (template = {}, description) {
+  return (
+    <Description
+      description={description}>
+      {template.description}
+    </Description>
+  )
+}
