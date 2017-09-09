@@ -15,6 +15,13 @@ const descriptionElement = (template = {}, description) => (
   </Description>
 )
 
+const statusElement = (template = {}, status) => (
+  <Status
+    status={status}>
+    {template.status}
+  </Status>
+)
+
 const Documenter = ({
   name,
   description,
@@ -36,9 +43,7 @@ const Documenter = ({
       {name}
     </h1>
 
-    <Status
-      status={status} />
-
+    {statusElement(template, status)}
     {descriptionElement(template, description)}
 
     <section
