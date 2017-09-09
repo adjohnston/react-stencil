@@ -5,7 +5,7 @@ exports[`it should render correctly 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
@@ -125,7 +125,7 @@ exports[`it should render correctly without a description 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
@@ -240,7 +240,7 @@ exports[`it should render correctly without a examples 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
@@ -337,7 +337,7 @@ exports[`it should render correctly without a notes 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
@@ -438,7 +438,7 @@ exports[`it should render correctly without a status 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
@@ -553,7 +553,7 @@ exports[`it should render correctly without a swatches 1`] = `
   className="stncl__layout"
 >
   <h1
-    className="stncl__title"
+    className="stncl__name"
   >
     Test
   </h1>
