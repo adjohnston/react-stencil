@@ -19,6 +19,7 @@ const Documenter = ({
   setProp,
   componentProps,
   swatches,
+  template,
   children: Component
 }) => (
   <section
