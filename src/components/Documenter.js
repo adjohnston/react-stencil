@@ -8,6 +8,13 @@ import Examples from 'src/components/Examples'
 import Props from 'src/components/Props'
 import classString from 'src/helpers/class-string'
 
+const descriptionElement = (template = {}, description) => (
+  <Description
+    description={description}>
+    {template.description}
+  </Description>
+)
+
 const Documenter = ({
   name,
   description,
@@ -76,12 +83,3 @@ Documenter.propTypes = {
 }
 
 export default Documenter
-
-function descriptionElement (template = {}, description) {
-  return (
-    <Description
-      description={description}>
-      {template.description}
-    </Description>
-  )
-}

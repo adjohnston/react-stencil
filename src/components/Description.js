@@ -16,11 +16,12 @@ const Description = ({children, description}) => (
 )
 
 Description.propTypes = {
-  children: PropTypes.func
+  children: PropTypes.func,
+  description: PropTypes.node
 }
 
 FallbackTemplate.propsTypes = {
-  description: PropTypes.node
+  description: PropTypes.node.isRequired
 }
 
 export default Description
