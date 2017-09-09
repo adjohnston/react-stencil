@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Notes from 'src/components/Notes'
+import Name from 'src/components/Name'
 import Description from 'src/components/Description'
+import Notes from 'src/components/Notes'
 import Status from 'src/components/Status'
 import Preview from 'src/components/Preview'
 import Examples from 'src/components/Examples'
 import Props from 'src/components/Props'
 import classString from 'src/helpers/class-string'
+
+const nameElement = (template = {}, name) => (
+  <Name
+    name={name}>
+    {template.name}
+  </Name>
+)
 
 const descriptionElement = (template = {}, description) => (
   <Description
@@ -38,11 +46,8 @@ const Documenter = ({
 }) => (
   <section
     className={classString('__layout')}>
-    <h1
-      className={classString('__title')}>
-      {name}
-    </h1>
 
+    {nameElement(template, name)}
     {statusElement(template, status)}
     {descriptionElement(template, description)}
 
