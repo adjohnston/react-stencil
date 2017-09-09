@@ -7,7 +7,6 @@ import Status from 'src/components/Status'
 import Preview from 'src/components/Preview'
 import Examples from 'src/components/Examples'
 import Props from 'src/components/Props'
-import classString from 'src/helpers/class-string'
 
 const nameElement = (template = {}, name) => (
   <Name
@@ -44,33 +43,27 @@ const Documenter = ({
   template,
   children: Component
 }) => (
-  <section
-    className={classString('__layout')}>
-
+  <div>
     {nameElement(template, name)}
     {statusElement(template, status)}
     {descriptionElement(template, description)}
 
-    <section
-      className={classString('__body')}>
-      <Preview
-        swatches={swatches}>
-        {Component}
-      </Preview>
+    <Preview>
+      {Component}
+    </Preview>
 
-      <Examples
-        setExample={setExample}
-        examples={examples} />
+    <Examples
+      setExample={setExample}
+      examples={examples} />
 
-      <Props
-        state={componentProps}
-        props={props}
-        setProp={setProp} />
+    <Props
+      state={componentProps}
+      props={props}
+      setProp={setProp} />
 
-      <Notes
-        notes={notes} />
-    </section>
-  </section>
+    <Notes
+      notes={notes} />
+  </div>
 )
 
 Documenter.propTypes = {
