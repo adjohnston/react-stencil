@@ -115,4 +115,35 @@ describe('#merge', () => {
 
     expect(actual).toEqual(expectation)
   })
+
+  test(`globalSpec doesn't merge unknown properties with component spec`, () => {
+    const globalSpec = {
+      props: {
+        id: {
+          type: 'string',
+          description: 'I should not appear'
+        }
+      }
+    }
+
+    const componentSpec = {
+      props: {
+        onClick: {
+          type: 'func'
+        }
+      }
+    }
+
+    const expectation = {
+      props: {
+        onClick: {
+          type: 'func'
+        }
+      }
+    }
+
+    const actual = merge(globalSpec, componentSpec)
+
+    expect(actual).toEqual(expectation)
+  })
 })
