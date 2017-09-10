@@ -29,6 +29,13 @@ const statusElement = (template = {}, status) => (
   </Status>
 )
 
+const previewElement = (template = {}, component) => (
+  <Preview
+    component={component}>
+    {template.preview}
+  </Preview>
+)
+
 const Documenter = ({
   name,
   description,
@@ -41,16 +48,13 @@ const Documenter = ({
   componentProps,
   swatches,
   template,
-  children: Component
+  children: component
 }) => (
   <div>
     {nameElement(template, name)}
     {statusElement(template, status)}
     {descriptionElement(template, description)}
-
-    <Preview>
-      {Component}
-    </Preview>
+    {previewElement(template, component)}
 
     <Examples
       setExample={setExample}
