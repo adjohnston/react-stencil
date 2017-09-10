@@ -8,31 +8,32 @@ import Preview from 'src/components/Preview'
 import Examples from 'src/components/Examples'
 import Props from 'src/components/Props'
 
-const nameElement = (template = {}, name) => (
+const nameElement = (template, name) => (
   <Name
     name={name}>
-    {template.name}
+    {template}
   </Name>
 )
 
-const descriptionElement = (template = {}, description) => (
+const descriptionElement = (template, description) => (
   <Description
     description={description}>
-    {template.description}
+    {template}
   </Description>
 )
 
-const statusElement = (template = {}, status) => (
+const statusElement = (template, status) => (
   <Status
     status={status}>
-    {template.status}
+    {template}
   </Status>
 )
 
-const previewElement = (template = {}, component) => (
+const previewElement = (template, currentSwatch, component) => (
   <Preview
+    currentSwatch={currentSwatch}
     component={component}>
-    {template.preview}
+    {template}
   </Preview>
 )
 
@@ -47,14 +48,15 @@ const Documenter = ({
   setProp,
   componentProps,
   swatches,
+  currentSwatch,
   template,
   children: component
 }) => (
   <div>
-    {nameElement(template, name)}
-    {statusElement(template, status)}
-    {descriptionElement(template, description)}
-    {previewElement(template, component)}
+    {nameElement(template.name, name)}
+    {statusElement(template.status, status)}
+    {descriptionElement(template.description, description)}
+    {previewElement(template.preview, currentSwatch, component)}
 
     <Examples
       setExample={setExample}
@@ -77,12 +79,16 @@ Documenter.propTypes = {
   componentProps: PropTypes.object.isRequired,
   props: PropTypes.object,
   swatches: PropTypes.arrayOf(PropTypes.string),
+  currentSwatch: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.node,
   notes: PropTypes.object,
   examples: PropTypes.object,
   template: PropTypes.shape({
-    description: PropTypes.func
+    name: PropTypes.func,
+    description: PropTypes.func,
+    status: PropTypes.func,
+    preview: PropTypes.func,
   }),
   status: PropTypes.oneOf([
     'DANGEROUS', 'WIP', 'READY'
