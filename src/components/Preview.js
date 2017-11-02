@@ -4,13 +4,13 @@ import classString from 'src/helpers/class-string'
 
 const FallbackTemplate = (component, currentSwatch) => (!!component && (
   <div
-    style={{background: currentSwatch}}
+    style={(!!currentSwatch && { background: currentSwatch }) || null}
     className={classString('__preview')}>
     {component}
   </div>
 )) || null
 
-const Preview = ({children, currentSwatch, component}) => (
+const Preview = ({ children, currentSwatch, component }) => (
   (children && component)
     ? children(component, currentSwatch)
     : FallbackTemplate(component, currentSwatch)
