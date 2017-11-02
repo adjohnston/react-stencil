@@ -28,13 +28,21 @@ test('it should render correctly when given a template', () => {
       'Developer Notes': 'I am a developer',
       'Designer Notes': 'I am a designer'
     },
-    children: (notes) => (notes && notes.map(note => {
-      return (
-        <div>
-          {note}
-        </div>
-      )
-    }))
+    children: (notes) => (!!notes && (
+      <div>
+        <h2>
+          Notes
+        </h2>
+        {Object.keys(notes).map((note, i) => {
+          return (
+            <div
+              key={i}>
+              {note}
+            </div>
+          )
+        })}
+      </div>
+    ))
   }
 
   const tree = renderer
