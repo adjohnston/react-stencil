@@ -37,6 +37,13 @@ const previewElement = (template, currentSwatch, component) => (
   </Preview>
 )
 
+const notesElement = (template, notes) => (
+  <Notes
+    notes={notes}>
+    {template}
+  </Notes>
+)
+
 const Documenter = ({
   name,
   description,
@@ -67,8 +74,7 @@ const Documenter = ({
       props={props}
       setProp={setProp} />
 
-    <Notes
-      notes={notes} />
+    {notesElement(template.notes, notes)}
   </div>
 )
 
@@ -89,6 +95,7 @@ Documenter.propTypes = {
     description: PropTypes.func,
     status: PropTypes.func,
     preview: PropTypes.func,
+    notes: PropTypes.func
   }),
   status: PropTypes.oneOf([
     'DANGEROUS', 'WIP', 'READY'
