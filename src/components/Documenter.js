@@ -56,8 +56,8 @@ const Documenter = ({
   componentProps,
   swatches,
   currentSwatch,
-  template,
-  children: component
+  children: component,
+  template = {}
 }) => (
   <div>
     {nameElement(template.name, name)}
