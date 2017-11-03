@@ -29,7 +29,7 @@ const statusElement = (template, status) => (
   </Status>
 )
 
-const previewElement = (template, currentSwatch, component) => (
+const previewElement = (template, component, currentSwatch) => (
   <Preview
     currentSwatch={currentSwatch}
     component={component}>
@@ -63,11 +63,11 @@ const Documenter = ({
     {nameElement(template.name, name)}
     {statusElement(template.status, status)}
     {descriptionElement(template.description, description)}
-    {previewElement(template.preview, currentSwatch, component)}
 
     <Examples
       setExample={setExample}
       examples={examples} />
+    {previewElement(template.preview, component, currentSwatch)}
 
     <Props
       state={componentProps}

@@ -10,7 +10,7 @@ const FallbackTemplate = (component, currentSwatch) => (!!component && (
   </div>
 )) || null
 
-const Preview = ({ children, currentSwatch, component }) => (
+const Preview = ({ children, component, currentSwatch }) => (
   (children && component)
     ? children(component, currentSwatch)
     : FallbackTemplate(component, currentSwatch)
