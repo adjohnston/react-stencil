@@ -70,7 +70,6 @@ const Documenter = ({
   template = {}
 }) => (
   <div>
-    {console.log(currentExample)}
     {nameElement(template.name, name)}
     {statusElement(template.status, status)}
     {descriptionElement(template.description, description)}
