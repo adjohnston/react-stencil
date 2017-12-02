@@ -1,56 +1,46 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
 
-class Examples extends Component {
-  constructor (props) {
-    super(props)
+const FallbackTemplate = (setExample, currentExample, examples) => (!!examples && (
+  <section>
+    <h2
+      className={classString('__title')}>
+      Examples
+    </h2>
 
-    this.state = {
-      current: 'default'
-    }
+    <div
+      className={classString('__dropdown')}>
+      <select
+        className={classString('__dropdown__select')}
+        onChange={({ target: { value } }) => setExample(value)}
+        value={currentExample}>
 
-    this.onChange = this.onChange.bind(this)
-  }
+        {Object.keys(examples).map(example => (
+          <option
+            key={example}>
+            {example}
+          </option>
+        ))}
+      </select>
 
-  onChange ({target: { value }}) {
-    this.props.setExample(value)
-    this.setState({current: value})
-  }
+      <div className={classString('__dropdown__arrow')} />
+    </div>
+  </section>
+)) || null
 
-  render () {
-    const examples = this.props.examples
-
-    return (!!examples && (
-      <section>
-        <h2
-          className={classString('__title')}>
-          Examples
-        </h2>
-
-        <div
-          className={classString('__dropdown')}>
-          <select
-            className={classString('__dropdown__select')}
-            onChange={this.onChange}
-            value={this.state.current}>
-            {Object.keys(examples).map(example => (
-              <option
-                key={example}>
-                {example}
-              </option>
-            ))}
-          </select>
-
-          <div className={classString('__dropdown__arrow')} />
-        </div>
-      </section>
-    )) || null
-  }
+const Examples = ({ children, setExample, currentExample, examples }) => {
+  return (
+    (children && examples)
+      ? children(setExample, currentExample, examples)
+      : FallbackTemplate(setExample, currentExample, examples)
+  )
 }
 
 Examples.propTypes = {
   setExample: PropTypes.func.isRequired,
+  currentExample: PropTypes.string.isRequired,
+  children: PropTypes.func,
   examples: PropTypes.object
 }
 

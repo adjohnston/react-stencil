@@ -37,6 +37,15 @@ const previewElement = (template, component, currentSwatch) => (
   </Preview>
 )
 
+const examplesElement = (template, setExample, currentExample, examples) => (
+  <Examples
+    setExample={setExample}
+    currentExample={currentExample}
+    examples={examples}>
+    {template}
+  </Examples>
+)
+
 const notesElement = (template, notes) => (
   <Notes
     notes={notes}>
@@ -56,18 +65,17 @@ const Documenter = ({
   componentProps,
   swatches,
   currentSwatch,
+  currentExample,
   children: component,
   template = {}
 }) => (
   <div>
+    {console.log(currentExample)}
     {nameElement(template.name, name)}
     {statusElement(template.status, status)}
     {descriptionElement(template.description, description)}
-
-    <Examples
-      setExample={setExample}
-      examples={examples} />
     {previewElement(template.preview, component, currentSwatch)}
+    {examplesElement(template.examples, setExample, currentExample, examples)}
 
     <Props
       state={componentProps}
@@ -83,9 +91,10 @@ Documenter.propTypes = {
   setExample: PropTypes.func.isRequired,
   setProp: PropTypes.func.isRequired,
   componentProps: PropTypes.object.isRequired,
+  currentSwatch: PropTypes.string.isRequired,
+  currentExample: PropTypes.string.isRequired,
   props: PropTypes.object,
   swatches: PropTypes.arrayOf(PropTypes.string),
-  currentSwatch: PropTypes.string,
   name: PropTypes.string,
   description: PropTypes.node,
   notes: PropTypes.object,
@@ -95,6 +104,7 @@ Documenter.propTypes = {
     description: PropTypes.func,
     status: PropTypes.func,
     preview: PropTypes.func,
+    examples: PropTypes.func,
     notes: PropTypes.func
   }),
   status: PropTypes.oneOf([

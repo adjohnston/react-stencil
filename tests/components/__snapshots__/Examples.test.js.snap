@@ -15,29 +15,7 @@ exports[`it should render correctly 1`] = `
     <select
       className="stncl__dropdown__select"
       onChange={[Function]}
-      value="default"
-    />
-    <div
-      className="stncl__dropdown__arrow"
-    />
-  </div>
-</section>
-`;
-
-exports[`it should show the value when the selection is changed 1`] = `
-<section>
-  <h2
-    className="stncl__title"
-  >
-    Examples
-  </h2>
-  <div
-    className="stncl__dropdown"
-  >
-    <select
-      className="stncl__dropdown__select"
-      onChange={[Function]}
-      value="something else"
+      value={undefined}
     >
       <option>
         something else
@@ -48,4 +26,17 @@ exports[`it should show the value when the selection is changed 1`] = `
     />
   </div>
 </section>
+`;
+
+exports[`it should render correctly when given a template 1`] = `
+<div>
+  <h1>
+    Usecases
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    something else
+  </button>
+</div>
 `;

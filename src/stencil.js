@@ -9,7 +9,8 @@ const stencil = (specs = {}) => {
         super(props)
 
         this.state = {
-          currentSwatch: null
+          currentSwatch: '',
+          currentExample: 'default'
         }
 
         this.extendedExamples = Object.assign(specs.examples || {}, {
@@ -38,6 +39,7 @@ const stencil = (specs = {}) => {
       render () {
         const {
           currentSwatch,
+          currentExample,
           ...componentState
         } = this.state
 
@@ -48,6 +50,7 @@ const stencil = (specs = {}) => {
             setProp={this.setProp}
             setSwatch={this.setSwatch}
             currentSwatch={currentSwatch}
+            currentExample={currentExample}
             componentProps={extendedProps}
             {...specs}>
             <WrappedComponent {...extendedProps} />
