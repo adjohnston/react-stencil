@@ -39,7 +39,7 @@ const Examples = ({ children, setExample, currentExample, examples }) => {
 
 Examples.propTypes = {
   setExample: PropTypes.func.isRequired,
-  currentExample: PropTypes.string.isRequired,
+  currentExample: PropTypes.string,
   children: PropTypes.func,
   examples: PropTypes.object
 }
