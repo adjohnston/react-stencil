@@ -46,6 +46,15 @@ const examplesElement = (template, setExample, currentExample, examples) => (
   </Examples>
 )
 
+const propsElement = (template, setProp, props, state) => (
+  <Props
+    state={state}
+    props={props}
+    setProp={setProp}>
+    {template}
+  </Props>
+)
+
 const notesElement = (template, notes) => (
   <Notes
     notes={notes}>
@@ -75,12 +84,7 @@ const Documenter = ({
     {descriptionElement(template.description, description)}
     {previewElement(template.preview, component, currentSwatch)}
     {examplesElement(template.examples, setExample, currentExample, examples)}
-
-    <Props
-      state={componentProps}
-      props={props}
-      setProp={setProp} />
-
+    {propsElement(template.props, setProp, props, componentProps)}
     {notesElement(template.notes, notes)}
   </div>
 )
