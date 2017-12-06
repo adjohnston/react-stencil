@@ -23,7 +23,10 @@ const stencil = (specs = {}) => {
       }
 
       setExample (example) {
-        this.setState({...this.extendedExamples[example]})
+        this.setState({
+          currentExample: example,
+          ...this.extendedExamples[example]
+        })
       }
 
       setProp (prop, value) {
