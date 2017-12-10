@@ -19,10 +19,18 @@ const Prop = ({name, defs = {}, ...restProps}) => {
   }
 
   let inputElement
-  if (type === 'string' || type === 'number' || type === 'bool') {
+  if (type === 'string' || type === 'number') {
     inputElement = (
       <Input
-        type={type}
+        name={name}
+        {...restProps} />
+    )
+  }
+
+  if (type === 'bool') {
+    inputElement = (
+      <Input
+        type='checkbox'
         name={name}
         {...restProps} />
     )
