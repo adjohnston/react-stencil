@@ -6,8 +6,8 @@ import transformValue from 'src/helpers/transform-value'
 const handleInputOnChange = (onChange, name, type) => ({ target }) => {
   return onChange(name, transformValue(
     (type === 'bool')
-    ? target.checked
-    : target.value
+      ? target.checked
+      : target.value
   ), type)
 }
 
