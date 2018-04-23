@@ -6,8 +6,8 @@ import transformValue from 'src/helpers/transform-value'
 const handleInputOnChange = (onChange, name, type) => ({ target }) => {
   return onChange(name, transformValue(
     (type === 'bool')
-    ? target.checked
-    : target.value
+      ? target.checked
+      : target.value
   ), type)
 }
 
@@ -50,11 +50,7 @@ const Input = ({name, type, onChange, value}) => {
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([
-    'string',
-    'number',
-    'bool'
-  ]).isRequired,
+  type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.oneOfType([
     PropTypes.string,

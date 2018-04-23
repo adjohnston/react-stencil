@@ -1,65 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classString from 'src/helpers/class-string'
-import Swatch from 'src/components/Swatch'
 
-export default class Preview extends Component {
-  constructor (props) {
-    super(props)
+const FallbackTemplate = (component, currentSwatch) => (!!component && (
+  <div
+    style={(!!currentSwatch && { background: currentSwatch }) || null}
+    className={classString('__preview')}>
+    {component}
+  </div>
+)) || null
 
-    this.state = {
-      current: null
-    }
-
-    this.setSwatch = this.setSwatch.bind(this)
-  }
-
-  setSwatch (swatch) {
-    this.setState({
-      current: swatch
-    })
-  }
-
-  render () {
-    const current = this.state.current
-    const {
-      swatches,
-      children: Component
-    } = this.props
-
-    let swatchButtons
-    if (swatches && swatches.length > 0) {
-      swatchButtons = (
-        <div>
-          <Swatch
-            swatch={null}
-            onClick={this.setSwatch} />
-
-          {swatches.map(swatch => (
-            <Swatch
-              key={swatch}
-              swatch={swatch}
-              onClick={this.setSwatch} />
-          ))}
-        </div>
-      )
-    }
-
-    return (
-      <div>
-        {swatchButtons}
-
-        <div
-          style={{background: current}}
-          className={classString('__preview')}>
-          {Component}
-        </div>
-      </div>
-    )
-  }
-}
+const Preview = ({ children, component, currentSwatch }) => (
+  (children && component)
+    ? children(component, currentSwatch)
+    : FallbackTemplate(component, currentSwatch)
+)
 
 Preview.propTypes = {
-  children: PropTypes.element.isRequired,
-  swatches: PropTypes.arrayOf(PropTypes.string)
+  children: PropTypes.func,
+  component: PropTypes.object
 }
+
+FallbackTemplate.propTypes = {
+  component: PropTypes.element.isRequired,
+  currentSwatch: PropTypes.string
+}
+
+export default Preview

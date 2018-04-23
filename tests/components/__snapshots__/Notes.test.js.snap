@@ -53,3 +53,17 @@ exports[`it renders groups of notes using strings 1`] = `
   </div>
 </section>
 `;
+
+exports[`it should render correctly when given a template 1`] = `
+<div>
+  <h2>
+    Notes
+  </h2>
+  <div>
+    Developer Notes
+  </div>
+  <div>
+    Designer Notes
+  </div>
+</div>
+`;

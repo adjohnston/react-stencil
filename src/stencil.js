@@ -8,28 +8,52 @@ const stencil = (specs = {}) => {
       constructor (props) {
         super(props)
 
-        this.state = {}
+        this.state = {
+          currentSwatch: '',
+          currentExample: 'default'
+        }
+
         this.extendedExamples = Object.assign(specs.examples || {}, {
           default: {...this.props}
         })
+
         this.setExample = this.setExample.bind(this)
         this.setProp = this.setProp.bind(this)
+        this.setSwatch = this.setSwatch.bind(this)
       }
 
       setExample (example) {
-        this.setState({...this.extendedExamples[example]})
+        this.setState({
+          currentExample: example,
+          ...this.extendedExamples[example]
+        })
       }
 
       setProp (prop, value) {
         this.setState({[prop]: value})
       }
 
+      setSwatch (swatch) {
+        this.setState({
+          currentSwatch: swatch
+        })
+      }
+
       render () {
-        const extendedProps = Object.assign({}, this.props, this.state)
+        const {
+          currentSwatch,
+          currentExample,
+          ...componentState
+        } = this.state
+
+        const extendedProps = Object.assign({}, this.props, componentState)
         return (
           <Documenter
             setExample={this.setExample}
             setProp={this.setProp}
+            setSwatch={this.setSwatch}
+            currentSwatch={currentSwatch}
+            currentExample={currentExample}
             componentProps={extendedProps}
             {...specs}>
             <WrappedComponent {...extendedProps} />
