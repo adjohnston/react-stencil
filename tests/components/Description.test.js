@@ -4,7 +4,7 @@ import Description from 'src/components/Description'
 
 test('it should render correctly with children as a string', () => {
   const mockProps = {
-    children: 'I am just a basic description'
+    description: 'I am just a basic description'
   }
 
   const tree = renderer
@@ -16,7 +16,7 @@ test('it should render correctly with children as a string', () => {
 
 test('it should render correctly with children as a component', () => {
   const mockProps = {
-    children: (
+    description: (
       <p>
         'I am just a basic description component'
       </p>

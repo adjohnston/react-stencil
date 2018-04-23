@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import Prop from 'src/components/Prop'
 import transformValue from 'src/helpers/transform-value'
 
-const Props = ({state, setProp, props}) => {
-  return (!!props & !!state && (
+const FallbackTemplate = (setProp, props, state) => {
+  return (!!props && !!state && (
     <section>
       <h2>
         Props
@@ -23,6 +23,12 @@ const Props = ({state, setProp, props}) => {
     </section>
   )) || null
 }
+
+const Props = ({ children, setProp, props, state }) => (
+  (children && props && state)
+    ? children(setProp, props, state)
+    : FallbackTemplate(setProp, props, state)
+)
 
 Props.propTypes = {
   setProp: PropTypes.func.isRequired,

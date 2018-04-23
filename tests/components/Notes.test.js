@@ -22,6 +22,36 @@ test('it renders correctly', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('it should render correctly when given a template', () => {
+  const mockProps = {
+    notes: {
+      'Developer Notes': 'I am a developer',
+      'Designer Notes': 'I am a designer'
+    },
+    children: (notes) => (!!notes && (
+      <div>
+        <h2>
+          Notes
+        </h2>
+        {Object.keys(notes).map((note, i) => {
+          return (
+            <div
+              key={i}>
+              {note}
+            </div>
+          )
+        })}
+      </div>
+    ))
+  }
+
+  const tree = renderer
+    .create(<Notes {...mockProps} />)
+    .toJSON()
+
+  expect(tree).toMatchSnapshot()
+})
+
 test('it renders groups of notes using strings', () => {
   const props = {
     notes: {

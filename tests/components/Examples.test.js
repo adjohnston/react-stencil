@@ -3,43 +3,58 @@ import renderer from 'react-test-renderer'
 import Examples from 'src/components/Examples'
 
 test('it should not render without examples', () => {
-  const props = {
+  const mockProps = {
     setExample: () => {}
   }
 
   const tree = renderer
-    .create(<Examples {...props} />)
+    .create(<Examples {...mockProps} />)
     .toJSON()
 
   expect(tree).toMatchSnapshot()
 })
 
 test('it should render correctly', () => {
-  const props = {
-    examples: {},
-    setExample: () => {}
-  }
-
-  const tree = renderer
-    .create(<Examples {...props} />)
-    .toJSON()
-
-  expect(tree).toMatchSnapshot()
-})
-
-test('it should show the value when the selection is changed', () => {
-  const props = {
+  const mockProps = {
     examples: {
       'something else': {}
     },
     setExample: () => {}
   }
 
-  const component = renderer.create(<Examples {...props} />)
+  const tree = renderer
+    .create(<Examples {...mockProps} />)
+    .toJSON()
 
-  component
-    .getInstance()
-    .onChange({target: {value: 'something else'}})
+  expect(tree).toMatchSnapshot()
+})
 
-  expect(component.toJSON()).toMatchSnapshot()
+test('it should render correctly when given a template', () => {
+  const mockProps = {
+    examples: {
+      'something else': {}
+    },
+    setExample: () => {},
+    children: (setExample, currentExample, examples) => (
+      <div>
+        <h1>
+          Usecases
+        </h1>
+
+        {Object.keys(examples).map(example => (
+          <button
+            key={example}
+            onClick={({ target: { value } }) => setExample(value)}>
+            {example}
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  const tree = renderer
+    .create(<Examples {...mockProps} />)
+    .toJSON()
+
+  expect(tree).toMatchSnapshot()
 })

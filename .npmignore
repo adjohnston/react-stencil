@@ -1,5 +1,8 @@
 src
+tests
 node_modules
+
 .babelrc
+.eslintrc
 .gitignore
 .webpack.config.babel.js

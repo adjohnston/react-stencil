@@ -19,7 +19,7 @@ const Prop = ({name, defs = {}, ...restProps}) => {
   }
 
   let inputElement
-  if (type === 'string' || type === 'number' || type === 'bool') {
+  if (type) {
     inputElement = (
       <Input
         type={type}
