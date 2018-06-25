@@ -13,4 +13,4 @@ const withStencil = (specs = {}) => {
   }
 }
 
-export withStencil
+export { withStencil }
