@@ -6,29 +6,26 @@ export default {
   output: {
     filename: 'stencil.js',
     path: resolve(__dirname, 'dist'),
-    library: 'stencil',
-    libraryTarget: 'umd'
+    library: 'react-stencil',
+    libraryTarget: 'commonjs2',
   },
-
-  devtool: 'inline-source-map',
 
   module: {
     rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
-    }]
+      loader: 'babel-loader',
+    }],
   },
 
   resolve: {
     alias: {
-      src: resolve(__dirname, 'src')
-    }
+      src: resolve(__dirname, 'src'),
+    },
   },
 
   externals: {
     react: 'react',
     'prop-types': 'prop-types',
-    'assign-deep': 'assign-deep'
-  }
+  },
 }

@@ -7,8 +7,8 @@
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "build": "webpack -p",
-    "build:watch": "webpack -w"
+    "build": "webpack --mode=production",
+    "build:watch": "webpack --mode=development --watch"
   },
   "author": "Adam Johnston",
   "license": "MIT",
