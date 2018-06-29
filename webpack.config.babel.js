@@ -7,7 +7,7 @@ export default {
     filename: 'stencil.js',
     path: resolve(__dirname, 'dist'),
     library: 'react-stencil',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
   },
 
   module: {
