@@ -26,4 +26,5 @@ const withStencil = (specs = {}) => {
   }
 }
 
-export { withStencil, Name }
+export { withStencil }
+export * from './components'

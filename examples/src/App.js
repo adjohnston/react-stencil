@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { withStencil, Name } from 'react-stencil'
+import { withStencil } from 'react-stencil'
 import { Switch } from '@learnerbly/web-components'
 
 const Template = ({ Component }) =>

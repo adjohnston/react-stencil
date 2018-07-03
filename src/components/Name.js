@@ -1,9 +1,21 @@
 import React from 'react'
-import { Custom } from '../context'
+import PropTypes from 'prop-types'
 
-const Name = ({ children }) =>
-  <Custom>
-    { spec => children ? children(spec.name) : <h1>{spec.name}</h1> }
-  </Custom>
+import { Custom } from 'src/context'
+import { InternalName } from 'src/components/internal/Name'
 
-export default Name
+const mapSpecToArgs = ({ name }) => ({ name })
+
+const Name = ({ children }) => {
+  return (
+    <Custom>
+      {spec => (children ? children(mapSpecToArgs(spec)) : <InternalName {...spec} />)}
+    </Custom>
+  )
+}
+
+Name.propTypes = {
+  children: PropTypes.func
+}
+
+export { Name }
