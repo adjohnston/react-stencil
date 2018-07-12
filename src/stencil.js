@@ -1,24 +1,19 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
+
 import { Provider } from './context'
-import Name from './components/Name'
+import { DefaultTemplate } from './components/internal/Template'
 
-const DefaultTemplate = ({ Component }) =>
-  <Fragment>
-    <Name />
+const withStencil = (spec = {}) => {
+  const { Template = DefaultTemplate } = spec
 
-    <Component />
-  </Fragment>
 
-//    withStencil : object -> component -> component
-const withStencil = (specs = {}) => {
-  const { Template = DefaultTemplate } = specs
 
   return WrappedComponent => {
     return class WithStencil extends Component {
       render() {
         return (
           <Provider value={specs}>
-            <Template Component={() => <WrappedComponent {...specs.props} />} />
+            <Template />
           </Provider>
         )
       }
