@@ -6,13 +6,14 @@ import { DefaultTemplate } from './components/internal/Template'
 const withStencil = (spec = {}) => {
   const { Template = DefaultTemplate } = spec
 
-
-
   return WrappedComponent => {
-    return class WithStencil extends Component {
+    return class Stencil extends Component {
       render() {
+        const Component = () => <WrappedComponent {...spec.props} />
+        const enhancedContext = { ...spec, Component }
+
         return (
-          <Provider value={specs}>
+          <Provider value={enhancedContext}>
             <Template />
           </Provider>
         )
