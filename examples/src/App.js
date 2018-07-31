@@ -1,17 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { withStencil } from 'react-stencil'
+import { withStateHandlers } from 'recompose'
 import { Switch } from '@learnerbly/web-components'
+// import Template from './Template'
 
-const Template = ({ Component }) =>
-  <Fragment>
-    <Name>
-      { (name) => <h6 style={{ background: 'pink' }}>{name}</h6> }
-    </Name>
-
-    <Component />
-  </Fragment>
-
-const DocumentedMessage = withStencil({
+const spec = {
   // Template,
 
   name: 'Switch',
@@ -19,18 +12,26 @@ const DocumentedMessage = withStencil({
   description: 'This is an example of a switch component.',
 
   props: {
-    value: true,
-    onChange: () => {},
     label: 'I am on',
     altLabel: 'I am off'
   }
-})(Switch)
+}
+
+const EnhancedSwitch = withStencil(spec)(
+  withStateHandlers(
+    ({ initialValue = false }) => ({
+      value: initialValue
+    }),
+    {
+      onChange: ({ value }) => () => ({
+        value: !value
+      })
+    })(Switch)
+)
 
 class App extends Component {
   render() {
-    return (
-      <DocumentedMessage />
-    )
+    return <EnhancedSwitch />
   }
 }
 
