@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const inputType = ({ type, value, prop, onChange }) => {
-  const changeHandler = onChange(prop)
-
+const inputType = ({ type, value, prop, changeHandler }) => {
   switch (type) {
     case 'string':
       return <input type="text" onChange={changeHandler} value={value} />
@@ -25,17 +23,17 @@ export const inputType = ({ type, value, prop, onChange }) => {
   }
 }
 
-const Field = (props) => {
+const Field = ({ changeHandler, prop, type, value }) => {
   return (
     <label>
-      <span>{props.prop}</span>
-      {inputType(props)}
+      <span>{prop}</span>
+      {inputType({ prop, type, value, changeHandler })}
     </label>
   )
 }
 
 Field.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  changeHandler: PropTypes.func.isRequired,
   prop: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([
