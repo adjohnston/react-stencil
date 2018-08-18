@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withStencil } from 'react-stencil'
-import { withStateHandlers } from 'recompose'
 import { Switch } from '@learnerbly/web-components'
 // import Template from './Template'
 
@@ -13,21 +12,13 @@ const spec = {
 
   props: {
     label: 'I am on',
-    altLabel: 'I am off'
+    altLabel: 'I am off',
+    value: false,
+    onChange: ({ value }) => ({ value: !value }),
   }
 }
 
-const EnhancedSwitch = withStencil(spec)(
-  withStateHandlers(
-    ({ initialValue = false }) => ({
-      value: initialValue
-    }),
-    {
-      onChange: ({ value }) => () => ({
-        value: !value
-      })
-    })(Switch)
-)
+const EnhancedSwitch = withStencil(spec)(Switch)
 
 class App extends Component {
   render() {
