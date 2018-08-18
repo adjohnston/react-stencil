@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Custom } from 'src/context'
-import { InternalName } from 'src/components/internal/Name'
+import { Custom } from '../context'
+import { InternalName } from './internal/Name'
 
 const Name = ({ children }) => {
   return (

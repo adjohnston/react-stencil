@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Name, Preview } from 'src/components'
+import { Name, Preview } from '../../components'
 
 const Template = () => {
   return (

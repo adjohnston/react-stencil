@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Custom } from 'src/context'
-import { InternalPreview } from 'src/components/internal/Preview'
+import { Custom } from '../context'
+import { InternalPreview } from './internal/Preview'
 
 const Preview = ({ children }) => {
   return (

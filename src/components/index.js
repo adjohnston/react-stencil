@@ -1,2 +1,3 @@
-export { Name } from 'src/components/Name'
-export { Preview } from 'src/components/Preview'
+export { Name } from './Name'
+export { Preview } from './Preview'
+export { PropsList } from './PropsList'
