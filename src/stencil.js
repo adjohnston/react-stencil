@@ -19,11 +19,23 @@ const withStencil = (spec = {}) => {
         }, {})
       }
 
+      changeHandler = (prop) => ({ target: { type, checked, value } }) => {
+        this.setState((state) => ({
+          ...state,
+          [prop]: type === 'checkbox' ? checked : value,
+        }))
+      }
+
       render() {
         const state = this.state
         const handlers = this.enhanceHandlers(spec.props)
         const Component = () => <WrappedComponent {...state} {...handlers} />
-        const enhancedContext = { ...spec, Component, props: state }
+        const enhancedContext = {
+          ...spec,
+          Component,
+          props: state,
+          changeHandler: this.changeHandler,
+        }
 
         return (
           <Provider value={enhancedContext}>
