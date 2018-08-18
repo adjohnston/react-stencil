@@ -7,6 +7,10 @@
         "transform-object-rest-spread"
       ],
       "presets": [["env", { "modules": false }], "react"]
+    },
+    "test": {
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"],
+      "presets": ["env", "react"]
     }
   }
 }
