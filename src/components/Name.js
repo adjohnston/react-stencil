@@ -6,7 +6,9 @@ import { InternalName } from 'src/components/internal/Name'
 const Name = ({ children }) => {
   return (
     <Custom>
-      {({ name }) => (children ? children({ name }) : <InternalName name={name} />)}
+      {({ name }) =>
+        children ? children({ name }) : <InternalName name={name} />
+      }
     </Custom>
   )
 }
